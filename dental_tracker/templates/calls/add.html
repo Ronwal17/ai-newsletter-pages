@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+{% block title %}Log a Call{% endblock %}
+{% block page_title %}<i class="bi bi-plus-circle-fill text-primary me-2"></i>Log a New Call{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-9">
+    <form method="POST" action="{{ url_for('calls_add') }}">
+
+      <!-- Caller Info -->
+      <div class="form-card mb-3">
+        <div class="section-divider">
+          <i class="bi bi-person-fill me-1"></i> Caller Information
+        </div>
+        <div class="row g-3">
+          <div class="col-md-5">
+            <label class="form-label fw-medium">Caller Name <span class="text-danger">*</span></label>
+            <input type="text" name="caller_name" class="form-control" placeholder="e.g. Maria Gonzalez" required />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label fw-medium">Phone Number <span class="text-danger">*</span></label>
+            <input type="text" name="caller_phone" class="form-control" placeholder="(555) 123-4567" required />
+          </div>
+          <div class="col-md-3">
+            <label class="form-label fw-medium">Patient Type</label>
+            <select name="patient_type" class="form-select">
+              <option value="new" selected>New Patient</option>
+              <option value="existing">Existing Patient</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lead Source -->
+      <div class="form-card mb-3">
+        <div class="section-divider">
+          <i class="bi bi-megaphone-fill me-1"></i> Lead Source & Marketing
+        </div>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label fw-medium">Lead Source <span class="text-danger">*</span></label>
+            <select name="lead_source" class="form-select" required>
+              <option value="" disabled selected>Select source…</option>
+              {% for source in lead_sources %}
+              <option value="{{ source }}">{{ source }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-medium">Campaign Name <span class="text-muted fw-normal">(optional)</span></label>
+            <input type="text" name="campaign_name" class="form-control" placeholder="e.g. Spring Implant Promo" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Call Details -->
+      <div class="form-card mb-3">
+        <div class="section-divider">
+          <i class="bi bi-telephone-fill me-1"></i> Call Details
+        </div>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label class="form-label fw-medium">Call Outcome <span class="text-danger">*</span></label>
+            <select name="call_outcome" class="form-select" required id="outcomeSelect">
+              <option value="" disabled selected>Select outcome…</option>
+              {% for o in call_outcomes %}
+              <option value="{{ o }}">{{ o.replace('_',' ').title() }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label fw-medium">Reason for Call</label>
+            <select name="reason" class="form-select">
+              <option value="">— Select —</option>
+              <option value="new_patient">New Patient Inquiry</option>
+              <option value="emergency">Emergency / Pain</option>
+              <option value="existing_appt">Existing Appointment</option>
+              <option value="billing">Billing / Insurance</option>
+              <option value="cosmetic_consult">Cosmetic Consult</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label fw-medium">Procedure Interest</label>
+            <select name="procedure_interest" class="form-select">
+              <option value="">— Select —</option>
+              {% for p in procedures %}
+              <option value="{{ p }}">{{ p }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label fw-medium">Staff Member</label>
+            <input type="text" name="staff_name" class="form-control" placeholder="Your name" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label fw-medium">Appointment Date</label>
+            <input type="date" name="appointment_date" class="form-control" id="apptDate" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label fw-medium">Appointment Time</label>
+            <input type="time" name="appointment_time" class="form-control" id="apptTime" />
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="insurance_collected" id="insuranceCheck" />
+              <label class="form-check-label fw-medium" for="insuranceCheck">
+                <i class="bi bi-shield-check text-success me-1"></i>Insurance information collected
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emergency Triage -->
+      <div class="form-card mb-3" id="emergencySection">
+        <div class="section-divider text-danger">
+          <i class="bi bi-exclamation-triangle-fill me-1"></i> Urgency & Emergency Triage
+        </div>
+        <div class="row g-3">
+          <div class="col-12">
+            <label class="form-label fw-medium">Urgency Level</label>
+            <div class="d-flex gap-3 flex-wrap">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="urgency" id="routine" value="routine" checked />
+                <label class="form-check-label" for="routine">
+                  <span class="badge badge-routine fs-6 fw-normal">Routine</span>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="urgency" id="urgent" value="urgent" />
+                <label class="form-check-label" for="urgent">
+                  <span class="badge badge-urgent fs-6 fw-normal">Urgent</span>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="urgency" id="emergency" value="emergency" />
+                <label class="form-check-label" for="emergency">
+                  <span class="badge badge-emergency fs-6 fw-normal">Emergency</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emergency triage details (shown when urgent/emergency selected) -->
+          <div class="col-12" id="triageDetails" style="display:none;">
+            <div class="emergency-section">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label fw-medium">Pain Level (1–10)</label>
+                  <div class="d-flex align-items-center gap-2">
+                    <input type="range" name="pain_level" id="painRange" min="1" max="10" value="5"
+                           class="form-range flex-grow-1" oninput="document.getElementById('painVal').textContent = this.value" />
+                    <span id="painVal" class="badge bg-danger" style="min-width:30px;">5</span>
+                  </div>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="has_swelling" id="swellingCheck" />
+                    <label class="form-check-label fw-medium" for="swellingCheck">
+                      <i class="bi bi-exclamation-circle-fill text-warning me-1"></i>Swelling present
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="has_trauma" id="traumaCheck" />
+                    <label class="form-check-label fw-medium" for="traumaCheck">
+                      <i class="bi bi-lightning-fill text-danger me-1"></i>Dental trauma / injury
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="alert alert-danger mt-3 py-2 mb-0 small">
+                <i class="bi bi-info-circle-fill me-1"></i>
+                <strong>Reminder:</strong> If patient has difficulty breathing, severe swelling, or uncontrolled bleeding — refer to ER immediately and document this call.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Follow-up -->
+      <div class="form-card mb-3">
+        <div class="section-divider">
+          <i class="bi bi-bell-fill me-1"></i> Follow-up
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" name="followup_required" id="followupCheck"
+                 onchange="document.getElementById('followupDateRow').style.display = this.checked ? 'block' : 'none'" />
+          <label class="form-check-label fw-medium" for="followupCheck">
+            Schedule a follow-up for this call
+          </label>
+        </div>
+        <div id="followupDateRow" style="display:none;">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label fw-medium">Follow-up Date</label>
+              <input type="date" name="followup_date" class="form-control" min="{{ today_iso }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="form-card mb-4">
+        <div class="section-divider">
+          <i class="bi bi-chat-text-fill me-1"></i> Notes
+        </div>
+        <textarea name="notes" class="form-control" rows="3"
+                  placeholder="Add any additional notes about this call…"></textarea>
+      </div>
+
+      <div class="d-flex gap-2 justify-content-end">
+        <a href="{{ url_for('calls_list') }}" class="btn btn-outline-secondary px-4">Cancel</a>
+        <button type="submit" class="btn btn-primary px-5">
+          <i class="bi bi-save-fill me-1"></i> Save Call
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Show triage details for urgent/emergency
+document.querySelectorAll('input[name="urgency"]').forEach(radio => {
+  radio.addEventListener('change', function () {
+    const show = this.value === 'urgent' || this.value === 'emergency';
+    document.getElementById('triageDetails').style.display = show ? 'block' : 'none';
+  });
+});
+
+// Auto-set follow-up if outcome is missed/voicemail
+document.getElementById('outcomeSelect').addEventListener('change', function () {
+  if (this.value === 'missed' || this.value === 'voicemail' || this.value === 'not_booked') {
+    const cb = document.getElementById('followupCheck');
+    cb.checked = true;
+    document.getElementById('followupDateRow').style.display = 'block';
+  }
+});
+</script>
+{% endblock %}

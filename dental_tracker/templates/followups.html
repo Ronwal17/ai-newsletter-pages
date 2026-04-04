@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% block title %}Follow-ups{% endblock %}
+{% block page_title %}<i class="bi bi-bell-fill text-warning me-2"></i>Follow-up Manager{% endblock %}
+
+{% block content %}
+
+<!-- Stats row -->
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="kpi-card text-center">
+      <div class="kpi-value text-danger">{{ overdue | length }}</div>
+      <div class="kpi-label mt-1">Overdue</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="kpi-card text-center">
+      <div class="kpi-value text-warning">{{ due_today | length }}</div>
+      <div class="kpi-label mt-1">Due Today</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="kpi-card text-center">
+      <div class="kpi-value text-primary">{{ upcoming | length }}</div>
+      <div class="kpi-label mt-1">Upcoming</div>
+    </div>
+  </div>
+</div>
+
+<!-- Overdue -->
+{% if overdue %}
+<div class="form-card mb-4">
+  <h6 class="fw-bold text-danger mb-3">
+    <i class="bi bi-exclamation-triangle-fill me-1"></i> Overdue Follow-ups ({{ overdue | length }})
+  </h6>
+  <div class="table-responsive">
+    <table class="table table-clean align-middle mb-0">
+      <thead>
+        <tr>
+          <th>Caller</th>
+          <th>Phone</th>
+          <th>Source</th>
+          <th>Urgency</th>
+          <th>Due</th>
+          <th>Days Overdue</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in overdue %}
+        <tr class="table-danger-subtle">
+          <td>
+            <a href="{{ url_for('call_detail', call_id=c.id) }}" class="fw-semibold text-dark text-decoration-none">
+              {{ c.caller_name }}
+            </a>
+          </td>
+          <td class="small">
+            <a href="tel:{{ c.caller_phone }}" class="text-decoration-none text-muted">{{ c.caller_phone }}</a>
+          </td>
+          <td class="small text-muted">{{ c.lead_source }}</td>
+          <td>
+            {% if c.urgency == 'emergency' %}<span class="badge badge-emergency">Emergency</span>
+            {% elif c.urgency == 'urgent' %}<span class="badge badge-urgent">Urgent</span>
+            {% else %}<span class="badge badge-routine">Routine</span>{% endif %}
+          </td>
+          <td class="small text-danger fw-semibold">{{ c.followup_date.strftime('%b %d') if c.followup_date else '—' }}</td>
+          <td>
+            {% if c.followup_date %}
+            {% set days = (today - c.followup_date.date()).days %}
+            <span class="badge bg-danger">{{ days }} day{{ 's' if days != 1 else '' }}</span>
+            {% endif %}
+          </td>
+          <td>
+            <a href="{{ url_for('call_detail', call_id=c.id) }}" class="btn btn-danger btn-sm">
+              <i class="bi bi-telephone-fill me-1"></i> Call Now
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+
+<!-- Due today -->
+{% if due_today %}
+<div class="form-card mb-4">
+  <h6 class="fw-bold text-warning mb-3">
+    <i class="bi bi-clock-fill me-1"></i> Due Today ({{ due_today | length }})
+  </h6>
+  <div class="table-responsive">
+    <table class="table table-clean align-middle mb-0">
+      <thead>
+        <tr>
+          <th>Caller</th>
+          <th>Phone</th>
+          <th>Source</th>
+          <th>Urgency</th>
+          <th>Procedure</th>
+          <th>Attempts</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in due_today %}
+        <tr>
+          <td>
+            <a href="{{ url_for('call_detail', call_id=c.id) }}" class="fw-semibold text-dark text-decoration-none">
+              {{ c.caller_name }}
+            </a>
+          </td>
+          <td class="small">
+            <a href="tel:{{ c.caller_phone }}" class="text-decoration-none text-primary fw-medium">{{ c.caller_phone }}</a>
+          </td>
+          <td class="small text-muted">{{ c.lead_source }}</td>
+          <td>
+            {% if c.urgency == 'emergency' %}<span class="badge badge-emergency">Emergency</span>
+            {% elif c.urgency == 'urgent' %}<span class="badge badge-urgent">Urgent</span>
+            {% else %}<span class="badge badge-routine">Routine</span>{% endif %}
+          </td>
+          <td class="small text-muted">{{ c.procedure_interest or '—' }}</td>
+          <td class="text-center">
+            <span class="badge bg-secondary bg-opacity-15 text-secondary">{{ c.followups | length }}</span>
+          </td>
+          <td>
+            <a href="{{ url_for('call_detail', call_id=c.id) }}" class="btn btn-warning btn-sm text-dark">
+              <i class="bi bi-arrow-right me-1"></i> Open
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+
+<!-- Upcoming -->
+{% if upcoming %}
+<div class="form-card">
+  <h6 class="fw-bold text-primary mb-3">
+    <i class="bi bi-calendar-event me-1"></i> Upcoming ({{ upcoming | length }})
+  </h6>
+  <div class="table-responsive">
+    <table class="table table-clean align-middle mb-0">
+      <thead>
+        <tr>
+          <th>Caller</th>
+          <th>Phone</th>
+          <th>Source</th>
+          <th>Urgency</th>
+          <th>Follow-up Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in upcoming %}
+        <tr>
+          <td>
+            <a href="{{ url_for('call_detail', call_id=c.id) }}" class="fw-semibold text-dark text-decoration-none">
+              {{ c.caller_name }}
+            </a>
+          </td>
+          <td class="small text-muted">{{ c.caller_phone }}</td>
+          <td class="small text-muted">{{ c.lead_source }}</td>
+          <td>
+            {% if c.urgency == 'emergency' %}<span class="badge badge-emergency">Emergency</span>
+            {% elif c.urgency == 'urgent' %}<span class="badge badge-urgent">Urgent</span>
+            {% else %}<span class="badge badge-routine">Routine</span>{% endif %}
+          </td>
+          <td class="small fw-medium">{{ c.followup_date.strftime('%A, %b %d, %Y') if c.followup_date else '—' }}</td>
+          <td>
+            <a href="{{ url_for('call_detail', call_id=c.id) }}" class="btn btn-outline-primary btn-sm">
+              <i class="bi bi-eye me-1"></i> View
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+
+{% if not overdue and not due_today and not upcoming %}
+<div class="form-card text-center py-5">
+  <i class="bi bi-check2-all fs-1 text-success opacity-50 d-block mb-3"></i>
+  <h5 class="text-muted">All clear! No follow-ups pending.</h5>
+  <p class="text-muted small">You're on top of everything.</p>
+</div>
+{% endif %}
+
+{% endblock %}

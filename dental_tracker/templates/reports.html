@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% block title %}Reports{% endblock %}
+{% block page_title %}<i class="bi bi-bar-chart-fill text-primary me-2"></i>Reports & Analytics{% endblock %}
+
+{% block content %}
+
+<!-- Date range picker -->
+<div class="form-card mb-4">
+  <form method="GET" action="{{ url_for('reports') }}" class="row g-2 align-items-end">
+    <div class="col-md-3">
+      <label class="form-label small fw-medium mb-1">From</label>
+      <input type="date" name="from" class="form-control form-control-sm" value="{{ date_from }}" />
+    </div>
+    <div class="col-md-3">
+      <label class="form-label small fw-medium mb-1">To</label>
+      <input type="date" name="to" class="form-control form-control-sm" value="{{ date_to }}" />
+    </div>
+    <div class="col-md-3">
+      <button type="submit" class="btn btn-primary btn-sm">
+        <i class="bi bi-search me-1"></i> Generate Report
+      </button>
+    </div>
+    <div class="col-md-3 text-end">
+      <a href="{{ url_for('export_csv') }}" class="btn btn-outline-success btn-sm">
+        <i class="bi bi-download me-1"></i> Export CSV
+      </a>
+    </div>
+  </form>
+</div>
+
+<!-- KPI summary -->
+<div class="row g-3 mb-4">
+  <div class="col-6 col-md-2">
+    <div class="kpi-card text-center">
+      <div class="kpi-value text-dark">{{ total }}</div>
+      <div class="kpi-label mt-1">Total Calls</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2">
+    <div class="kpi-card text-center">
+      <div class="kpi-value" style="color:#7c3aed;">{{ new_leads }}</div>
+      <div class="kpi-label mt-1">New Leads</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2">
+    <div class="kpi-card text-center">
+      <div class="kpi-value text-success">{{ converted }}</div>
+      <div class="kpi-label mt-1">Converted</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2">
+    <div class="kpi-card text-center">
+      <div class="kpi-value text-primary">{{ conv_rate }}%</div>
+      <div class="kpi-label mt-1">Conv. Rate</div>
+      <div class="small mt-1 {% if conv_rate >= 65 %}text-success{% elif conv_rate >= 35 %}text-warning{% else %}text-danger{% endif %}">
+        {% if conv_rate >= 65 %}Excellent{% elif conv_rate >= 35 %}Average{% else %}Needs work{% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2">
+    <div class="kpi-card text-center">
+      <div class="kpi-value text-danger">{{ emergencies }}</div>
+      <div class="kpi-label mt-1">Emergencies</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2">
+    <div class="kpi-card text-center">
+      <div class="kpi-value text-warning">{{ answer_rate }}%</div>
+      <div class="kpi-label mt-1">Answer Rate</div>
+      <div class="small mt-1 {% if answer_rate >= 90 %}text-success{% elif answer_rate >= 80 %}text-warning{% else %}text-danger{% endif %}">
+        {% if answer_rate >= 90 %}Target met{% elif answer_rate >= 80 %}Below target{% else %}Critical{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Benchmarks callout -->
+<div class="alert alert-info py-2 px-3 mb-4 small">
+  <i class="bi bi-info-circle-fill me-1"></i>
+  <strong>Industry Benchmarks:</strong>
+  Answer Rate &gt;90% · Conversion Rate 65–80% · Missed Calls &lt;10% · Callback within 15 min = 73% more likely to book
+</div>
+
+<!-- Trend chart -->
+<div class="row g-3 mb-4">
+  <div class="col-12">
+    <div class="chart-card">
+      <h6 class="fw-semibold mb-3">Daily Trend — Calls vs Conversions</h6>
+      <canvas id="trendChart" height="80"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Source breakdown -->
+<div class="row g-3 mb-4">
+  <div class="col-lg-7">
+    <div class="chart-card h-100">
+      <h6 class="fw-semibold mb-3">Lead Source Breakdown</h6>
+      {% if source_report %}
+      <table class="table table-clean align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th class="text-center">Calls</th>
+            <th class="text-center">Converted</th>
+            <th class="text-center">Conv. Rate</th>
+            <th>Bar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in source_report %}
+          <tr>
+            <td class="fw-medium small">{{ row.source }}</td>
+            <td class="text-center">{{ row.calls }}</td>
+            <td class="text-center text-success fw-semibold">{{ row.conversions }}</td>
+            <td class="text-center">
+              <span class="fw-bold {% if row.rate >= 65 %}text-success{% elif row.rate >= 35 %}text-warning{% else %}text-danger{% endif %}">
+                {{ row.rate }}%
+              </span>
+            </td>
+            <td style="min-width:100px;">
+              <div class="progress" style="height:7px;">
+                <div class="progress-bar {% if row.rate >= 65 %}bg-success{% elif row.rate >= 35 %}bg-warning{% else %}bg-danger{% endif %}"
+                     style="width:{{ [row.rate, 100]|min }}%;"></div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <div class="text-center py-4 text-muted small">No data in this date range.</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Source pie chart -->
+  <div class="col-lg-5">
+    <div class="chart-card h-100">
+      <h6 class="fw-semibold mb-3">Calls by Source</h6>
+      <canvas id="sourceChart" height="200"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Insights -->
+{% if source_report %}
+<div class="form-card">
+  <h6 class="fw-semibold mb-3"><i class="bi bi-lightbulb-fill text-warning me-1"></i> Insights</h6>
+  <div class="row g-3">
+    {% set best = source_report | sort(attribute='rate', reverse=True) | first %}
+    {% set most_volume = source_report | sort(attribute='calls', reverse=True) | first %}
+    <div class="col-md-4">
+      <div class="p-3 rounded-3 bg-success bg-opacity-10 border border-success border-opacity-25">
+        <div class="small fw-bold text-success mb-1">Best Converting Source</div>
+        <div class="fw-semibold">{{ best.source }}</div>
+        <div class="small text-muted">{{ best.rate }}% conversion rate</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 rounded-3 bg-primary bg-opacity-10 border border-primary border-opacity-25">
+        <div class="small fw-bold text-primary mb-1">Highest Volume Source</div>
+        <div class="fw-semibold">{{ most_volume.source }}</div>
+        <div class="small text-muted">{{ most_volume.calls }} calls this period</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 rounded-3 bg-warning bg-opacity-10 border border-warning border-opacity-25">
+        <div class="small fw-bold text-warning mb-1">Answer Rate Status</div>
+        <div class="fw-semibold">{{ answer_rate }}% answered</div>
+        <div class="small text-muted">
+          {{ missed }} missed · Target: &gt;90%
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Trend chart
+const trendCtx = document.getElementById('trendChart').getContext('2d');
+new Chart(trendCtx, {
+  type: 'bar',
+  data: {
+    labels: {{ trend_labels | tojson }},
+    datasets: [
+      {
+        label: 'Calls',
+        data: {{ trend_calls | tojson }},
+        backgroundColor: 'rgba(37,99,235,0.15)',
+        borderColor: '#2563eb',
+        borderWidth: 1.5,
+        borderRadius: 4,
+        order: 2,
+      },
+      {
+        label: 'Converted',
+        data: {{ trend_conversions | tojson }},
+        type: 'line',
+        fill: false,
+        borderColor: '#16a34a',
+        borderWidth: 2.5,
+        pointRadius: 4,
+        pointBackgroundColor: '#16a34a',
+        tension: 0.4,
+        order: 1,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'top', labels: { font: { size: 12 } } },
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+      y: { beginAtZero: true, ticks: { stepSize: 1, font: { size: 11 } }, grid: { color: '#f1f5f9' } }
+    }
+  }
+});
+
+// Source pie
+const sourceCtx = document.getElementById('sourceChart').getContext('2d');
+const sourceLabels = {{ source_report | map(attribute='source') | list | tojson }};
+const sourceCalls = {{ source_report | map(attribute='calls') | list | tojson }};
+const colors = ['#2563eb','#7c3aed','#16a34a','#d97706','#dc2626','#0369a1','#65a30d','#9333ea','#475569'];
+new Chart(sourceCtx, {
+  type: 'doughnut',
+  data: {
+    labels: sourceLabels,
+    datasets: [{
+      data: sourceCalls,
+      backgroundColor: colors.slice(0, sourceLabels.length),
+      borderWidth: 2,
+      borderColor: '#fff',
+    }]
+  },
+  options: {
+    cutout: '55%',
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed} calls` } }
+    }
+  }
+});
+</script>
+{% endblock %}

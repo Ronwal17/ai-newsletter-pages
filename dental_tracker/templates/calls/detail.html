@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+{% block title %}Call #{{ call.id }} — {{ call.caller_name }}{% endblock %}
+{% block page_title %}
+  <a href="{{ url_for('calls_list') }}" class="text-muted text-decoration-none me-2 small">
+    <i class="bi bi-chevron-left"></i> All Calls
+  </a>
+  Call #{{ call.id }} — {{ call.caller_name }}
+{% endblock %}
+
+{% block content %}
+<div class="row g-3">
+
+  <!-- Left: call details -->
+  <div class="col-lg-8">
+
+    <!-- Conversion banner -->
+    {% if call.converted_to_patient %}
+    <div class="converted-banner mb-3 d-flex align-items-center gap-3">
+      <i class="bi bi-person-check-fill text-success fs-3"></i>
+      <div>
+        <div class="fw-bold text-success">Converted to Patient!</div>
+        <div class="small text-muted">
+          {{ call.conversion_date.strftime('%B %d, %Y') if call.conversion_date else 'Date not recorded' }}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Emergency banner -->
+    {% if call.urgency == 'emergency' %}
+    <div class="alert alert-danger d-flex align-items-center gap-2 mb-3">
+      <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+      <div>
+        <strong>Emergency Case</strong>
+        {% if call.pain_level %} — Pain Level: {{ call.pain_level }}/10{% endif %}
+        {% if call.has_swelling %} · Swelling present{% endif %}
+        {% if call.has_trauma %} · Trauma reported{% endif %}
+      </div>
+    </div>
+    {% elif call.urgency == 'urgent' %}
+    <div class="alert alert-warning d-flex align-items-center gap-2 mb-3">
+      <i class="bi bi-clock-fill"></i>
+      <strong>Urgent Case</strong>
+      {% if call.pain_level %} — Pain Level: {{ call.pain_level }}/10{% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Caller & Call Details -->
+    <div class="form-card mb-3">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="section-divider"><i class="bi bi-person-fill me-1"></i>Caller</div>
+          <div class="mb-2">
+            <div class="fw-bold fs-5">{{ call.caller_name }}</div>
+            <div class="text-muted">
+              <i class="bi bi-telephone me-1"></i>
+              <a href="tel:{{ call.caller_phone }}" class="text-decoration-none">{{ call.caller_phone }}</a>
+            </div>
+            <div class="mt-1">
+              {% if call.patient_type == 'new' %}
+              <span class="badge bg-primary bg-opacity-10 text-primary">New Patient</span>
+              {% else %}
+              <span class="badge bg-secondary bg-opacity-10 text-secondary">Existing Patient</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="section-divider"><i class="bi bi-info-circle me-1"></i>Call Info</div>
+          <table class="table table-sm table-borderless mb-0" style="font-size:0.9rem;">
+            <tr>
+              <td class="text-muted ps-0">Date</td>
+              <td class="fw-medium">{{ call.created_at.strftime('%B %d, %Y at %I:%M %p') }}</td>
+            </tr>
+            <tr>
+              <td class="text-muted ps-0">Outcome</td>
+              <td><span class="badge badge-{{ call.call_outcome }}">{{ call.call_outcome.replace('_',' ').title() }}</span></td>
+            </tr>
+            <tr>
+              <td class="text-muted ps-0">Urgency</td>
+              <td>
+                {% if call.urgency == 'emergency' %}<span class="badge badge-emergency">Emergency</span>
+                {% elif call.urgency == 'urgent' %}<span class="badge badge-urgent">Urgent</span>
+                {% else %}<span class="badge badge-routine">Routine</span>{% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td class="text-muted ps-0">Staff</td>
+              <td>{{ call.staff_name or '—' }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lead & Procedure -->
+    <div class="form-card mb-3">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="section-divider"><i class="bi bi-megaphone-fill me-1"></i>Lead Source</div>
+          <div class="fw-semibold">{{ call.lead_source }}</div>
+          {% if call.campaign_name %}
+          <div class="small text-muted mt-1">
+            <i class="bi bi-tag me-1"></i>{{ call.campaign_name }}
+          </div>
+          {% endif %}
+        </div>
+        <div class="col-md-6">
+          <div class="section-divider"><i class="bi bi-clipboard2-pulse me-1"></i>Procedure</div>
+          <div class="fw-semibold">{{ call.procedure_interest or '—' }}</div>
+          {% if call.reason %}
+          <div class="small text-muted mt-1">
+            Reason: {{ call.reason.replace('_',' ').title() }}
+          </div>
+          {% endif %}
+        </div>
+        {% if call.appointment_datetime %}
+        <div class="col-12">
+          <div class="section-divider"><i class="bi bi-calendar-check me-1"></i>Appointment</div>
+          <div class="fw-semibold text-success">
+            <i class="bi bi-calendar-check-fill me-1"></i>
+            {{ call.appointment_datetime.strftime('%A, %B %d, %Y at %I:%M %p') }}
+          </div>
+          <div class="small text-muted mt-1">
+            Insurance collected:
+            {% if call.insurance_collected %}
+            <span class="text-success fw-medium">Yes</span>
+            {% else %}
+            <span class="text-danger fw-medium">No</span>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+        {% if call.notes %}
+        <div class="col-12">
+          <div class="section-divider"><i class="bi bi-chat-text me-1"></i>Notes</div>
+          <div class="text-muted" style="white-space:pre-line;">{{ call.notes }}</div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Follow-up history -->
+    {% if call.followups %}
+    <div class="form-card mb-3">
+      <div class="section-divider"><i class="bi bi-clock-history me-1"></i>Follow-up History</div>
+      {% for fu in call.followups | sort(attribute='attempted_at') %}
+      <div class="followup-item">
+        <div class="d-flex justify-content-between">
+          <span class="fw-semibold small">
+            {{ fu.outcome.replace('_',' ').title() if fu.outcome else 'Attempt' }}
+          </span>
+          <span class="small text-muted">{{ fu.attempted_at.strftime('%b %d, %Y %I:%M %p') }}</span>
+        </div>
+        {% if fu.staff_name %}
+        <div class="small text-muted">By: {{ fu.staff_name }}</div>
+        {% endif %}
+        {% if fu.notes %}
+        <div class="small text-muted mt-1">{{ fu.notes }}</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+
+  <!-- Right: actions panel -->
+  <div class="col-lg-4">
+
+    <!-- Convert to patient -->
+    {% if not call.converted_to_patient %}
+    <div class="form-card mb-3 text-center">
+      <div class="fw-semibold mb-2">Mark as Converted Patient</div>
+      <p class="small text-muted mb-3">
+        Has this lead booked and confirmed their first appointment?
+      </p>
+      <form method="POST" action="{{ url_for('call_convert', call_id=call.id) }}">
+        <button type="submit" class="btn btn-success w-100">
+          <i class="bi bi-person-check-fill me-1"></i> Convert to Patient
+        </button>
+      </form>
+    </div>
+    {% endif %}
+
+    <!-- Log follow-up -->
+    {% if call.followup_required and call.followup_status == 'pending' %}
+    <div class="form-card mb-3">
+      <div class="section-divider text-warning">
+        <i class="bi bi-bell-fill me-1"></i>Log Follow-up Attempt
+      </div>
+      {% if call.followup_date %}
+      <div class="small text-muted mb-2">
+        Due: <strong>{{ call.followup_date.strftime('%B %d, %Y') }}</strong>
+      </div>
+      {% endif %}
+      <form method="POST" action="{{ url_for('add_followup', call_id=call.id) }}">
+        <div class="mb-2">
+          <label class="form-label small fw-medium mb-1">Outcome</label>
+          <select name="outcome" class="form-select form-select-sm" required>
+            <option value="" disabled selected>Select…</option>
+            <option value="reached">Reached — No booking</option>
+            <option value="no_answer">No Answer</option>
+            <option value="voicemail">Left Voicemail</option>
+            <option value="booked">Booked! ✓</option>
+            <option value="lost">Lost Lead</option>
+          </select>
+        </div>
+        <div class="mb-2">
+          <input type="text" name="staff_name" class="form-control form-control-sm" placeholder="Staff name" />
+        </div>
+        <div class="mb-3">
+          <textarea name="notes" class="form-control form-control-sm" rows="2" placeholder="Notes…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-warning btn-sm w-100 text-dark fw-semibold">
+          <i class="bi bi-save me-1"></i> Save Attempt
+        </button>
+      </form>
+    </div>
+    {% endif %}
+
+    <!-- Summary card -->
+    <div class="form-card">
+      <div class="section-divider">Summary</div>
+      <table class="table table-sm table-borderless mb-0" style="font-size:0.85rem;">
+        <tr>
+          <td class="text-muted ps-0">Lead Source</td>
+          <td class="fw-medium text-end">{{ call.lead_source }}</td>
+        </tr>
+        <tr>
+          <td class="text-muted ps-0">Follow-up</td>
+          <td class="text-end">
+            {% if call.followup_required %}
+              {% if call.followup_status == 'completed' %}
+              <span class="text-success fw-medium">Completed</span>
+              {% elif call.followup_status == 'lost' %}
+              <span class="text-secondary fw-medium">Lost</span>
+              {% else %}
+              <span class="text-warning fw-medium">Pending</span>
+              {% endif %}
+            {% else %}
+            <span class="text-muted">None</span>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td class="text-muted ps-0">Status</td>
+          <td class="text-end">
+            {% if call.converted_to_patient %}
+            <span class="text-success fw-bold">Patient ✓</span>
+            {% else %}
+            <span class="text-muted">Lead</span>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td class="text-muted ps-0">Follow-up Attempts</td>
+          <td class="text-end fw-medium">{{ call.followups | length }}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

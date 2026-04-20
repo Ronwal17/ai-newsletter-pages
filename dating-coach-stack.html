@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz + AI Stack Recommendation</title>
+  <style>
+    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --bg-soft:#f8fafc; --border:#e2e8f0; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 40px auto; padding: 0 24px; color: var(--ink); line-height: 1.6; }
+    h1 { font-size: 30px; margin-bottom: 4px; }
+    h2 { font-size: 20px; margin-top: 36px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+    h3 { font-size: 16px; margin-top: 20px; color: #0e7c6a; }
+    p.sub { color: var(--muted); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 18px 0; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+    th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: var(--bg-soft); }
+    .pick { background: #ecfdf5; }
+    code { background: var(--bg-soft); padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+    pre { background: #0f172a; color: #e2e8f0; padding: 14px; border-radius: 6px; overflow-x: auto; font-size: 13px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h1>Quiz + AI Stack Recommendation</h1>
+  <p class="sub">The minimal, cheapest tools to run the quiz &rarr; AI &rarr; email flow with one person operating it.</p>
+
+  <h2>The recommended stack</h2>
+  <table>
+    <tr><th>Function</th><th>Tool</th><th>Monthly cost</th><th>Why</th></tr>
+    <tr class="pick"><td>Quiz</td><td><strong>Tally.so</strong></td><td>Free (or $29 Pro)</td><td>Free tier has unlimited responses and webhooks. Cleaner than Typeform, no forced branding.</td></tr>
+    <tr class="pick"><td>AI</td><td><strong>Claude (Anthropic API)</strong></td><td>~$10-30 at 500 quiz completions/mo</td><td>Best at nuanced, emotional, long-form advice. Holds a consistent coaching voice better than GPT. Prompt caching cuts cost ~90%.</td></tr>
+    <tr class="pick"><td>Automation glue</td><td><strong>Make.com</strong></td><td>Free (up to 1,000 ops/mo) or $10.59/mo</td><td>Connects Tally &rarr; Claude &rarr; email. Visual, no code, 3x cheaper than Zapier.</td></tr>
+    <tr class="pick"><td>Email delivery</td><td><strong>ConvertKit (now Kit)</strong></td><td>Free up to 10k subscribers</td><td>Best-in-class for creators. Handles the quiz auto-reply + the 5-email nurture + the Tier 1 pitch.</td></tr>
+    <tr class="pick"><td>Payments</td><td><strong>Stripe</strong></td><td>2.9% + 30&cent; per charge</td><td>Recurring subscriptions for $29/mo and $497/mo tiers. Payment links in minutes.</td></tr>
+    <tr class="pick"><td>Link-in-bio</td><td><strong>Stan Store</strong> or Beacons</td><td>$29/mo Stan / free Beacons</td><td>Mobile-first page with quiz link + tier buttons. Stan handles Stripe checkout natively.</td></tr>
+    <tr class="pick"><td>Design</td><td><strong>Canva Pro</strong></td><td>$15/mo</td><td>Carousel templates, brand kit, resize for IG/TikTok/FB in one click.</td></tr>
+  </table>
+
+  <p><strong>Total to launch: under $60/month</strong> until you pass ~500 quiz completions/mo.</p>
+
+  <h2>Why Claude over ChatGPT for this use case</h2>
+  <ul>
+    <li><strong>Voice consistency.</strong> Claude holds a steady tone across long replies better than GPT &mdash; essential when the AI is &ldquo;you&rdquo; speaking.</li>
+    <li><strong>Grounded answers.</strong> Claude is less likely to invent advice when told to stick to a provided knowledge base. Reduces brand risk.</li>
+    <li><strong>Prompt caching.</strong> Your 50-question knowledge base is ~20,000 tokens. With Anthropic&rsquo;s prompt caching the second and subsequent calls cost ~10% of the first &mdash; critical for unit economics at scale.</li>
+    <li><strong>Model choice.</strong> Start with <code>claude-haiku-4-5</code> (fast + cheap) for Tier 0 free answers. Upgrade to <code>claude-sonnet-4-6</code> for Tier 1 paid AI Advisor, where quality matters more.</li>
+  </ul>
+
+  <h2>The end-to-end flow</h2>
+  <ol>
+    <li>User clicks link-in-bio on Instagram &rarr; lands on <strong>Stan Store</strong>.</li>
+    <li>Clicks &ldquo;Take the 2-minute quiz&rdquo; &rarr; <strong>Tally</strong> form opens.</li>
+    <li>Submits 6 quiz answers + email &rarr; Tally fires a webhook to <strong>Make.com</strong>.</li>
+    <li>Make.com sends the answers + your 50-question knowledge base to <strong>Claude API</strong>.</li>
+    <li>Claude returns 3 personalized answers in your voice.</li>
+    <li>Make.com adds the user to <strong>ConvertKit</strong> with tags (segment, blocker, goal).</li>
+    <li>ConvertKit sends the personalized answers email within 60 seconds.</li>
+    <li>ConvertKit runs the 5-email nurture. Email #4 pitches Tier 1 with a Stripe link.</li>
+  </ol>
+
+  <h2>The Claude system prompt (starting point)</h2>
+  <pre>You are {COACH_NAME}, a premium dating coach for
+high-achieving professionals. You coach people on
+self-confidence, clarity, and partner-selection to
+find a long-term partner.
+
+RULES:
+- Answer ONLY using the knowledge base below.
+- If a question isn't covered, say "this one needs
+  a human - let's talk on a call" and stop.
+- Match {COACH_NAME}'s voice: calm, direct,
+  compassionate, never hype.
+- Never promise outcomes. Coach the process.
+- Refer clinical issues (depression, trauma,
+  abuse) to a licensed therapist.
+
+INPUT:
+- User quiz answers: {QUIZ_ANSWERS}
+- Knowledge base (50 Q&amp;A): {KNOWLEDGE_BASE}
+
+TASK:
+1. Pick the 3 most relevant questions from the KB
+   given the user's answers.
+2. For each, write a 150-200 word personalized
+   response that weaves in their specifics.
+3. End with one sentence inviting them to reply
+   with their hardest current question.</pre>
+
+  <h2>One-time setup (half a day)</h2>
+  <ol>
+    <li>Create accounts: Tally, Anthropic (Claude), Make.com, ConvertKit, Stripe, Stan Store.</li>
+    <li>Build the Tally quiz (6 questions).</li>
+    <li>In Make.com: Tally webhook &rarr; HTTP call to Claude &rarr; ConvertKit add-subscriber + send email.</li>
+    <li>Write one ConvertKit email template that inserts the Claude response.</li>
+    <li>Test end-to-end with a fake quiz submission.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>My recommendation:</strong> ship the stack with <strong>only Tier 0 (free) and Tier 1 ($29/mo)</strong> live. Don&rsquo;t build Tiers 2-5 into the tech yet &mdash; sell those 1:1 via email reply. Keep the stack tiny until you have 100 paying Tier 1 subscribers.
+  </div>
+
+</body>
+</html>

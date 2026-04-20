@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Carousel - Successful. Single. Stuck.</title>
+  <style>
+    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --bg-soft:#f8fafc; --border:#e2e8f0; --cream:#f5f1ea; --dark:#1a1a2e; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 24px; color: var(--ink); line-height: 1.6; }
+    h1 { font-size: 30px; margin-bottom: 4px; }
+    h2 { font-size: 20px; margin-top: 36px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+    p.sub { color: var(--muted); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 18px 0; border-radius: 4px; }
+    .slide { border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin: 18px 0; background: #fff; }
+    .slide-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .slide-num { background: var(--dark); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+    .slide-role { color: var(--muted); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .preview { background: var(--cream); border-radius: 12px; padding: 36px 28px; margin: 12px 0; min-height: 260px; display: flex; flex-direction: column; justify-content: center; }
+    .preview.dark { background: var(--dark); color: #fff; }
+    .preview.accent { background: var(--accent); color: #fff; }
+    .preview h3 { font-size: 28px; margin: 0 0 12px 0; line-height: 1.2; font-weight: 800; letter-spacing: -0.5px; }
+    .preview p { font-size: 17px; margin: 0; line-height: 1.5; }
+    .preview .small { font-size: 13px; opacity: 0.8; margin-top: 16px; }
+    .preview .big { font-size: 42px; font-weight: 900; line-height: 1.05; letter-spacing: -1px; }
+    .notes { font-size: 14px; color: var(--muted); margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border); }
+    .notes strong { color: var(--ink); }
+    code { background: var(--bg-soft); padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>First Carousel: &ldquo;Successful. Single. Stuck.&rdquo;</h1>
+  <p class="sub">8 slides, Instagram portrait format (1080 &times; 1350 px). Repurpose to TikTok Photo Mode and Facebook.</p>
+
+  <div class="callout">
+    <strong>Goal of this carousel:</strong> drive quiz completions. Every slide builds toward the final CTA: &ldquo;Take the quiz &mdash; get 3 personalized answers.&rdquo;
+  </div>
+
+  <h2>Visual direction</h2>
+  <ul>
+    <li><strong>Palette:</strong> cream background (#f5f1ea), deep navy text (#1a1a2e), teal accent (#16a085).</li>
+    <li><strong>Typography:</strong> one bold display font (e.g. Playfair Display or Fraunces) for headlines, clean sans (e.g. Inter) for body.</li>
+    <li><strong>Feel:</strong> calm, grown-up, editorial. Not hype. No emojis on the slides themselves.</li>
+    <li><strong>Format:</strong> 1080 &times; 1350 portrait in Canva. Same template across all 8 slides.</li>
+  </ul>
+
+  <h2>Slide-by-slide</h2>
+
+  <div class="slide">
+    <div class="slide-header"><span class="slide-num">SLIDE 1</span><span class="slide-role">HOOK</span></div>
+    <div class="preview dark">
+      <h3 class="big">Successful.<br>Single.<br>Stuck.</h3>
+      <p class="small">A read for high-achievers who are done wasting dating years. &rarr;</p>
+    </div>
+    <div class="notes"><strong>Design notes:</strong> navy background, cream text, each word on its own line, massive. Tiny arrow bottom-right to signal &ldquo;swipe.&rdquo;</div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header"><span class="slide-num">SLIDE 2</span><span class="slide-role">THE PATTERN</span></div>
+    <div class="preview">
+      <h3>You built the career.<br>You built the body.<br>You built the friends.</h3>
+      <p>But the love life keeps glitching.</p>
+    </div>
+    <div class="notes"><strong>Design notes:</strong> cream background, navy text. Three short lines, then one line of contrast. Pattern-interrupt punch.</div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header"><span class="slide-num">SLIDE 3</span><span class="slide-role">THE DIAGNOSIS</span></div>
+    <div class="preview">
+      <h3>It&rsquo;s not your looks.<br>It&rsquo;s not the apps.<br>It&rsquo;s not the city.</h3>
+      <p>It&rsquo;s the one thing you&rsquo;ve never optimized &mdash; your inner game.</p>
+    </div>
+    <div class="notes"><strong>Design notes:</strong> same template as slide 2. Three &ldquo;nos&rdquo; + one reframe. The coaching hook.</div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header"><span class="slide-num">SLIDE 4</span><span class="slide-role">THE COST</span></div>
+    <div class="preview">
+      <h3>Every year you don&rsquo;t fix it, you lose two things:</h3>
+      <p style="margin-top: 16px; font-size: 19px;"><strong>1.</strong> Time you can&rsquo;t buy back.<br><strong>2.</strong> The belief that it&rsquo;s still possible.</p>
+    </div>
+    <div class="notes"><strong>Design notes:</strong> emotional pivot. Short, heavy. Don&rsquo;t over-design.</div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header"><span class="slide-num">SLIDE 5</span><span class="slide-role">THE REFRAME</span></div>
+    <div class="preview accent">
+      <h3>Dating isn&rsquo;t a numbers game.</h3>
+      <p style="margin-top: 12px; font-size: 20px;">It&rsquo;s a <em>clarity</em> game.</p>
+      <p class="small" style="margin-top: 20px;">Most people date without knowing who they are, what they want, or what they&rsquo;ll accept.</p>
+    </div>
+    <div class="notes"><strong>Design notes:</strong> teal slide &mdash; visual pop. The core idea people will screenshot.</div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header"><span class="slide-num">SLIDE 6</span><span class="slide-role">THE METHOD</span></div>
+    <div class="preview">
+      <h3>The 4 things my clients fix &mdash; in this order:</h3>
+      <p style="margin-top: 16px; font-size: 18px; line-height: 1.7;">
+        <strong>1. Presence</strong> &mdash; your inner state before the date.<br>
+        <strong>2. Picture</strong> &mdash; who you&rsquo;re actually looking for.<br>
+        <strong>3. Presentation</strong> &mdash; how you show up.<br>
+        <strong>4. Progression</strong> &mdash; how it becomes a relationship.
+      </p>
+    </div>
+    <div class="notes"><strong>Design notes:</strong> your IP made visible. This is the slide Marina will help refine once we name the method.</div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header"><span class="slide-num">SLIDE 7</span><span class="slide-role">PROOF / CURIOSITY</span></div>
+    <div class="preview">
+      <h3>I&rsquo;ve answered the same 50 questions a thousand times.</h3>
+      <p style="margin-top: 16px; font-size: 18px;">Now I&rsquo;ve trained an AI on all of them &mdash; in my voice &mdash; so you can get personalized answers to your top 3 in under 60 seconds.</p>
+      <p class="small" style="margin-top: 16px;">Free. No call. No pitch.</p>
+    </div>
+    <div class="notes"><strong>Design notes:</strong> this is the setup for the CTA. Curiosity + low commitment + free.</div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-header"><span class="slide-num">SLIDE 8</span><span class="slide-role">CTA</span></div>
+    <div class="preview dark">
+      <h3 class="big">Take the<br>2-min quiz.</h3>
+      <p style="margin-top: 18px; font-size: 18px;">Link in bio.</p>
+      <p class="small" style="margin-top: 14px;">Or comment <strong>READY</strong> and I&rsquo;ll DM it to you.</p>
+    </div>
+    <div class="notes"><strong>Design notes:</strong> navy again &mdash; bookends with slide 1. Two CTAs (link + comment) because DMs beat the algorithm.</div>
+  </div>
+
+  <h2>Caption (goes under the post)</h2>
+  <div class="callout">
+    <p style="margin: 0;">If you&rsquo;re successful in every other area of life and the love part just won&rsquo;t click &mdash; it&rsquo;s not random.</p>
+    <p>It&rsquo;s usually one of four things: your inner state, your clarity on what you want, how you show up, or how you move things forward.</p>
+    <p>I built a 2-minute quiz that figures out which one is costing you the most &mdash; and sends you 3 personalized answers from my 50-question playbook, in my voice, in under a minute. Free.</p>
+    <p>Link in bio. Or comment <strong>READY</strong> and I&rsquo;ll send it to you.</p>
+    <p style="font-size: 14px; color: var(--muted);">#datingcoach #relationshipcoach #datingoverforty #selfworth #confidence #readyforlove #datingadvice #singleandsuccessful</p>
+  </div>
+
+  <h2>What to do with this</h2>
+  <ol>
+    <li>Open Canva, create a new 1080 &times; 1350 design.</li>
+    <li>Build slide 1 as the master template (palette + fonts above).</li>
+    <li>Duplicate 7 times, paste the copy from each slide.</li>
+    <li>Export all 8 as PNGs.</li>
+    <li>Post on Instagram first. Repurpose to TikTok (Photo Mode) and Facebook.</li>
+    <li>Set &ldquo;READY&rdquo; as a ManyChat auto-DM trigger (or just DM back manually for the first 50).</li>
+  </ol>
+
+  <p>Once this carousel is live, we&rsquo;ll track: <strong>saves</strong> (proxy for value), <strong>comments with READY</strong> (proxy for intent), and <strong>quiz completions from bio link</strong> (the one that matters).</p>
+
+</body>
+</html>

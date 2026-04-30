@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persona Test #2 - Male Executive, Post-Divorce</title>
+  <style>
+    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --bg-soft:#f8fafc; --border:#e2e8f0; --good:#059669; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 880px; margin: 40px auto; padding: 0 24px; color: var(--ink); line-height: 1.65; }
+    h1 { font-size: 30px; margin-bottom: 4px; }
+    h2 { font-size: 20px; margin-top: 36px; padding: 8px 12px; background: var(--ink); color: #fff; border-radius: 6px; }
+    h3 { font-size: 16px; margin-top: 22px; color: #0e7c6a; }
+    p.sub { color: var(--muted); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 18px 0; border-radius: 4px; }
+    .quiz-box { border: 1px solid var(--border); border-radius: 10px; padding: 18px; background: #fff; margin: 14px 0; }
+    .quiz-row { display: grid; grid-template-columns: 180px 1fr; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--border); }
+    .quiz-row:last-child { border-bottom: none; }
+    .quiz-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
+    .quiz-value { font-size: 15px; }
+    .email { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin: 14px 0; }
+    .email-header { padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 16px; font-size: 13px; color: var(--muted); }
+    .email h4 { font-size: 18px; margin: 0 0 12px 0; }
+    .email p { margin: 10px 0; font-size: 15px; }
+    .email .answer-block { background: #f9fafb; border-left: 3px solid var(--accent); padding: 12px 16px; margin: 14px 0; border-radius: 4px; }
+    .email .answer-block h5 { margin: 0 0 6px 0; font-size: 14px; color: #0e7c6a; }
+    .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: var(--good); color: #fff; }
+    .verdict { background: #ecfdf5; border-left: 4px solid var(--good); padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+  </style>
+</head>
+<body>
+  <h1>Persona Test #2 &mdash; Mike, 52, divorced executive</h1>
+  <p class="sub">Different gender, different age range, different blocker than Jane. Tests whether the AI handles a male voice and a different category of pain (intimidating presence + post-divorce datability).</p>
+
+  <h2>The quiz submission</h2>
+  <div class="quiz-box">
+    <div class="quiz-row"><span class="quiz-label">Age</span><span class="quiz-value">50&ndash;59</span></div>
+    <div class="quiz-row"><span class="quiz-label">Gender</span><span class="quiz-value">Man</span></div>
+    <div class="quiz-row"><span class="quiz-label">Goal</span><span class="quiz-value">A long-term partner / marriage</span></div>
+    <div class="quiz-row"><span class="quiz-label">Biggest blocker</span><span class="quiz-value">&ldquo;I&rsquo;ve been told I&rsquo;m intimidating to women. I&rsquo;m direct, accomplished, and I don&rsquo;t sugarcoat things. Most women seem to back away after a few dates and I have no idea what to fix.&rdquo;</span></div>
+    <div class="quiz-row"><span class="quiz-label">Frustration</span><span class="quiz-value">&ldquo;I&rsquo;ve been divorced two years and I&rsquo;m starting to wonder if I&rsquo;m even datable anymore.&rdquo;</span></div>
+    <div class="quiz-row"><span class="quiz-label">Email</span><span class="quiz-value">mike@example.com</span></div>
+  </div>
+
+  <h2>The 3 questions the AI selects</h2>
+  <ul>
+    <li><span class="badge">Q6</span> I&rsquo;ve been told I&rsquo;m intimidating. Is that on me or on them? <em>(direct match to the blocker)</em></li>
+    <li><span class="badge">Q24</span> After my divorce, how do I make myself feel like a catch again? <em>(direct match to the frustration)</em></li>
+    <li><span class="badge">Q4</span> I feel like I&rsquo;m &ldquo;too much&rdquo; for most people. How do I stop shrinking? <em>(adjacent &mdash; addresses the &ldquo;don&rsquo;t sugarcoat&rdquo; pattern)</em></li>
+  </ul>
+
+  <h2>The email Mike receives</h2>
+  <div class="email">
+    <div class="email-header">
+      <strong>From:</strong> Marina &lt;hello@datingwithmarina.com&gt;<br>
+      <strong>To:</strong> mike@example.com<br>
+      <strong>Subject:</strong> Your 3 personalized answers, Mike &mdash; from the quiz
+    </div>
+
+    <p>Mike,</p>
+    <p>Two years out from a marriage and trying to figure out who you are now &mdash; while also being told you&rsquo;re &ldquo;intimidating.&rdquo; Those two things are connected, even if it doesn&rsquo;t feel like it. Here are the three answers most relevant to where you are right now.</p>
+
+    <div class="answer-block">
+      <h5>1. On being &ldquo;intimidating&rdquo;</h5>
+      <p>It is not one or the other. It is both &mdash; and if you ignore either side, you stay blind.</p>
+      <p>Some of it is them. Insecure people will be intimidated by anyone who speaks directly, who carries intelligence, independence, or a strong presence. That&rsquo;s their work, not yours. But some of it is you, too: intimidation is distance. The way you carry your strength can either close the gap or widen it.</p>
+      <p>Don&rsquo;t dilute your power. Add warmth to it. Power alone reads as intimidating. Power + warmth reads as magnetic. The only part you control is how you use it.</p>
+    </div>
+
+    <div class="answer-block">
+      <h5>2. On feeling &ldquo;dateable&rdquo; again post-divorce</h5>
+      <p>This is one of the most common feelings after a divorce. Almost everyone goes through it &mdash; I went through it too.</p>
+      <p>The first thing is to spend real, quality time with yourself. Get to know who you actually are now &mdash; not who you were inside the marriage. How do you operate? What do you like? What do you actually want your days to look like? Let yourself feel the freedom of having those answers be only yours.</p>
+      <p>Then start taking care of your body. Move it. Feed it well. Update one thing at a time. Listen to your body &mdash; it will tell you when you&rsquo;re ready. The &ldquo;catch&rdquo; feeling doesn&rsquo;t come back from the outside in. It comes back from the inside out.</p>
+    </div>
+
+    <div class="answer-block">
+      <h5>3. On feeling &ldquo;too much&rdquo;</h5>
+      <p>You are not too much. You feel things deeper than they&rsquo;re comfortable feeling &mdash; that&rsquo;s a different problem entirely.</p>
+      <p>You&rsquo;re successful at work because you have the experience, the reps. You&rsquo;re direct because you&rsquo;ve already lived through the thing other people are afraid of. That isn&rsquo;t a flaw &mdash; that&rsquo;s earned weight. It only feels like &ldquo;too much&rdquo; when you&rsquo;re standing next to people who haven&rsquo;t done the work to hold it.</p>
+      <p>You will feel this way until you meet the right woman &mdash; someone who isn&rsquo;t threatened by your weight, but grateful for it. Until then: don&rsquo;t shrink. Filter.</p>
+    </div>
+
+    <p>If one of these landed harder than the others &mdash; reply and tell me which one. I read every email personally, and I&rsquo;ll tell you the one question I&rsquo;d ask you next.</p>
+
+    <p>&mdash; Marina</p>
+  </div>
+
+  <h2>What this test proves</h2>
+  <ul>
+    <li><strong>Voice holds across gender.</strong> Same calm, direct Marina voice. No therapy-speak, no hype, no &ldquo;king.&rdquo; The polish is identical to Jane&rsquo;s email.</li>
+    <li><strong>Question selection is intelligent.</strong> Q6 + Q24 are obvious matches. Q4 is the smart adjacent pick &mdash; the AI noticed &ldquo;I don&rsquo;t sugarcoat&rdquo; and connected it to the &ldquo;too much&rdquo; pattern. That&rsquo;s the kind of inference Marina would make herself.</li>
+    <li><strong>Personalization without invention.</strong> The opening sentence ties divorce + intimidating into one observation. The closing of answer #3 swaps &ldquo;the right person&rdquo; for &ldquo;the right woman&rdquo; based on his quiz answer. No new advice was generated &mdash; only Marina&rsquo;s own answers, lightly tailored.</li>
+    <li><strong>Reply hook is identical.</strong> &ldquo;Reply and tell me which one&rdquo; opens the conversation without pitching coaching.</li>
+  </ul>
+
+  <div class="verdict">
+    <strong>Verdict:</strong> The system handles a male, post-divorce, executive persona as well as it handled Jane. Voice is consistent, question matching is smart, and the email feels personally written.
+  </div>
+
+  <h2>Three more personas to run before going live</h2>
+  <p>Run each through the same simulation. Marina spot-checks for voice. If all 3 pass, the system is ready for soft-launch.</p>
+  <ol>
+    <li><strong>Sarah, 38, never married.</strong> Blocker: &ldquo;I&rsquo;m done with the apps. Every conversation dies before we meet.&rdquo; <em>Expected matches: Q21, Q31, Q30.</em></li>
+    <li><strong>David, 45, founder, kids.</strong> Blocker: &ldquo;I overshare on first dates &mdash; can&rsquo;t help it.&rdquo; <em>Expected matches: Q39, Q49, Q34.</em></li>
+    <li><strong>Lisa, 33, anxious dater.</strong> Blocker: &ldquo;Every time it gets serious, I sabotage it. I see myself doing it.&rdquo; <em>Expected matches: Q3, Q14, Q20.</em></li>
+  </ol>
+
+</body>
+</html>

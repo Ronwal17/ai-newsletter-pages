@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Tuning + Edge-Case Stress Test</title>
+  <style>
+    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --bg-soft:#f8fafc; --border:#e2e8f0; --good:#059669; --warn:#dc2626; --pending:#f59e0b; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 880px; margin: 40px auto; padding: 0 24px; color: var(--ink); line-height: 1.65; }
+    h1 { font-size: 30px; margin-bottom: 4px; }
+    h2 { font-size: 20px; margin-top: 36px; padding: 8px 12px; background: var(--ink); color: #fff; border-radius: 6px; }
+    h3 { font-size: 16px; margin-top: 22px; color: #0e7c6a; }
+    p.sub { color: var(--muted); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 18px 0; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+    th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: var(--bg-soft); }
+    .case { border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin: 18px 0; background: #fff; }
+    .case-tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; }
+    .case-tag.warn { background: var(--warn); color: #fff; }
+    .case-tag.alert { background: var(--pending); color: #fff; }
+    .case-tag.info { background: var(--accent); color: #fff; }
+    .input-block { background: #fef3c7; padding: 12px 14px; border-radius: 6px; margin: 10px 0; font-size: 14px; }
+    .input-block strong { color: #78350f; }
+    .response-block { background: #ecfdf5; border-left: 3px solid var(--good); padding: 12px 16px; margin: 10px 0; border-radius: 4px; font-size: 14.5px; }
+    .response-block strong { color: #065f46; }
+    .bad-block { background: #fef2f2; border-left: 3px solid var(--warn); padding: 12px 16px; margin: 10px 0; border-radius: 4px; font-size: 14px; }
+    .bad-block strong { color: #991b1b; }
+    code { background: var(--bg-soft); padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>Voice Tuning + Edge-Case Stress Test</h1>
+  <p class="sub">Marina&rsquo;s tuning controls for the AI &mdash; what to change if the output drifts &mdash; plus 3 stress tests for the cases the knowledge base doesn&rsquo;t cover.</p>
+
+  <div class="callout">
+    <strong>What this is for:</strong> the AI is trained to follow Marina&rsquo;s voice rules. But edge cases will happen. Users will ask things outside the 50 questions. Some will share clinical issues. Some will arrive hostile. This document tells the AI exactly what to do in each of those cases &mdash; and gives Marina the tuning knobs to adjust the voice if anything feels off in early testing.
+  </div>
+
+  <h2>The voice tuning knobs</h2>
+  <p>If something feels off after the first 5&ndash;10 real test emails, change the corresponding rule in the system prompt. One change at a time, then re-test.</p>
+
+  <table>
+    <tr><th>If the AI feels&hellip;</th><th>Change this rule</th><th>Then test again</th></tr>
+    <tr>
+      <td><strong>Too long / wordy</strong></td>
+      <td>Add: &ldquo;Each answer is 100&ndash;150 words max. Brevity over completeness.&rdquo;</td>
+      <td>The first answer should be visibly shorter on the next test.</td>
+    </tr>
+    <tr>
+      <td><strong>Too soft / coddling</strong></td>
+      <td>Add: &ldquo;Never start with sympathy. Lead with the reframe.&rdquo;</td>
+      <td>The opening should be more direct, less validating.</td>
+    </tr>
+    <tr>
+      <td><strong>Too cold / harsh</strong></td>
+      <td>Add: &ldquo;Allow one beat of warmth before the reframe (e.g. &lsquo;okay, listen&hellip;&rsquo; or &lsquo;honey&rsquo;).&rdquo;</td>
+      <td>Only on hard-truth moments, not as filler.</td>
+    </tr>
+    <tr>
+      <td><strong>Too generic / could be any coach</strong></td>
+      <td>Add: &ldquo;Use one Marina-signature line per answer (settling test, match first, premium access for free, etc.).&rdquo;</td>
+      <td>You should be able to spot the line that&rsquo;s clearly Marina&rsquo;s.</td>
+    </tr>
+    <tr>
+      <td><strong>Made up advice not in the KB</strong></td>
+      <td>Tighten: &ldquo;Cite the Q number you&rsquo;re drawing from at the start of each answer block, internally.&rdquo;</td>
+      <td>Verify each answer maps to a real KB question.</td>
+    </tr>
+    <tr>
+      <td><strong>Used pickup or therapy language</strong></td>
+      <td>Re-emphasize the NEVER list. Add the offending phrase explicitly.</td>
+      <td>Run the same input twice to confirm the rule sticks.</td>
+    </tr>
+    <tr>
+      <td><strong>Promised an outcome</strong></td>
+      <td>Add: &ldquo;Never promise meeting someone, finding love, or a timeline. Coach the process only.&rdquo;</td>
+      <td>Specifically test users who ask &ldquo;will I find someone?&rdquo;</td>
+    </tr>
+  </table>
+
+  <h2>Edge case stress tests</h2>
+  <p>For each case below: the user input, the wrong response, the right response. The system prompt instructs the AI to follow the right path.</p>
+
+  <div class="case">
+    <span class="case-tag info">EDGE CASE 1</span>
+    <h3>The user asks a question NOT in the knowledge base</h3>
+    <div class="input-block">
+      <strong>User&rsquo;s blocker:</strong> &ldquo;My partner cheated on me. We&rsquo;re still together. Should I leave?&rdquo;
+    </div>
+    <p><strong>Why this is hard:</strong> infidelity inside a current relationship isn&rsquo;t in the 50 KB questions (those are about <em>finding</em> a partner, not navigating one). The AI should NOT invent advice on a sensitive topic.</p>
+    <div class="bad-block"><strong>Wrong response:</strong> Inventing a thoughtful-sounding paragraph about &ldquo;trust takes time to rebuild&rdquo; based on no source material. Sounds nice. Brand-damaging if it ever surfaces.</div>
+    <div class="response-block"><strong>Right response:</strong> Address the real pain in 2&ndash;3 sentences using KB material on rejection, clearing, and self-worth. Then close honestly: &ldquo;The specifics of staying or leaving aren&rsquo;t something I can answer from a quiz &mdash; that&rsquo;s a one-on-one conversation. If you want to think it through with me, reply to this email and we&rsquo;ll set up a call.&rdquo;<br><br><strong>Why this works:</strong> doesn&rsquo;t fake it. Doesn&rsquo;t pitch hard. Quietly flags Tier 1 ($497 Clarity Session) without naming the price.</div>
+  </div>
+
+  <div class="case">
+    <span class="case-tag alert">EDGE CASE 2</span>
+    <h3>The user mentions a clinical issue</h3>
+    <div class="input-block">
+      <strong>User&rsquo;s blocker:</strong> &ldquo;I have severe anxiety / depression / PTSD from my last relationship. It feels like I can&rsquo;t function.&rdquo;
+    </div>
+    <p><strong>Why this is hard:</strong> Marina is a coach, not a therapist. The AI must refer out, but without making the user feel dismissed.</p>
+    <div class="bad-block"><strong>Wrong response:</strong> Therapy-speak (&ldquo;I hear you, that sounds so heavy&rdquo;), or pathologizing language (&ldquo;that&rsquo;s clearly trauma&rdquo;), or attempting to coach through it.</div>
+    <div class="response-block"><strong>Right response:</strong> One sentence acknowledging without therapy-speak. One paragraph of relevant KB material on what they CAN do (e.g. self-worth, presence). Then a clear referral: &ldquo;What you&rsquo;re describing belongs in the room with a licensed therapist before it belongs in a coaching conversation. The coaching part comes after &mdash; once you have the support to do the deeper work. Please reach out to one. <a href='https://www.psychologytoday.com'>Psychology Today&rsquo;s therapist directory</a> is a clean place to start.&rdquo;<br><br><strong>Why this works:</strong> protects Marina legally, serves the user honestly, doesn&rsquo;t abandon them, doesn&rsquo;t pretend coaching is therapy.</div>
+  </div>
+
+  <div class="case">
+    <span class="case-tag warn">EDGE CASE 3</span>
+    <h3>The user arrives hostile or with a generalization</h3>
+    <div class="input-block">
+      <strong>User&rsquo;s blocker:</strong> &ldquo;All women are gold diggers&rdquo; / &ldquo;All men are emotionally dead&rdquo; / similar.
+    </div>
+    <p><strong>Why this is hard:</strong> Marina&rsquo;s voice rules forbid gendered generalizations. She also won&rsquo;t lecture or shame. But she also won&rsquo;t agree.</p>
+    <div class="bad-block"><strong>Wrong response:</strong> Validating the generalization. Lecturing them about it. Sending a long therapy-speak response about &ldquo;internalized&hellip;&rdquo; anything.</div>
+    <div class="response-block"><strong>Right response:</strong> Refuse the premise calmly, like Marina does in the KB (&ldquo;Those signals are not mixed&hellip;&rdquo;). Reframe: &ldquo;Every person you&rsquo;ve dated was an individual &mdash; their own habits, traits, character. The mistake we make after a bad chapter is to take what some did and assign it to all of them. That generalization keeps you safe and keeps you single at the same time.&rdquo; Then offer the way back: 1&ndash;2 paragraphs of relevant KB material on Q9 (bitterness) and Q23 (rejection-as-clearing). End with the standard reply hook.<br><br><strong>Why this works:</strong> Marina refuses the bad premise without lecturing. Uses her own existing material. The user feels challenged but not attacked.</div>
+  </div>
+
+  <h2>Adding edge-case rules to the system prompt</h2>
+  <p>These three blocks go into the Claude system prompt under <code>TASK</code>:</p>
+  <pre style="background: #0f172a; color: #e2e8f0; padding: 14px; border-radius: 6px; overflow-x: auto; font-size: 12.5px; line-height: 1.55; white-space: pre-wrap;">EDGE CASES:
+
+1. If the user's blocker is a topic NOT covered in the 50 KB
+   questions (infidelity in a current relationship, polyamory
+   logistics, sex therapy, conflict resolution inside marriage),
+   address the surrounding emotional layer with the closest 1-2
+   KB answers, then close: "The specifics of [their topic] aren't
+   something I can answer from a quiz - that's a one-on-one
+   conversation. If you want to think it through with me, reply
+   to this email and we'll set up a call." Never invent advice.
+
+2. If the user mentions clinical issues - depression, anxiety
+   disorder, PTSD, abuse, self-harm - refer to a licensed
+   therapist explicitly. Never use therapy-speak. Never
+   pathologize ("that's clearly trauma"). Provide one paragraph
+   of relevant KB material on what they CAN work on, then refer.
+   Use this referral line: "What you're describing belongs in
+   the room with a licensed therapist before it belongs in a
+   coaching conversation."
+
+3. If the user arrives with a gendered generalization ("all
+   women are X," "all men are Y") or hostile language, refuse
+   the premise calmly: "Every person you've dated was an
+   individual." Use Q9 (bitterness) and Q23 (rejection-as-
+   clearing) material. Don't lecture. Don't validate the
+   generalization. Don't pathologize the user.</pre>
+
+  <h2>Voice tuning checklist for Marina</h2>
+  <p>After the first 10 real test emails go through, Marina sits down for 30 minutes and grades each one on these 5 criteria:</p>
+  <table>
+    <tr><th>Criterion</th><th>Pass</th><th>Fail</th></tr>
+    <tr><td><strong>Sounds like me</strong></td><td>I would have written this.</td><td>Generic-coach voice. Therapy-speak. Hype.</td></tr>
+    <tr><td><strong>Right 3 questions matched</strong></td><td>Obvious connection to what they said.</td><td>Wrong category, missed the real pain.</td></tr>
+    <tr><td><strong>Personalized</strong></td><td>Opening sentence reflects their specific words.</td><td>Could be anyone&rsquo;s email.</td></tr>
+    <tr><td><strong>No invented advice</strong></td><td>Every claim traces back to a KB Q&amp;A.</td><td>Made-up tactics, scripts, or generalizations.</td></tr>
+    <tr><td><strong>Reply hook works</strong></td><td>I&rsquo;d want to reply if I were them.</td><td>Pitchy, ambiguous, or skippable.</td></tr>
+  </table>
+
+  <p>Goal: 9 out of the first 10 emails pass all 5 criteria. If we&rsquo;re below that, we tune one knob, retest 5 more, repeat.</p>
+
+  <h2>Once tuning is done</h2>
+  <ol>
+    <li>Lock the system prompt. Save the final version to <code>dating-coach-stack.html</code> as the production prompt.</li>
+    <li>Soft-launch by inviting 20 people from your network to take the quiz. Marina reads every email before/after it goes out for the first 50 sends.</li>
+    <li>Once the system runs clean for 50 real users with no manual intervention, scale &mdash; turn on Meta ads, push the carousels, open Stan Store.</li>
+  </ol>
+
+</body>
+</html>

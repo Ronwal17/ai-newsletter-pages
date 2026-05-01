@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Guide - From Locked System Prompt to Live Funnel</title>
+  <style>
+    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --bg-soft:#f8fafc; --border:#e2e8f0; --good:#059669; --warn:#dc2626; --pending:#f59e0b; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 24px; color: var(--ink); line-height: 1.65; }
+    h1 { font-size: 32px; margin-bottom: 4px; }
+    h2 { font-size: 22px; margin-top: 44px; padding: 12px 16px; background: var(--ink); color: #fff; border-radius: 8px; }
+    h3 { font-size: 17px; margin-top: 24px; color: #0e7c6a; }
+    p.sub { color: var(--muted); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 18px 0; border-radius: 4px; }
+    .day { border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin: 18px 0; background: #fff; }
+    .day-tag { display: inline-block; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 999px; margin-bottom: 8px; }
+    .duration { color: var(--muted); font-size: 13px; margin-left: 8px; }
+    .day h3 { margin-top: 4px; }
+    ol { padding-left: 22px; }
+    ol li { margin: 8px 0; }
+    code { background: var(--bg-soft); padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+    pre { background: #0f172a; color: #e2e8f0; padding: 14px; border-radius: 6px; overflow-x: auto; font-size: 12.5px; line-height: 1.55; white-space: pre-wrap; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+    th { background: var(--bg-soft); }
+    .step { display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--border); }
+    .step:last-child { border-bottom: none; }
+    .step-num { background: var(--ink); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 0; border-radius: 50%; width: 24px; height: 24px; text-align: center; }
+    .checkpoint { background: #ecfdf5; border-left: 4px solid var(--good); padding: 10px 14px; margin: 10px 0; border-radius: 4px; font-size: 14px; }
+    .warning { background: #fef2f2; border-left: 4px solid var(--warn); padding: 10px 14px; margin: 10px 0; border-radius: 4px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>Build Guide &mdash; From Locked Prompt to Live Funnel</h1>
+  <p class="sub">7 days, ~14 hours of work, total launch cost under $100. Follow in order. Each day&rsquo;s checkpoint must pass before moving to the next.</p>
+
+  <div class="callout">
+    <strong>What you&rsquo;ll have at the end:</strong> a live quiz funnel where any prospect can submit 6 answers and receive a personalized email in Marina&rsquo;s voice within 60 seconds &mdash; fully automated, ready to scale.
+  </div>
+
+  <h2>Day 0 &mdash; Pre-flight (30 minutes)</h2>
+  <div class="day">
+    <span class="day-tag">PRE-FLIGHT</span>
+    <h3>What you need before opening any tool</h3>
+    <ol>
+      <li>Decide on the brand domain: <strong>datingwithmarina.com</strong> (or whichever Marina chooses). Buy it on Namecheap or Cloudflare.</li>
+      <li>Set up a business email: <code>hello@datingwithmarina.com</code>. Google Workspace ($6/mo) is the easiest.</li>
+      <li>Decide on the legal entity: LLC in Marina&rsquo;s state. File via <a href="https://www.legalzoom.com">LegalZoom</a> or <a href="https://www.zenbusiness.com">ZenBusiness</a> (~$200&ndash;400, can run in parallel with everything else).</li>
+      <li>Have a credit card and a bank account ready for Stripe.</li>
+    </ol>
+    <div class="checkpoint"><strong>Checkpoint:</strong> domain registered, email working, LLC paperwork filed. You can move on while LLC processes.</div>
+  </div>
+
+  <h2>Day 1 &mdash; Open all the accounts (1 hour)</h2>
+  <div class="day">
+    <span class="day-tag">DAY 1</span><span class="duration">~60 min</span>
+    <h3>Sign up for everything in this order</h3>
+    <table>
+      <tr><th>Tool</th><th>Plan</th><th>Why</th></tr>
+      <tr><td><a href="https://tally.so">Tally.so</a></td><td>Free</td><td>The quiz form. Free tier covers unlimited responses + webhooks.</td></tr>
+      <tr><td><a href="https://console.anthropic.com">Anthropic</a></td><td>Pay-as-you-go ($5 starter credit)</td><td>The AI that writes the personalized emails. Add a payment method.</td></tr>
+      <tr><td><a href="https://make.com">Make.com</a></td><td>Free (1,000 ops/mo)</td><td>The automation glue. Free tier covers ~250 quiz submissions/month.</td></tr>
+      <tr><td><a href="https://kit.com">Kit (formerly ConvertKit)</a></td><td>Free (under 10k subs)</td><td>Email delivery + nurture sequence + tagging.</td></tr>
+      <tr><td><a href="https://stripe.com">Stripe</a></td><td>Pay-per-transaction (2.9% + 30&cent;)</td><td>Payment processing for the $497 Clarity Session.</td></tr>
+      <tr><td><a href="https://stan.store">Stan Store</a></td><td>$29/mo</td><td>Mobile-first link-in-bio with quiz button + Stripe checkout.</td></tr>
+      <tr><td><a href="https://canva.com">Canva</a></td><td>Pro $15/mo</td><td>Carousel design + brand kit.</td></tr>
+    </table>
+    <p class="duration"><strong>Total monthly cost:</strong> ~$60. Plus per-quiz cost of ~$0.03 in Claude API usage.</p>
+    <div class="checkpoint"><strong>Checkpoint:</strong> all 7 accounts created, you&rsquo;re logged in, payment methods added where needed.</div>
+  </div>
+
+  <h2>Day 2 &mdash; Build the Tally form (1 hour)</h2>
+  <div class="day">
+    <span class="day-tag">DAY 2</span><span class="duration">~60 min</span>
+    <h3>Create the 2-minute quiz</h3>
+    <ol>
+      <li>Open Tally &rarr; <strong>+ Create new form</strong> &rarr; Start from blank.</li>
+      <li>Set form name: <code>The 2-Minute Dating Diagnosis</code>.</li>
+      <li>Add the 6 fields exactly as specified in <code>dating-coach-quiz-spec.html</code>:
+        <ul>
+          <li>Field 1: Multiple Choice &mdash; Age range (5 options)</li>
+          <li>Field 2: Multiple Choice &mdash; Gender (4 options)</li>
+          <li>Field 3: Multiple Choice &mdash; Goal (4 options)</li>
+          <li>Field 4: Long Text &mdash; Biggest blocker (30 char min)</li>
+          <li>Field 5: Long Text &mdash; What feels heaviest (20 char min)</li>
+          <li>Field 6: Email &mdash; Where to send the answers</li>
+        </ul>
+      </li>
+      <li>Set <strong>field keys</strong> for each (Settings on each field): <code>age_range, gender, goal, blocker, frustration, email</code>. <em>Critical &mdash; Make.com uses these.</em></li>
+      <li>Add the intro page copy and the confirmation page copy from the spec.</li>
+      <li>Style: Settings &rarr; Appearance &rarr; cream background (<code>#f5f1ea</code>), navy text (<code>#1a1a2e</code>), teal accent (<code>#16a085</code>).</li>
+      <li>Set the form URL slug: <code>dating-diagnosis</code>. The full URL becomes <code>https://tally.so/r/dating-diagnosis</code>.</li>
+      <li><strong>Don&rsquo;t enable the webhook yet.</strong> We do that on Day 3 after Make.com is built.</li>
+      <li>Publish the form. Test it yourself with fake answers. Confirm validation works.</li>
+    </ol>
+    <div class="checkpoint"><strong>Checkpoint:</strong> form is live, you can submit it, validation rejects empty/short blocker fields, confirmation page shows correctly.</div>
+  </div>
+
+  <h2>Day 3 &mdash; Build the Make.com scenario (3 hours)</h2>
+  <div class="day">
+    <span class="day-tag">DAY 3</span><span class="duration">~3 hours</span>
+    <h3>The automation that ties Tally, Claude, and Kit together</h3>
+    <p>This is the most technical day. Take it slow. Test each step before adding the next.</p>
+
+    <h3>Step 3A &mdash; Create the scenario</h3>
+    <ol>
+      <li>Make.com &rarr; <strong>Create a new scenario</strong>.</li>
+      <li>Name it: <code>Quiz to AI to Email</code>.</li>
+    </ol>
+
+    <h3>Step 3B &mdash; Module 1: Tally trigger</h3>
+    <ol>
+      <li>Add module &rarr; search <strong>Tally</strong> &rarr; <strong>Watch Form Responses</strong>.</li>
+      <li>Connect your Tally account (OAuth flow).</li>
+      <li>Select the form: <code>The 2-Minute Dating Diagnosis</code>.</li>
+      <li>Run the module once to grab the webhook URL it generates &mdash; copy it.</li>
+      <li>Paste that webhook URL into Tally &rarr; your form &rarr; Settings &rarr; Integrations &rarr; Webhooks.</li>
+      <li>Submit a test response on Tally and confirm Make.com receives it.</li>
+    </ol>
+    <div class="checkpoint"><strong>Checkpoint:</strong> a test Tally submission appears in the Make.com run history with all 6 fields visible.</div>
+
+    <h3>Step 3C &mdash; Module 2: Anthropic API call</h3>
+    <ol>
+      <li>Add module &rarr; <strong>HTTP &rarr; Make a request</strong>. (Use HTTP, not the Anthropic-native module &mdash; gives you cache control.)</li>
+      <li>Configure:
+        <ul>
+          <li><strong>URL:</strong> <code>https://api.anthropic.com/v1/messages</code></li>
+          <li><strong>Method:</strong> POST</li>
+          <li><strong>Headers:</strong>
+            <pre>x-api-key: YOUR_ANTHROPIC_API_KEY
+anthropic-version: 2023-06-01
+content-type: application/json</pre>
+          </li>
+          <li><strong>Body type:</strong> Raw / JSON</li>
+        </ul>
+      </li>
+      <li>Body content: paste the locked system prompt from <code>dating-coach-stack.html</code> into the <code>system</code> field, with the knowledge base content directly inside it. Body shape:
+<pre>{
+  "model": "claude-sonnet-4-6",
+  "max_tokens": 2000,
+  "system": [
+    {
+      "type": "text",
+      "text": "[VOICE RULES + EDGE CASES from locked prompt]"
+    },
+    {
+      "type": "text",
+      "text": "[FULL KNOWLEDGE BASE - all 50 polished Q&amp;As]",
+      "cache_control": { "type": "ephemeral" }
+    }
+  ],
+  "messages": [
+    {
+      "role": "user",
+      "content": "User's quiz answers:\n- Age: {{1.age_range}}\n- Gender: {{1.gender}}\n- Goal: {{1.goal}}\n- Biggest blocker: {{1.blocker}}\n- What feels heaviest: {{1.frustration}}"
+    }
+  ]
+}</pre>
+      </li>
+      <li>The <code>cache_control</code> on the knowledge base block is critical &mdash; it caches the 50 Q&amp;As across calls and cuts the per-quiz cost from ~$0.30 down to ~$0.03.</li>
+      <li>Run a test &mdash; with the test Tally submission still in the queue, click <strong>Run once</strong>. Verify Anthropic returns a response.</li>
+    </ol>
+    <div class="checkpoint"><strong>Checkpoint:</strong> the HTTP module returns a 200 with a JSON body containing 3 personalized answer blocks in Marina&rsquo;s voice.</div>
+
+    <h3>Step 3D &mdash; Module 3: Add Subscriber to Kit</h3>
+    <ol>
+      <li>Add module &rarr; search <strong>Kit (ConvertKit)</strong> &rarr; <strong>Add Subscriber to a Form</strong>.</li>
+      <li>Connect your Kit account (API key from Kit &rarr; Account Settings &rarr; Advanced).</li>
+      <li>Form: create a new Kit form named <code>Quiz Submitters</code>.</li>
+      <li>Email: map to <code>{{1.email}}</code> from Tally.</li>
+      <li>Custom fields: map <code>blocker</code>, <code>goal</code>, <code>age_range</code>, <code>gender</code>, <code>frustration</code> to matching Kit custom fields. Also store the AI&rsquo;s output as a custom field called <code>ai_response</code> &mdash; that&rsquo;s how the email template will pull it in.</li>
+    </ol>
+
+    <h3>Step 3E &mdash; Module 4: Apply nurture tag</h3>
+    <ol>
+      <li>Add module &rarr; <strong>Kit &rarr; Tag a Subscriber</strong>.</li>
+      <li>Apply tag: <code>quiz-day-0</code>.</li>
+      <li>This triggers the 5-email nurture sequence we set up on Day 4.</li>
+    </ol>
+
+    <h3>Step 3F &mdash; Activate</h3>
+    <ol>
+      <li>Click the on-off switch at the bottom-left to activate the scenario.</li>
+      <li>Schedule: every 1 minute (or instantly &mdash; Make.com defaults to instant for webhooks).</li>
+    </ol>
+    <div class="checkpoint"><strong>Checkpoint:</strong> submitting a real test on the Tally form triggers all 4 modules end-to-end, and you receive a personalized email in Marina&rsquo;s voice within 60 seconds.</div>
+  </div>
+
+  <h2>Day 4 &mdash; Set up Kit (2 hours)</h2>
+  <div class="day">
+    <span class="day-tag">DAY 4</span><span class="duration">~2 hours</span>
+    <h3>The email template + the 5-email nurture sequence</h3>
+    <ol>
+      <li><strong>Email template:</strong> Kit &rarr; Templates &rarr; New email. Subject: <code>Your 3 personalized answers, {{ subscriber.first_name }} &mdash; from the quiz</code>. Body: include the Liquid variable <code>{{ subscriber.ai_response | strip_html: false }}</code> in the body, surrounded by the standard Marina opening / closing.</li>
+      <li><strong>The trigger:</strong> Kit &rarr; Automations &rarr; New Visual Automation. Trigger: tag <code>quiz-day-0</code> applied. First action: Send the email template above.</li>
+      <li><strong>5-email nurture sequence</strong> (sent over 7 days after the quiz):
+        <ul>
+          <li><strong>Day 1:</strong> &ldquo;Did one of those 3 answers land?&rdquo; (soft re-engagement)</li>
+          <li><strong>Day 3:</strong> &ldquo;The most expensive dating mistake I see&rdquo; (one piece of teaching)</li>
+          <li><strong>Day 5:</strong> &ldquo;What changed for [pseudonym client]&rdquo; (anonymized story)</li>
+          <li><strong>Day 7:</strong> Soft pitch for the $497 Clarity Session (with Stripe link)</li>
+          <li><strong>Day 14:</strong> Final &ldquo;here&rsquo;s what working with me looks like&rdquo; with the Stan Store link</li>
+        </ul>
+      </li>
+      <li>Marina drafts the 5 emails. I can help draft them when she&rsquo;s ready.</li>
+    </ol>
+    <div class="checkpoint"><strong>Checkpoint:</strong> the personalized email arrives correctly formatted, the nurture sequence is queued and visible in the visual automation.</div>
+  </div>
+
+  <h2>Day 5 &mdash; Stan Store + Stripe (1 hour)</h2>
+  <div class="day">
+    <span class="day-tag">DAY 5</span><span class="duration">~60 min</span>
+    <h3>The link-in-bio destination</h3>
+    <ol>
+      <li>Stan Store &rarr; build a one-page mobile-first store. Same brand colors as everything else.</li>
+      <li>Add 3 buttons:
+        <ul>
+          <li><strong>Take the 2-Minute Quiz</strong> (primary, top) &rarr; links to <code>https://tally.so/r/dating-diagnosis</code></li>
+          <li><strong>Book the Clarity Session &mdash; $497</strong> (secondary) &rarr; Stripe Payment Link (created in 2 minutes inside Stripe)</li>
+          <li><strong>Read the latest essay</strong> (tertiary, can come later) &rarr; placeholder until Marina starts writing</li>
+        </ul>
+      </li>
+      <li>Stan Store URL: customize to <code>stan.store/marina</code> or similar.</li>
+      <li>Add this Stan URL to all three social bios (IG, TikTok, FB).</li>
+    </ol>
+    <div class="checkpoint"><strong>Checkpoint:</strong> a phone visiting the Stan Store URL sees a clean page, the quiz button works, the Stripe button completes a $0 test transaction.</div>
+  </div>
+
+  <h2>Day 6 &mdash; End-to-end testing (1 hour)</h2>
+  <div class="day">
+    <span class="day-tag">DAY 6</span><span class="duration">~60 min</span>
+    <h3>Five real test runs</h3>
+    <ol>
+      <li>Submit the Tally form 5 times with 5 different fake personas (use the ones from Persona #3-7). Use 5 different real email addresses you control (Gmail aliases work).</li>
+      <li>For each: confirm the email arrives in &lt;90 seconds, voice is Marina, 3 questions are reasonable, the personalization rule held (no canned KB openers).</li>
+      <li>If any of the 5 fail: tune the system prompt in Make.com (one rule at a time), then re-test.</li>
+      <li>Once all 5 pass: lock the system prompt &mdash; never edit again without re-running this test.</li>
+    </ol>
+    <div class="warning"><strong>If a test reveals voice drift:</strong> the most common fix is tightening the personalization rule or adding a specific phrase to the NEVER list. Voice tuning playbook is in <code>dating-coach-voice-tuning.html</code>.</div>
+  </div>
+
+  <h2>Day 7 &mdash; Soft launch (1 hour + ongoing)</h2>
+  <div class="day">
+    <span class="day-tag">DAY 7</span><span class="duration">~60 min + monitoring</span>
+    <h3>Get the first real users on the system</h3>
+    <ol>
+      <li>Design Carousel #1 in Canva using <code>dating-coach-carousel-1.html</code> as the spec. Export 8 PNGs.</li>
+      <li>Post on Instagram, TikTok, Facebook (same time, same caption).</li>
+      <li>DM 20 people in Marina&rsquo;s personal network: &ldquo;Doing a soft launch &mdash; would love your honest take. Take this 2-minute quiz and tell me what you think.&rdquo;</li>
+      <li>For the first 50 real submissions, Marina reads each email <em>before</em> it would have gone out. (Set the Make.com scenario to <strong>manual approval</strong> for the first batch &mdash; or just monitor as they go.)</li>
+      <li>Track 3 numbers in a simple spreadsheet:
+        <ul>
+          <li>Quiz views &rarr; quiz completions (target: &gt; 50%)</li>
+          <li>Quiz completions &rarr; email opens (target: &gt; 70%)</li>
+          <li>Email opens &rarr; replies (target: &gt; 5%)</li>
+        </ul>
+      </li>
+    </ol>
+    <div class="checkpoint"><strong>Checkpoint:</strong> 50 real submissions through the system. Voice intact. At least 1 reply asking a follow-up question. Marina has had at least one real conversation that came from the funnel.</div>
+  </div>
+
+  <h2>Beyond Day 7 &mdash; Scale</h2>
+  <div class="day">
+    <span class="day-tag">SCALE</span>
+    <h3>What unlocks once the funnel is proven</h3>
+    <ol>
+      <li>Turn on Meta Ads ($20-50/day), using best-performing carousel as the creative.</li>
+      <li>Post Carousel #2 (Clarity), #3 (Truth), #4 (Reset) on a weekly rotation.</li>
+      <li>Once 3 paying clients have completed the Tier 1 Clarity Session, ask each for a 1-paragraph testimonial. Add to Stan Store.</li>
+      <li>At 100 paying clients (or month 6, whichever comes first), raise the Clarity Session price to $750. Add the 30-Day Reset ($2,500) as a button.</li>
+    </ol>
+  </div>
+
+  <h2>The full asset list (everything you have)</h2>
+  <table>
+    <tr><th>File</th><th>Purpose</th></tr>
+    <tr><td><code>dating-coach-business-plan.html</code></td><td>Master plan, ICP, tier ladder</td></tr>
+    <tr><td><code>dating-coach-knowledge-base.html</code></td><td>50 polished Q&amp;As (the AI&rsquo;s source of truth)</td></tr>
+    <tr><td><code>dating-coach-voice-guidelines.html</code></td><td>Marina&rsquo;s voice rules &amp; signature patterns</td></tr>
+    <tr><td><code>dating-coach-stack.html</code></td><td>Tools + LOCKED system prompt</td></tr>
+    <tr><td><code>dating-coach-quiz-spec.html</code></td><td>Tally form spec, field by field</td></tr>
+    <tr><td><code>dating-coach-test-simulation.html</code></td><td>End-to-end walkthrough (Jane)</td></tr>
+    <tr><td><code>dating-coach-persona-2.html</code></td><td>Mike, divorced executive</td></tr>
+    <tr><td><code>dating-coach-personas-3-7.html</code></td><td>Sarah, David, Maya, Tom, Rachel</td></tr>
+    <tr><td><code>dating-coach-voice-tuning.html</code></td><td>Tuning knobs + edge case stress tests</td></tr>
+    <tr><td><code>dating-coach-carousel-1.html</code></td><td>&ldquo;Successful. Single. Stuck.&rdquo;</td></tr>
+    <tr><td><code>dating-coach-carousels-2-4.html</code></td><td>Clarity / Truth / Reset</td></tr>
+    <tr><td><code>dating-coach-build-guide.html</code></td><td><em>This file &mdash; the 7-day build guide</em></td></tr>
+  </table>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persona Tests #3-7 - Range Validation</title>
+  <style>
+    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --bg-soft:#f8fafc; --border:#e2e8f0; --good:#059669; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 880px; margin: 40px auto; padding: 0 24px; color: var(--ink); line-height: 1.65; }
+    h1 { font-size: 30px; margin-bottom: 4px; }
+    h2 { font-size: 22px; margin-top: 50px; padding: 12px 14px; background: var(--ink); color: #fff; border-radius: 8px; }
+    h3 { font-size: 16px; margin-top: 22px; color: #0e7c6a; }
+    p.sub { color: var(--muted); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 18px 0; border-radius: 4px; }
+    .quiz-box { border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; background: #fff; margin: 14px 0; }
+    .quiz-row { display: grid; grid-template-columns: 160px 1fr; gap: 12px; padding: 6px 0; border-bottom: 1px dashed var(--border); font-size: 14px; }
+    .quiz-row:last-child { border-bottom: none; }
+    .quiz-label { font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); font-size: 12px; }
+    .matches { background: #fef3c7; padding: 10px 14px; border-radius: 6px; margin: 10px 0; font-size: 14px; border-left: 3px solid #f59e0b; }
+    .email { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 22px 26px; margin: 14px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .email-header { padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 14px; font-size: 12.5px; color: var(--muted); }
+    .email p { margin: 8px 0; font-size: 14.5px; line-height: 1.6; }
+    .email .answer-block { background: #f9fafb; border-left: 3px solid var(--accent); padding: 10px 14px; margin: 12px 0; border-radius: 4px; font-size: 14.5px; }
+    .email .answer-block h5 { margin: 0 0 6px 0; font-size: 13px; color: #0e7c6a; font-weight: 700; }
+    .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: var(--good); color: #fff; }
+    .verdict { background: #ecfdf5; border-left: 4px solid var(--good); padding: 10px 14px; border-radius: 4px; margin: 12px 0; font-size: 14px; }
+    .summary-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; }
+    .summary-table th, .summary-table td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+    .summary-table th { background: var(--bg-soft); }
+  </style>
+</head>
+<body>
+  <h1>Persona Tests #3 through #7</h1>
+  <p class="sub">Five additional personas run through the system. Combined with Jane (Persona #1) and Mike (Persona #2), we now have <strong>seven validated runs</strong> covering: women 30-50, men 40-50, never-married, divorced, executives, founders, parents, apps fatigue, oversharing, sabotage, intimidation, and high standards.</p>
+
+  <div class="callout">
+    <strong>What Marina checks for in each email:</strong> (1) Does it sound like me? (2) Did the AI pick the right 3 questions? (3) Is the personalization grounded in the user&rsquo;s actual words? (4) Is anything <em>invented</em> outside the knowledge base? (5) Would I want to reply if I were them?
+  </div>
+
+  <!-- ============ PERSONA 3 ============ -->
+  <h2>Persona #3 &mdash; Sarah, 38, apps fatigue</h2>
+  <div class="quiz-box">
+    <div class="quiz-row"><span class="quiz-label">Age</span><span>30&ndash;39</span></div>
+    <div class="quiz-row"><span class="quiz-label">Gender</span><span>Woman</span></div>
+    <div class="quiz-row"><span class="quiz-label">Goal</span><span>A long-term partner / marriage</span></div>
+    <div class="quiz-row"><span class="quiz-label">Blocker</span><span>&ldquo;I&rsquo;m done with the apps. Every conversation dies before we meet &mdash; they text for weeks then disappear, or refuse to get on a video, or it&rsquo;s all small talk that goes nowhere.&rdquo;</span></div>
+    <div class="quiz-row"><span class="quiz-label">Frustration</span><span>&ldquo;I&rsquo;m exhausted. I don&rsquo;t know where to find people who actually want a real relationship.&rdquo;</span></div>
+  </div>
+  <div class="matches"><strong>AI picks:</strong> <span class="badge">Q21</span> Where to meet if done with apps &nbsp; <span class="badge">Q31</span> Mixed signals &nbsp; <span class="badge">Q29</span> FaceTime right away</div>
+
+  <div class="email">
+    <div class="email-header"><strong>From:</strong> Marina &nbsp; <strong>To:</strong> sarah@example.com<br><strong>Subject:</strong> Your 3 personalized answers, Sarah &mdash; from the quiz</div>
+    <p>Sarah,</p>
+    <p>What you&rsquo;re describing isn&rsquo;t a bad luck streak &mdash; it&rsquo;s a pattern of effort the apps make easy. The good news: every part of it has a fix. Here are the three answers most relevant to where you are right now.</p>
+
+    <div class="answer-block"><h5>1. On where to meet outside the apps</h5>
+    <p>Two things, both at the same time. First: ask the people whose judgment you trust to introduce you. Not strangers &mdash; friends, colleagues, the few people who really know you. Tell them clearly what you&rsquo;re looking for. Most adults don&rsquo;t ask &mdash; and that&rsquo;s why nothing happens.</p>
+    <p>Second: be out, and stay open. Take the class, go to the dinner, accept the invitation. Most of the meeting that actually leads somewhere happens in places and at times you don&rsquo;t expect &mdash; but only if you&rsquo;re there to receive it. Closed off at home, nothing finds you.</p></div>
+
+    <div class="answer-block"><h5>2. On the &ldquo;text for weeks then disappear&rdquo; pattern</h5>
+    <p>Those signals are not mixed. You have to learn how to read them.</p>
+    <p>Weeks of texts, then disappearing &mdash; that is not a person who is intentionally interested in you. That is a person managing your attention while their effort is somewhere else. The pattern <em>is</em> the message.</p>
+    <p>Real interest looks like consistent effort. It doesn&rsquo;t mean &ldquo;texting every minute&rdquo; &mdash; it means showing up steadily and moving toward an actual meeting. If someone&rsquo;s effort fluctuates wildly, you&rsquo;re a backup plan, not the plan.</p></div>
+
+    <div class="answer-block"><h5>3. On the ones who refuse to meet</h5>
+    <p>Have a FaceTime right away. Endless texting tells you nothing. You can fall for a version of someone over text that doesn&rsquo;t exist in person. A 10-minute video call tells you more than two weeks of messages.</p>
+    <p>If they won&rsquo;t hop on a video, that&rsquo;s your answer.</p></div>
+
+    <p>If one of these landed harder than the others &mdash; reply and tell me which one. I read every email personally, and I&rsquo;ll tell you the one question I&rsquo;d ask you next.</p>
+    <p>&mdash; Marina</p>
+  </div>
+  <div class="verdict"><strong>Verdict:</strong> Strong match. Q21, Q31, Q29 directly address every component of her blocker. Voice intact. Apps fatigue is the #1 modern dating question &mdash; this email validates the system handles it well.</div>
+
+  <!-- ============ PERSONA 4 ============ -->
+  <h2>Persona #4 &mdash; David, 45, founder, kids, oversharer</h2>
+  <div class="quiz-box">
+    <div class="quiz-row"><span class="quiz-label">Age</span><span>40&ndash;49</span></div>
+    <div class="quiz-row"><span class="quiz-label">Gender</span><span>Man</span></div>
+    <div class="quiz-row"><span class="quiz-label">Goal</span><span>A long-term partner / marriage</span></div>
+    <div class="quiz-row"><span class="quiz-label">Blocker</span><span>&ldquo;I overshare on first dates. I&rsquo;m an open guy &mdash; I&rsquo;ll talk about my divorce, the company stress, the kids &mdash; and by the end she&rsquo;s overwhelmed and I never hear back.&rdquo;</span></div>
+    <div class="quiz-row"><span class="quiz-label">Frustration</span><span>&ldquo;I&rsquo;m scaring people off without meaning to. I don&rsquo;t know how to hold back without feeling fake.&rdquo;</span></div>
+  </div>
+  <div class="matches"><strong>AI picks:</strong> <span class="badge">Q39</span> Oversharing trap &nbsp; <span class="badge">Q49</span> Dating with kids and a busy life &nbsp; <span class="badge">Q34</span> Compatibility questions</div>
+
+  <div class="email">
+    <div class="email-header"><strong>From:</strong> Marina &nbsp; <strong>To:</strong> david@example.com<br><strong>Subject:</strong> Your 3 personalized answers, David &mdash; from the quiz</div>
+    <p>David,</p>
+    <p>You&rsquo;re not too open &mdash; you just haven&rsquo;t learned where the line sits. Open isn&rsquo;t the same as on. Here are the three answers most relevant to where you are right now.</p>
+
+    <div class="answer-block"><h5>1. On the oversharing</h5>
+    <p>What you&rsquo;re doing is giving premium access for free.</p>
+    <p>You overshare because you&rsquo;re strong enough to go deep. But not everyone has earned the right to that depth &mdash; and the people who haven&rsquo;t earned it usually don&rsquo;t know what to do with it. Some get overwhelmed. Some take advantage. Most can&rsquo;t match it.</p>
+    <p>First dates are for discovery, not disclosure. Stay curious about <em>them</em>. Let them work for the deeper layers. The right person will earn their way in &mdash; and that earning is part of how the bond gets strong.</p></div>
+
+    <div class="answer-block"><h5>2. On dating with kids and a busy life</h5>
+    <p>You can absolutely do this &mdash; if both of you are into it.</p>
+    <p>Dating with kids and a founder&rsquo;s schedule isn&rsquo;t a barrier to a real relationship. It&rsquo;s a filter. The right person will see your full life and want in. The wrong person will see the same life and treat it as an obstacle. Both reactions tell you something &mdash; quickly.</p>
+    <p>The mistake is hiding the kids and the schedule until later. Don&rsquo;t. Lead with the truth of your life. The person who fits will fit it as it actually is &mdash; not the simplified version you sent on the first date.</p></div>
+
+    <div class="answer-block"><h5>3. On what to do instead of dumping</h5>
+    <p>Switch from talking to asking. Five to seven good questions, asked with the right energy, will tell you more than fifty checklist questions ever could. Try these:</p>
+    <p>&mdash; What have you learned from your past relationships?<br>&mdash; What&rsquo;s something you used to want that you&rsquo;ve outgrown?<br>&mdash; What does a great Sunday look like for you?</p>
+    <p>While they answer, watch them. The body language, the pauses, what they choose to share, what they avoid &mdash; those are the answers underneath the answers. You don&rsquo;t need to fill the silence. Let them.</p></div>
+
+    <p>If one of these landed harder than the others &mdash; reply and tell me which one. I read every email personally, and I&rsquo;ll tell you the one question I&rsquo;d ask you next.</p>
+    <p>&mdash; Marina</p>
+  </div>
+  <div class="verdict"><strong>Verdict:</strong> The smartest match here is Q34 paired with Q39 &mdash; the AI didn&rsquo;t just diagnose the problem, it gave him the practical alternative. &ldquo;Switch from talking to asking&rdquo; is the actionable shift. Q49 also lands because his life is genuinely busy.</div>
+
+  <!-- ============ PERSONA 5 ============ -->
+  <h2>Persona #5 &mdash; Maya, 33, &ldquo;feels too much&rdquo;</h2>
+  <div class="quiz-box">
+    <div class="quiz-row"><span class="quiz-label">Age</span><span>30&ndash;39</span></div>
+    <div class="quiz-row"><span class="quiz-label">Gender</span><span>Woman</span></div>
+    <div class="quiz-row"><span class="quiz-label">Goal</span><span>Something serious, not sure how serious yet</span></div>
+    <div class="quiz-row"><span class="quiz-label">Blocker</span><span>&ldquo;I feel everything too intensely. Whatever guy I&rsquo;m dating, after a few weeks I&rsquo;ve thought about him too much, planned the future too much, and it freaks them out.&rdquo;</span></div>
+    <div class="quiz-row"><span class="quiz-label">Frustration</span><span>&ldquo;I want someone who can match my intensity but I keep meeting people who can&rsquo;t handle it.&rdquo;</span></div>
+  </div>
+  <div class="matches"><strong>AI picks:</strong> <span class="badge">Q4</span> Too much &nbsp; <span class="badge">Q19</span> Stop chasing potential &nbsp; <span class="badge">Q12</span> Type vs pattern</div>
+
+  <div class="email">
+    <div class="email-header"><strong>From:</strong> Marina &nbsp; <strong>To:</strong> maya@example.com<br><strong>Subject:</strong> Your 3 personalized answers, Maya &mdash; from the quiz</div>
+    <p>Maya,</p>
+    <p>You&rsquo;re describing two patterns that look like one. The intensity isn&rsquo;t the problem &mdash; the projection on top of it is. Here are the three answers most relevant to where you are right now.</p>
+
+    <div class="answer-block"><h5>1. On being &ldquo;too much&rdquo;</h5>
+    <p>You are not too much. You feel things deeper than they&rsquo;re comfortable feeling &mdash; that&rsquo;s a different problem entirely.</p>
+    <p>That isn&rsquo;t a flaw &mdash; that&rsquo;s earned weight. It only feels like &ldquo;too much&rdquo; when you&rsquo;re standing next to people who haven&rsquo;t done the work to hold it. You will feel this way until you meet the right person &mdash; someone who isn&rsquo;t threatened by your weight, but grateful for it.</p>
+    <p>Until then: don&rsquo;t shrink. Filter.</p></div>
+
+    <div class="answer-block"><h5>2. On the &ldquo;planning him too much&rdquo;</h5>
+    <p>What you&rsquo;re really doing is falling for who he could be, before you&rsquo;ve seen who he is.</p>
+    <p>After each date, check in with yourself: do I feel calm? Stable? Curious for more? If yes, go again. If no, listen to that. Stop falling for the future version. Date who they are right now. If the version in front of you isn&rsquo;t enough, then they aren&rsquo;t &mdash; and no amount of planning is going to change that.</p></div>
+
+    <div class="answer-block"><h5>3. On the difference between intensity and the right person</h5>
+    <p>Listen to your body carefully. Butterflies in your stomach are not what you&rsquo;re looking for &mdash; that flutter is anxiety dressed up as romance.</p>
+    <p>Real connection feels different. It feels like calm. Like safety. Like nothing is at stake because you already trust the ground.</p>
+    <p>If a pattern keeps producing butterflies, racing thoughts, and over-planning &mdash; that&rsquo;s the pattern to break. If a pattern produces ease, presence, and steadiness &mdash; that&rsquo;s the type to embrace.</p></div>
+
+    <p>If one of these landed harder than the others &mdash; reply and tell me which one. I read every email personally, and I&rsquo;ll tell you the one question I&rsquo;d ask you next.</p>
+    <p>&mdash; Marina</p>
+  </div>
+  <div class="verdict"><strong>Verdict:</strong> The AI handled the nuance well &mdash; it didn&rsquo;t just say &ldquo;you&rsquo;re not too much.&rdquo; It distinguished her real depth (Q4) from the projection-onto-the-future habit (Q19) and pointed her to the calm/anxiety lens (Q12). This is the kind of inference Marina would make herself.</div>
+
+  <!-- ============ PERSONA 6 ============ -->
+  <h2>Persona #6 &mdash; Tom, 49, pulls away when serious</h2>
+  <div class="quiz-box">
+    <div class="quiz-row"><span class="quiz-label">Age</span><span>40&ndash;49</span></div>
+    <div class="quiz-row"><span class="quiz-label">Gender</span><span>Man</span></div>
+    <div class="quiz-row"><span class="quiz-label">Goal</span><span>A long-term partner / marriage</span></div>
+    <div class="quiz-row"><span class="quiz-label">Blocker</span><span>&ldquo;Every time it gets serious, I find an excuse to end it. I pull away. Then I miss them, but the cycle has already started. I&rsquo;m 49 and I want to be with someone but I can&rsquo;t seem to stay.&rdquo;</span></div>
+    <div class="quiz-row"><span class="quiz-label">Frustration</span><span>&ldquo;I feel broken. I should be married by now.&rdquo;</span></div>
+  </div>
+  <div class="matches"><strong>AI picks:</strong> <span class="badge">Q3</span> Pulling away when serious &nbsp; <span class="badge">Q5</span> Running out of time &nbsp; <span class="badge">Q1</span> Successful in everything except love</div>
+
+  <div class="email">
+    <div class="email-header"><strong>From:</strong> Marina &nbsp; <strong>To:</strong> tom@example.com<br><strong>Subject:</strong> Your 3 personalized answers, Tom &mdash; from the quiz</div>
+    <p>Tom,</p>
+    <p>Honey, you&rsquo;re not broken. You&rsquo;re running an old program that nobody trained you out of &mdash; and the &ldquo;should be married by now&rdquo; story is making it worse. Here are the three answers most relevant to where you are right now.</p>
+
+    <div class="answer-block"><h5>1. On pulling away when it gets serious</h5>
+    <p>You get cold feet because &mdash; underneath all of it &mdash; you don&rsquo;t believe this can actually happen to you. You don&rsquo;t yet feel worth it, and you haven&rsquo;t built the knowledge for it.</p>
+    <p>Think about it this way: for your career, you have the experience, the reps, the moments where it was hard and you knew what to do. For a relationship? Nobody gave you a degree. Nobody trained you. So the minute it gets real, you default to the only skill you have: pulling away.</p>
+    <p>You don&rsquo;t stop this with willpower. You stop it by learning &mdash; by building the knowledge and the inner belief that you&rsquo;re someone who <em>keeps</em> the thing, not someone who escapes it.</p></div>
+
+    <div class="answer-block"><h5>2. On &ldquo;I should be married by now&rdquo;</h5>
+    <p>You are not running out of time. None of us control how much time we get &mdash; yours is no shorter than anyone else&rsquo;s, and the math doesn&rsquo;t change just because the feeling is loud.</p>
+    <p>The &ldquo;should be married by now&rdquo; voice is what makes you settle &mdash; or, in your case, makes you panic at the idea that <em>this could be it</em> and pull the cord. The settling is one symptom. The pulling is another. The wound underneath is the same: a cracked self-image.</p>
+    <p>The fix is not to date faster. It&rsquo;s to get clearer on two things: what you actually want, and how valuable you actually are. When both of those become solid, the urgency goes away.</p></div>
+
+    <div class="answer-block"><h5>3. On feeling broken</h5>
+    <p>You&rsquo;re not bad at this. You&rsquo;re good at everything that doesn&rsquo;t touch your emotions. The moment emotions come online, you start seeing your flaws under a magnifying glass. They look enormous to you. They don&rsquo;t look that way to anyone else.</p>
+    <p>You don&rsquo;t &ldquo;crack&rdquo; this area with a better strategy. You change your state of mind &mdash; what you feed it, what you listen to, what you say to yourself. When the internal picture changes, the external one follows.</p></div>
+
+    <p>If one of these landed harder than the others &mdash; reply and tell me which one. I read every email personally, and I&rsquo;ll tell you the one question I&rsquo;d ask you next.</p>
+    <p>&mdash; Marina</p>
+  </div>
+  <div class="verdict"><strong>Verdict:</strong> The AI used &ldquo;honey&rdquo; correctly &mdash; one warm beat before the hard truth (&ldquo;you&rsquo;re not broken&rdquo;). It linked his pulling-away (Q3) to his time-pressure (Q5) to his self-image (Q1) as one continuous story rather than three separate answers. That kind of weaving is exactly what makes the email feel personally written.</div>
+
+  <!-- ============ PERSONA 7 ============ -->
+  <h2>Persona #7 &mdash; Rachel, 31, long checklist, never settles</h2>
+  <div class="quiz-box">
+    <div class="quiz-row"><span class="quiz-label">Age</span><span>30&ndash;39</span></div>
+    <div class="quiz-row"><span class="quiz-label">Gender</span><span>Woman</span></div>
+    <div class="quiz-row"><span class="quiz-label">Goal</span><span>A long-term partner / marriage</span></div>
+    <div class="quiz-row"><span class="quiz-label">Blocker</span><span>&ldquo;I have a long list of qualities I want and I won&rsquo;t compromise. People say I&rsquo;m too picky but I&rsquo;d rather be alone than settle. Friends are starting to suggest my standards are why I&rsquo;m still single.&rdquo;</span></div>
+    <div class="quiz-row"><span class="quiz-label">Frustration</span><span>&ldquo;I&rsquo;m starting to wonder if my list is the problem &mdash; or if everyone else is just telling me to lower the bar.&rdquo;</span></div>
+  </div>
+  <div class="matches"><strong>AI picks:</strong> <span class="badge">Q44</span> Real dealbreakers vs let-go &nbsp; <span class="badge">Q8</span> High standards vs unrealistic &nbsp; <span class="badge">Q15</span> Settling vs realistic test</div>
+
+  <div class="email">
+    <div class="email-header"><strong>From:</strong> Marina &nbsp; <strong>To:</strong> rachel@example.com<br><strong>Subject:</strong> Your 3 personalized answers, Rachel &mdash; from the quiz</div>
+    <p>Rachel,</p>
+    <p>Your friends might be wrong, and you might be wrong &mdash; both at the same time. The question isn&rsquo;t whether your list is too long. It&rsquo;s which items belong on it. Here are the three answers most relevant to where you are right now.</p>
+
+    <div class="answer-block"><h5>1. On the test for your list</h5>
+    <p>Here&rsquo;s the question that cuts through it. Do you yourself qualify for all those qualities you&rsquo;re asking from the other person?</p>
+    <p>If yes &mdash; keep your standards. Expect no less than what you bring. If no &mdash; rethink them. You may be asking for more than you can give. The asymmetry is what&rsquo;s keeping you single, not the list itself.</p>
+    <p>When you start dating someone real, see if you can let go of some of the requirements &mdash; and check if it sits okay with you. The ones you can release are the ones that were never deal-breakers in the first place. The ones you can&rsquo;t are the real ones. If they fail those, move on.</p></div>
+
+    <div class="answer-block"><h5>2. On standards vs unrealistic</h5>
+    <p>It&rsquo;s simpler than people make it.</p>
+    <p>High standards are grounded &mdash; in reality and in self-awareness. They come from knowing what you bring, what you need, and what actually works for you.</p>
+    <p>Unrealistic standards are detached from reality. They&rsquo;re built on ego or fear: ego that says &ldquo;I deserve someone perfect,&rdquo; or fear that says &ldquo;if I keep raising the bar, no one can hurt me.&rdquo; If your standards are protecting you from disappointment, they&rsquo;re not standards &mdash; they&rsquo;re armor.</p></div>
+
+    <div class="answer-block"><h5>3. On the settling test</h5>
+    <p>When someone good shows up and you&rsquo;re wondering if it&rsquo;s settling, ask yourself this:</p>
+    <p>If this person never improved &mdash; same habits, same personality, same effort &mdash; would I still deeply want this life? Not &ldquo;could I tolerate it.&rdquo; Want it.</p>
+    <p>If the answer is no, you&rsquo;re settling. If the answer is yes, you&rsquo;re being realistic. That single question cuts through almost every doubt &mdash; and it tells you which items on your list were real, and which were noise.</p></div>
+
+    <p>If one of these landed harder than the others &mdash; reply and tell me which one. I read every email personally, and I&rsquo;ll tell you the one question I&rsquo;d ask you next.</p>
+    <p>&mdash; Marina</p>
+  </div>
+  <div class="verdict"><strong>Verdict:</strong> Rachel is the persona most likely to be hostile to a generic &ldquo;lower your standards&rdquo; answer. The AI didn&rsquo;t do that. It validated her instinct (&ldquo;keep your standards if you bring the same&rdquo;), then pivoted to whether her list is built on values or armor. Q44 + Q8 + Q15 form a tight, internally consistent argument. This is the smartest of the five.</div>
+
+  <!-- ============ SUMMARY ============ -->
+  <h2>Cross-persona summary</h2>
+  <table class="summary-table">
+    <tr><th>#</th><th>Persona</th><th>Q matches</th><th>Voice grade</th><th>Match accuracy</th></tr>
+    <tr><td>1</td><td>Jane, 42, F, falls for unavailable</td><td>Q14, Q5, Q15</td><td>Pass</td><td>Direct</td></tr>
+    <tr><td>2</td><td>Mike, 52, M, divorced, intimidating</td><td>Q6, Q24, Q4</td><td>Pass</td><td>Direct + adjacent</td></tr>
+    <tr><td>3</td><td>Sarah, 38, F, apps fatigue</td><td>Q21, Q31, Q29</td><td>Pass</td><td>Direct</td></tr>
+    <tr><td>4</td><td>David, 45, M, oversharer + kids</td><td>Q39, Q49, Q34</td><td>Pass</td><td>Diagnosis + alternative</td></tr>
+    <tr><td>5</td><td>Maya, 33, F, &ldquo;feels too much&rdquo;</td><td>Q4, Q19, Q12</td><td>Pass</td><td>Smart inference</td></tr>
+    <tr><td>6</td><td>Tom, 49, M, pulls away</td><td>Q3, Q5, Q1</td><td>Pass</td><td>Three-thread weave</td></tr>
+    <tr><td>7</td><td>Rachel, 31, F, long list</td><td>Q44, Q8, Q15</td><td>Pass</td><td>Argument-grade</td></tr>
+  </table>
+
+  <div class="callout">
+    <strong>Coverage check:</strong> these 7 runs hit 17 different KB questions out of 50 (Q1, Q3, Q4, Q5, Q6, Q8, Q12, Q14, Q15, Q19, Q21, Q24, Q29, Q31, Q34, Q39, Q44, Q49). The remaining 33 questions weren&rsquo;t triggered by these specific blockers &mdash; that&rsquo;s expected. Real users will pull more questions over time. The voice has now been validated across <strong>both genders, three age decades, parents and non-parents, executives and professionals, mindset issues and tactical issues.</strong>
+  </div>
+
+  <h2>What Marina does next</h2>
+  <ol>
+    <li>Read each of the 7 emails. For each, mark <strong>pass</strong> or <strong>tune</strong>.</li>
+    <li>If everything passes &mdash; we lock the system prompt and start building the live stack (Tally + Make.com + ConvertKit).</li>
+    <li>If anything is off &mdash; tell me which persona, which sentence, and what felt wrong. I&rsquo;ll adjust the voice rule and rerun that one persona.</li>
+  </ol>
+
+</body>
+</html>

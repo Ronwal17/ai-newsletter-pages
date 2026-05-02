@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nurture Email Sequence - 5 Emails over 14 Days</title>
+  <style>
+    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --bg-soft:#f8fafc; --border:#e2e8f0; --good:#059669; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 880px; margin: 40px auto; padding: 0 24px; color: var(--ink); line-height: 1.65; }
+    h1 { font-size: 30px; margin-bottom: 4px; }
+    h2 { font-size: 20px; margin-top: 36px; padding: 8px 12px; background: var(--ink); color: #fff; border-radius: 6px; }
+    h3 { font-size: 16px; margin-top: 22px; color: #0e7c6a; }
+    p.sub { color: var(--muted); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 18px 0; border-radius: 4px; }
+    .email-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 22px 26px; margin: 18px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .email-meta { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--border); margin-bottom: 14px; font-size: 13px; }
+    .email-meta strong { color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-size: 11px; }
+    .email-body { font-size: 15px; line-height: 1.7; }
+    .email-body p { margin: 10px 0; }
+    .day-tag { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-right: 10px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+    th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+    th { background: var(--bg-soft); }
+    code { background: var(--bg-soft); padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>Nurture Email Sequence</h1>
+  <p class="sub">5 emails sent over 14 days after the quiz. Drafted in Marina&rsquo;s voice. The job of this sequence: keep her in the inbox, deepen the relationship, and quietly bring up the $497 Clarity Session twice without being salesy.</p>
+
+  <div class="callout">
+    <strong>How to use:</strong> in Kit, create an automation triggered by the tag <code>quiz-day-0</code>. Add a delay of 24 hours, then send Email 1. Add a 48-hour delay, send Email 2. And so on. Each email has its delay listed at the top.
+  </div>
+
+  <h2>Sequence overview</h2>
+  <table>
+    <tr><th>#</th><th>When</th><th>Subject</th><th>Job</th></tr>
+    <tr><td>1</td><td>Day 1 (24h after quiz)</td><td>Did one of those land?</td><td>Open the loop. Invite reply.</td></tr>
+    <tr><td>2</td><td>Day 3</td><td>The most expensive mistake I see</td><td>Teach. Build trust through value.</td></tr>
+    <tr><td>3</td><td>Day 5</td><td>What changed for someone I worked with</td><td>Show transformation. Anonymized story.</td></tr>
+    <tr><td>4</td><td>Day 7</td><td>When you want to go deeper</td><td>Soft pitch the Clarity Session ($497).</td></tr>
+    <tr><td>5</td><td>Day 14</td><td>What working with me actually looks like</td><td>Final, direct CTA. Then they go to the long-term list.</td></tr>
+  </table>
+
+  <!-- ============ EMAIL 1 ============ -->
+  <h2><span class="day-tag">DAY 1</span>Email 1 &mdash; Did one of those land?</h2>
+  <div class="email-card">
+    <div class="email-meta"><strong>From:</strong><span>Marina &lt;hello@datingwithmarina.com&gt;</span></div>
+    <div class="email-meta"><strong>Subject:</strong><span>Did one of those answers land?</span></div>
+    <div class="email-meta"><strong>Send delay:</strong><span>24 hours after quiz tag applied</span></div>
+    <div class="email-body">
+      <p>{{ subscriber.first_name }},</p>
+      <p>Yesterday I sent you 3 personalized answers based on your quiz. I wanted to follow up &mdash; not because I need to, but because I&rsquo;m curious.</p>
+      <p>Did one of them land harder than the others? People usually have one answer that lights something up &mdash; the kind of thing that makes you stop reading and look at the wall for a second.</p>
+      <p>If that happened to you, hit reply and tell me which one. I read every email. And I&rsquo;ll tell you the next question I&rsquo;d ask you.</p>
+      <p>If none of them landed, also tell me. That&rsquo;s useful too &mdash; it usually means I missed the real thing, and I&rsquo;ll tell you where to look.</p>
+      <p>&mdash; Marina</p>
+    </div>
+  </div>
+
+  <!-- ============ EMAIL 2 ============ -->
+  <h2><span class="day-tag">DAY 3</span>Email 2 &mdash; The most expensive mistake I see</h2>
+  <div class="email-card">
+    <div class="email-meta"><strong>From:</strong><span>Marina &lt;hello@datingwithmarina.com&gt;</span></div>
+    <div class="email-meta"><strong>Subject:</strong><span>The most expensive mistake I see in dating</span></div>
+    <div class="email-meta"><strong>Send delay:</strong><span>48 hours after Email 1</span></div>
+    <div class="email-body">
+      <p>{{ subscriber.first_name }},</p>
+      <p>The most expensive mistake I see in dating &mdash; in time, in years, in self-worth &mdash; is waiting until you feel ready.</p>
+      <p>People say it about a lot of things: I&rsquo;ll start dating when I lose 15 pounds. When I finish this job. When the divorce settles. When I feel less raw. When I&rsquo;m a better version of myself.</p>
+      <p>Here&rsquo;s the part nobody tells you: readiness is built through action, not before it. The version of you that&rsquo;s &ldquo;ready&rdquo; doesn&rsquo;t exist yet. Dating is how you make them.</p>
+      <p>The 15 pounds, the better job, the calmer self &mdash; those come <em>while</em> you&rsquo;re back in the world. Not before.</p>
+      <p>If you&rsquo;ve been waiting for the right time, I&rsquo;m going to tell you something honest: it doesn&rsquo;t arrive. You decide it&rsquo;s now, you walk in unfinished, and the work happens around you.</p>
+      <p>That&rsquo;s the whole secret.</p>
+      <p>&mdash; Marina</p>
+      <p style="font-size: 13px; color: var(--muted);">P.S. If this one&rsquo;s the one that lands &mdash; reply and tell me where you&rsquo;ve been waiting. I&rsquo;ll point out the action that&rsquo;d build readiness fastest in your specific case.</p>
+    </div>
+  </div>
+
+  <!-- ============ EMAIL 3 ============ -->
+  <h2><span class="day-tag">DAY 5</span>Email 3 &mdash; What changed for someone I worked with</h2>
+  <div class="email-card">
+    <div class="email-meta"><strong>From:</strong><span>Marina &lt;hello@datingwithmarina.com&gt;</span></div>
+    <div class="email-meta"><strong>Subject:</strong><span>What changed for someone I worked with last year</span></div>
+    <div class="email-meta"><strong>Send delay:</strong><span>48 hours after Email 2</span></div>
+    <div class="email-body">
+      <p>{{ subscriber.first_name }},</p>
+      <p>I want to tell you about someone I worked with last year. I&rsquo;ll call her J.</p>
+      <p>J is 44. Successful, divorced, two kids, the life that looks complete from the outside. She came to me because she kept ending up with the same kind of man &mdash; charming, distant, comes back when she pulls away, leaves when she leans in. She&rsquo;d done it three times since the divorce.</p>
+      <p>The work wasn&rsquo;t about meeting different men. It was about understanding why her body had learned to read &ldquo;uncertainty&rdquo; as &ldquo;love.&rdquo; That&rsquo;s a different thing.</p>
+      <p>Six months later, J was dating someone she would have completely overlooked a year before. He&rsquo;s steady. He shows up the same way every Tuesday and every Saturday. The first weeks she said it felt &ldquo;boring.&rdquo; Then she realized boring was just calm in a body that had never trusted calm before.</p>
+      <p>They&rsquo;re still together. She told me last month: &ldquo;I didn&rsquo;t know it was supposed to feel like this.&rdquo;</p>
+      <p>The work itself isn&rsquo;t complicated. It&rsquo;s seeing the pattern, naming it, and slowly rewiring what your body trusts. That&rsquo;s it.</p>
+      <p>If your version of J is the loop you keep ending up in &mdash; reply and tell me. I&rsquo;ll show you what the first move would look like.</p>
+      <p>&mdash; Marina</p>
+    </div>
+  </div>
+
+  <!-- ============ EMAIL 4 ============ -->
+  <h2><span class="day-tag">DAY 7</span>Email 4 &mdash; When you want to go deeper</h2>
+  <div class="email-card">
+    <div class="email-meta"><strong>From:</strong><span>Marina &lt;hello@datingwithmarina.com&gt;</span></div>
+    <div class="email-meta"><strong>Subject:</strong><span>When you want to go deeper</span></div>
+    <div class="email-meta"><strong>Send delay:</strong><span>48 hours after Email 3</span></div>
+    <div class="email-body">
+      <p>{{ subscriber.first_name }},</p>
+      <p>A week in, some people are still reading. Some have already replied. And some are at the point where the answers from the quiz aren&rsquo;t enough &mdash; they want a real conversation.</p>
+      <p>If that&rsquo;s you, here&rsquo;s what I offer.</p>
+      <p>The Clarity Session. One hour, 1:1 on Zoom. We do three things: we name the actual pattern that&rsquo;s costing you, we figure out the one shift that would change the most for you in the next 90 days, and I send you a written Partner Blueprint &mdash; your goal, your blocker, your 30-day action plan &mdash; within 48 business hours.</p>
+      <p>It&rsquo;s $497. That&rsquo;s the entire commitment &mdash; no subscription, no upsell, no calls you didn&rsquo;t ask for. If you decide afterward you want longer-term work with me, the full $497 is credited toward whatever comes next.</p>
+      <p>If you want to book it, reply to this email or use this link: [Stripe payment link]</p>
+      <p>If you&rsquo;re not ready, that&rsquo;s also fine. Stay on this list. The next email is in a week.</p>
+      <p>&mdash; Marina</p>
+    </div>
+  </div>
+
+  <!-- ============ EMAIL 5 ============ -->
+  <h2><span class="day-tag">DAY 14</span>Email 5 &mdash; What working with me actually looks like</h2>
+  <div class="email-card">
+    <div class="email-meta"><strong>From:</strong><span>Marina &lt;hello@datingwithmarina.com&gt;</span></div>
+    <div class="email-meta"><strong>Subject:</strong><span>What working with me actually looks like</span></div>
+    <div class="email-meta"><strong>Send delay:</strong><span>7 days after Email 4</span></div>
+    <div class="email-body">
+      <p>{{ subscriber.first_name }},</p>
+      <p>Two weeks in. Last email from me in this sequence. After this, you&rsquo;re on my main list and you&rsquo;ll hear from me when I have something worth saying &mdash; not on a schedule.</p>
+      <p>Before that happens, I want to be specific about what working with me looks like. Not because I want to sell you anything. Because most people imagine coaching as something it&rsquo;s not, and the imagined version is what stops them from doing it.</p>
+      <p>It&rsquo;s not therapy. We&rsquo;re not unpacking your childhood. If something clinical comes up, I&rsquo;ll point you to a therapist, and we&rsquo;ll work alongside that.</p>
+      <p>It&rsquo;s not a script. I don&rsquo;t teach you what to text or how to act on a date. Tactics are downstream of who you are when you walk in. We work on who you are first.</p>
+      <p>It&rsquo;s not vague. We name the pattern. We name the cost. We name the next move. Then you go do it, and we look at what happened.</p>
+      <p>The Clarity Session is one hour, $497. You leave with a written Partner Blueprint. Most people use it as a one-time conversation. Some use it as the entry to longer work &mdash; their choice, never mine.</p>
+      <p>If you&rsquo;ve been on the fence, here&rsquo;s the test: is the cost of staying where you are bigger than $497? For most of the people who book, the answer is obviously yes &mdash; and they wonder why they didn&rsquo;t do it sooner.</p>
+      <p>Book here: [Stripe link]</p>
+      <p>And whether you book or not &mdash; thanks for reading these. I&rsquo;ll talk to you when I have something worth your time.</p>
+      <p>&mdash; Marina</p>
+    </div>
+  </div>
+
+  <h2>What to customize before going live</h2>
+  <ol>
+    <li>Replace <code>[Stripe payment link]</code> in Emails 4 and 5 with the actual Stripe Payment Link Marina creates.</li>
+    <li>Email 3&rsquo;s &ldquo;J&rdquo; story is fictional but plausible. Once Marina has a real client testimonial (anonymized), swap it in. Realer beats invented every time.</li>
+    <li>Marina reads each email out loud once before publishing. If a sentence trips her tongue, rewrite it. Voice consistency matters more than word count.</li>
+  </ol>
+
+</body>
+</html>

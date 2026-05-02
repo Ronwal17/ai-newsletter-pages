@@ -3,43 +3,203 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marina - Dating Coach for High-Achievers</title>
+  <title>MW Consulting - Dating Coach for High-Achievers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --accent-dark:#0e7c6a; --bg:#f5f1ea; --border:#e2e8f0; --soft:#f8fafc; }
+    :root {
+      --green: #0F2A23;     /* deep forest green - primary text */
+      --ivory: #F6F3EE;     /* soft ivory - main background */
+      --gold:  #C2A46D;     /* muted gold (champagne) - accents, CTAs */
+      --gold-dark: #A88A55; /* darker gold for hover */
+      --charcoal: #2E2E2E;  /* soft charcoal - body text alt */
+      --taupe: #8A7F76;     /* warm taupe - muted text */
+      --line: rgba(15, 42, 35, 0.12);
+      --card: #FBFAF6;      /* slightly lighter than ivory for cards */
+    }
     * { box-sizing: border-box; }
-    body { font-family: 'Georgia', 'Times New Roman', serif; max-width: 720px; margin: 0 auto; padding: 0 24px; color: var(--ink); line-height: 1.7; background: var(--bg); }
-    .hero { padding: 80px 0 60px; text-align: center; }
-    .hero h1 { font-size: 48px; line-height: 1.1; letter-spacing: -1px; margin: 0 0 16px 0; font-weight: 800; }
-    .hero .tagline { font-size: 19px; color: var(--muted); margin-bottom: 36px; font-style: italic; }
-    .hero-photo { width: 220px; height: 220px; border-radius: 50%; background: var(--soft); margin: 0 auto 28px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 6px 24px rgba(0,0,0,0.10); }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      color: var(--green);
+      line-height: 1.7;
+      background: var(--ivory);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP BRAND BAR */
+    .brand-bar { padding: 28px 0 0; text-align: center; }
+    .brand-bar img { max-width: 160px; height: auto; opacity: 0.92; }
+    .brand-bar .brand-text { font-family: 'Cormorant Garamond', serif; font-weight: 500; color: var(--gold); letter-spacing: 6px; font-size: 14px; text-transform: uppercase; }
+    .brand-bar .brand-tagline { font-family: 'Inter', sans-serif; color: var(--taupe); letter-spacing: 4px; font-size: 10px; text-transform: uppercase; margin-top: 4px; }
+
+    /* HERO */
+    .hero { padding: 60px 0 70px; text-align: center; }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin: 0 0 18px 0;
+      font-weight: 500;
+      color: var(--green);
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero .tagline { font-size: 17px; color: var(--taupe); margin-bottom: 40px; font-style: italic; font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+    .hero-photo {
+      width: 240px; height: 240px; border-radius: 50%;
+      margin: 0 auto 32px;
+      overflow: hidden;
+      border: 3px solid var(--gold);
+      box-shadow: 0 10px 32px rgba(15, 42, 35, 0.18);
+      background: var(--green);
+    }
     .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .cta-button { display: inline-block; background: var(--ink); color: #fff; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-size: 17px; font-weight: 700; font-family: system-ui, sans-serif; letter-spacing: -0.2px; transition: background 0.2s; }
-    .cta-button:hover { background: var(--accent); }
-    .cta-secondary { display: inline-block; color: var(--ink); padding: 12px 20px; text-decoration: underline; font-size: 15px; font-family: system-ui, sans-serif; margin-left: 12px; }
-    section { padding: 50px 0; border-top: 1px solid rgba(0,0,0,0.08); }
-    section h2 { font-size: 28px; margin: 0 0 20px 0; letter-spacing: -0.5px; font-weight: 800; }
-    section p { font-size: 17px; margin: 12px 0; }
-    .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
-    .method-card { background: #fff; padding: 22px 24px; border-radius: 10px; border: 1px solid var(--border); }
-    .method-card .letter { font-size: 36px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 8px; font-family: 'Georgia', serif; }
-    .method-card h3 { margin: 0 0 8px 0; font-size: 20px; }
-    .method-card p { font-size: 15px; margin: 0; color: var(--muted); line-height: 1.55; }
-    .ideal-list { background: #fff; padding: 22px 28px; border-radius: 10px; border: 1px solid var(--border); margin: 18px 0; }
+
+    /* CTA BUTTONS */
+    .cta-button {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--green);
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: all 0.25s;
+      border: 1px solid var(--gold);
+    }
+    .cta-button:hover { background: var(--green); color: var(--gold); border-color: var(--green); }
+    .cta-secondary {
+      display: inline-block;
+      color: var(--green);
+      padding: 14px 20px;
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+      font-size: 13px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-left: 18px;
+    }
+    .cta-secondary:hover { color: var(--gold); }
+
+    /* SECTIONS */
+    section { padding: 60px 0; border-top: 1px solid var(--line); }
+    section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      margin: 0 0 24px 0;
+      letter-spacing: -0.5px;
+      font-weight: 500;
+      color: var(--green);
+    }
+    section p { font-size: 17px; margin: 14px 0; color: var(--charcoal); }
+
+    /* 4-P METHOD CARDS */
+    .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+    .method-card {
+      background: var(--card);
+      padding: 26px 26px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--gold);
+    }
+    .method-card .letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px; font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .method-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      margin: 0 0 10px 0; font-size: 22px;
+      color: var(--green); font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    .method-card p { font-size: 15px; margin: 0; color: var(--charcoal); line-height: 1.55; }
+
+    /* IDEAL CLIENT LISTS */
+    .ideal-list {
+      background: var(--card);
+      padding: 24px 30px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      margin: 20px 0;
+    }
+    .ideal-list h4 {
+      font-family: 'Cormorant Garamond', serif;
+      margin: 0 0 14px 0; font-size: 20px;
+      color: var(--green); font-weight: 600;
+      letter-spacing: 0.2px;
+    }
     .ideal-list ul { padding-left: 22px; margin: 8px 0; }
-    .ideal-list li { font-size: 16px; margin: 6px 0; }
-    .ideal-list h4 { margin: 0 0 8px 0; font-size: 17px; }
-    .testimonial { background: #fff; padding: 26px 30px; border-radius: 10px; border: 1px solid var(--border); margin: 18px 0; font-style: italic; font-size: 17px; line-height: 1.7; }
-    .testimonial .attr { font-style: normal; color: var(--muted); font-size: 14px; margin-top: 14px; font-family: system-ui, sans-serif; }
-    .footer { text-align: center; padding: 60px 0 50px; color: var(--muted); font-size: 14px; font-family: system-ui, sans-serif; }
-    .footer a { color: var(--ink); }
-    @media (max-width: 600px) { .hero h1 { font-size: 36px; } .method-grid { grid-template-columns: 1fr; } }
+    .ideal-list li { font-size: 16px; margin: 8px 0; color: var(--charcoal); }
+    .ideal-list li::marker { color: var(--gold); }
+
+    /* TESTIMONIALS */
+    .testimonial {
+      background: var(--card);
+      padding: 28px 32px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
+      margin: 18px 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.65;
+      color: var(--green);
+    }
+    .testimonial .attr {
+      font-style: normal;
+      color: var(--taupe);
+      font-size: 13px;
+      margin-top: 16px;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* SIGNATURE BLOCK */
+    .signature-block { margin-top: 30px; }
+    .signature-block img { max-width: 200px; height: auto; opacity: 0.9; }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 60px 0 50px;
+      color: var(--taupe);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      margin-top: 40px;
+    }
+    .footer a { color: var(--green); text-decoration: none; border-bottom: 1px solid var(--gold); }
+    .footer p { margin: 8px 0; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 38px; }
+      section h2 { font-size: 28px; }
+      .method-grid { grid-template-columns: 1fr; }
+      .cta-secondary { display: block; margin: 16px 0 0 0; }
+    }
   </style>
 </head>
 <body>
 
+  <div class="brand-bar">
+    <img src="marina-logo.png" alt="MW Consulting">
+  </div>
+
   <div class="hero">
     <div class="hero-photo"><img src="marina-photo.jpg" alt="Marina"></div>
-    <h1>You don&rsquo;t need different people. You need a different lens.</h1>
+    <h1>You don&rsquo;t need different people.<br>You need a <em>different lens</em>.</h1>
     <p class="tagline">A dating coach for the people who&rsquo;ve done everything else right.</p>
     <a href="[QUIZ URL]" class="cta-button">Take the 2-minute quiz &rarr;</a>
     <a href="[STRIPE LINK]" class="cta-secondary">Or book a Clarity Session</a>
@@ -108,6 +268,9 @@
     <p>I was pushed into this niche by my own life. I&rsquo;ve been divorced. I know what it&rsquo;s like to start over. I dated emotionally unavailable men for years before I learned the pattern was mine to break, not theirs. After that, I started seeing the pattern in other people&rsquo;s stories before they could see it themselves. Friends came to me. Then friends of friends. Then strangers at midnight. After a decade of those conversations, this became the work.</p>
     <p>I&rsquo;m self-taught &mdash; no certifications, no degree in this. Just years of being the person everyone came to with the messy, complicated version of their love life. The 4-P Method came out of watching the same patterns repeat across hundreds of conversations.</p>
     <p>I work with people who are successful in every other area of their life and stuck in this one. I&rsquo;m direct. I don&rsquo;t over-explain. I don&rsquo;t do scripts, I don&rsquo;t do hype, and I don&rsquo;t do therapy. The work either lands or it doesn&rsquo;t &mdash; and you&rsquo;ll know which by the end of the first session.</p>
+    <div class="signature-block">
+      <img src="marina-signature.png" alt="Marina">
+    </div>
   </section>
 
   <section>
@@ -134,8 +297,10 @@
   </section>
 
   <div class="footer">
-    <p>Marina &middot; Dating coach &middot; <a href="mailto:hello@datingwithmarina.com">hello@datingwithmarina.com</a></p>
-    <p>This is coaching, not therapy. For clinical issues, please consult a licensed therapist.</p>
+    <p style="font-family: 'Cormorant Garamond', serif; font-size: 16px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">MW Consulting</p>
+    <p style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--taupe);">Strategy &middot; Connection &middot; Transformation</p>
+    <p style="margin-top: 18px;">Dating coach for high-achievers &middot; <a href="mailto:hello@mwconsulting.com">hello@mwconsulting.com</a></p>
+    <p style="font-size: 12px; color: var(--taupe);">This is coaching, not therapy. For clinical issues, please consult a licensed therapist.</p>
   </div>
 
 </body>

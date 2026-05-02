@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Session Intake Form - Clarity Session</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --green:#0F2A23; --ivory:#F6F3EE; --gold:#C2A46D; --charcoal:#2E2E2E; --taupe:#8A7F76; --line:rgba(15,42,35,0.12); --card:#FBFAF6; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; max-width: 880px; margin: 40px auto; padding: 0 24px; color: var(--green); line-height: 1.65; background: var(--ivory); }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500; margin-bottom: 4px; }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-top: 36px; padding: 10px 14px; background: var(--green); color: var(--ivory); border-radius: 6px; font-weight: 500; letter-spacing: 0.5px; }
+    h3 { font-family: 'Cormorant Garamond', serif; font-size: 18px; margin-top: 22px; color: var(--green); font-weight: 600; }
+    p.sub { color: var(--taupe); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--card); border-left: 4px solid var(--gold); padding: 14px 18px; margin: 18px 0; border-radius: 4px; font-size: 14px; }
+    .field { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 18px 22px; margin: 14px 0; border-left: 3px solid var(--gold); }
+    .field-num { display: inline-block; background: var(--green); color: var(--gold); font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; letter-spacing: 0.5px; }
+    .field h4 { font-family: 'Cormorant Garamond', serif; font-size: 19px; margin: 6px 0 8px 0; color: var(--green); font-weight: 600; }
+    .field-meta { font-size: 13px; color: var(--taupe); margin: 4px 0; }
+    .field-meta strong { color: var(--green); }
+    .field-why { background: var(--card); padding: 10px 14px; border-radius: 6px; font-size: 13px; color: var(--charcoal); margin-top: 10px; font-style: italic; }
+    code { background: var(--card); padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>Pre-Session Intake Form</h1>
+  <p class="sub">Seven questions Marina&rsquo;s clients fill out after paying and before the Clarity Session call. Built on Tally. Walks Marina into the call already knowing what she&rsquo;s working with &mdash; so the 60 minutes go to actual work, not catching her up.</p>
+
+  <div class="callout">
+    <strong>Form name:</strong> Pre-Session Intake &mdash; Clarity Session<br>
+    <strong>Form URL slug:</strong> <code>clarity-intake</code><br>
+    <strong>Estimated completion:</strong> ~5 minutes<br>
+    <strong>Total fields:</strong> 7 + name field = 8
+  </div>
+
+  <h2>Form intro page</h2>
+  <div class="field">
+    <h4>Headline</h4>
+    <p>Before we meet.</p>
+    <h4>Subhead</h4>
+    <p>Seven questions, about five minutes. I&rsquo;ll read your answers before our call so we don&rsquo;t spend the hour catching me up &mdash; we&rsquo;ll spend it on the actual work.</p>
+    <p>Be honest. The rougher and more specific your answers, the more useful the call will be.</p>
+    <h4>CTA button</h4>
+    <p><strong>Begin &rarr;</strong></p>
+  </div>
+
+  <h2>The 8 fields</h2>
+
+  <div class="field">
+    <span class="field-num">FIELD 1</span>
+    <h4>What name should I call you?</h4>
+    <p class="field-meta"><strong>Type:</strong> Short text &middot; <strong>Required:</strong> Yes &middot; <strong>Field key:</strong> <code>preferred_name</code></p>
+    <div class="field-why">Marina uses the client&rsquo;s preferred name on the call and in the Partner Blueprint. Some people go by a nickname or middle name &mdash; this confirms.</div>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 2</span>
+    <h4>What is the relationship outcome you actually want? In your own words &mdash; not in coaching language.</h4>
+    <p class="field-meta"><strong>Type:</strong> Long text &middot; <strong>Required:</strong> Yes &middot; <strong>Min length:</strong> 50 chars &middot; <strong>Field key:</strong> <code>desired_outcome</code></p>
+    <p class="field-meta"><strong>Placeholder:</strong> &ldquo;A real partner. Marriage. Kids. Travel together. Someone I can build with...&rdquo;</p>
+    <div class="field-why">Anchors the call. Lets Marina see what success looks like for THIS client &mdash; not a generic version. The 50-char minimum forces a real answer.</div>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 3</span>
+    <h4>What pattern keeps repeating, that you&rsquo;re tired of?</h4>
+    <p class="field-meta"><strong>Type:</strong> Long text &middot; <strong>Required:</strong> Yes &middot; <strong>Min length:</strong> 50 chars &middot; <strong>Field key:</strong> <code>pattern</code></p>
+    <p class="field-meta"><strong>Placeholder:</strong> &ldquo;I keep falling for the same wrong type. They start strong, go cold, come back. I do this every 18 months.&rdquo;</p>
+    <div class="field-why">The single most important field for the Blueprint. This is the &ldquo;diagnosis&rdquo; section&rsquo;s raw material.</div>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 4</span>
+    <h4>What have you tried so far that hasn&rsquo;t worked?</h4>
+    <p class="field-meta"><strong>Type:</strong> Long text &middot; <strong>Required:</strong> Yes &middot; <strong>Min length:</strong> 30 chars &middot; <strong>Field key:</strong> <code>tried_already</code></p>
+    <p class="field-meta"><strong>Placeholder:</strong> &ldquo;Therapy, dating apps, books, taking breaks, more therapy...&rdquo;</p>
+    <div class="field-why">Saves Marina from suggesting things they&rsquo;ve done. Also tells her what kind of work the client respects.</div>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 5</span>
+    <h4>Looking 90 days from now &mdash; what would have to be true for this Session to feel worth it?</h4>
+    <p class="field-meta"><strong>Type:</strong> Long text &middot; <strong>Required:</strong> Yes &middot; <strong>Min length:</strong> 30 chars &middot; <strong>Field key:</strong> <code>success_test</code></p>
+    <p class="field-meta"><strong>Placeholder:</strong> &ldquo;I&rsquo;d know my pattern, I&rsquo;d have a clear next move, I&rsquo;d feel less stuck...&rdquo;</p>
+    <div class="field-why">The client&rsquo;s own definition of success becomes the action plan&rsquo;s benchmark. Marina maps the 30-day plan against this answer specifically.</div>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 6</span>
+    <h4>Is there anything you&rsquo;d rather not discuss on the call?</h4>
+    <p class="field-meta"><strong>Type:</strong> Long text &middot; <strong>Required:</strong> No (optional) &middot; <strong>Field key:</strong> <code>off_limits</code></p>
+    <p class="field-meta"><strong>Placeholder:</strong> &ldquo;Specifics of the divorce. Anything about my kids by name. The financial stuff with my ex.&rdquo;</p>
+    <div class="field-why">Critical boundary-setter. Some clients have topics that are too raw or simply not relevant. Knowing in advance keeps Marina from accidentally walking into them.</div>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 7</span>
+    <h4>What&rsquo;s the one question you most want me to answer on the call?</h4>
+    <p class="field-meta"><strong>Type:</strong> Long text &middot; <strong>Required:</strong> Yes &middot; <strong>Min length:</strong> 30 chars &middot; <strong>Field key:</strong> <code>main_question</code></p>
+    <p class="field-meta"><strong>Placeholder:</strong> &ldquo;Why does this keep happening to me?&rdquo; / &ldquo;Should I leave or stay?&rdquo; / &ldquo;Am I the problem?&rdquo;</p>
+    <div class="field-why">Forces clarity. Even if the call goes elsewhere, Marina makes sure to land this one before the hour ends.</div>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 8</span>
+    <h4>Anything else you want me to know before we meet?</h4>
+    <p class="field-meta"><strong>Type:</strong> Long text &middot; <strong>Required:</strong> No (optional) &middot; <strong>Field key:</strong> <code>extras</code></p>
+    <p class="field-meta"><strong>Placeholder:</strong> Anything &mdash; context, history, a feeling, a worry. Whatever helps me show up prepared.</p>
+    <div class="field-why">The catch-all. Sometimes the most useful information shows up here.</div>
+  </div>
+
+  <h2>Confirmation page (after submit)</h2>
+  <div class="field">
+    <h4>Headline</h4>
+    <p>Got it. See you on the call.</p>
+    <h4>Body</h4>
+    <p>I&rsquo;ll read everything you wrote before we meet. If anything else comes to mind between now and our session, just reply to your booking confirmation email &mdash; I read those personally.</p>
+    <p>&mdash; Marina</p>
+  </div>
+
+  <h2>Where this goes in the funnel</h2>
+  <ol>
+    <li>Client pays $497 via Stripe.</li>
+    <li>Booking confirmation email fires (the first file in this set).</li>
+    <li>Booking email links to <strong>this intake form</strong>.</li>
+    <li>Client fills out the 7 questions, hits submit.</li>
+    <li>Tally sends the answers to Marina via email (or to a Notion database, depending on her preference).</li>
+    <li>Marina reads them before the call.</li>
+    <li>Marina runs the call already knowing the situation.</li>
+    <li>48 business hours after the call: <strong>Partner Blueprint</strong> goes out (the third file in this set), structured around the answers in Fields 2-7.</li>
+  </ol>
+
+  <h2>Build checklist</h2>
+  <ol>
+    <li>Sign in to Tally (same account as the marketing quiz).</li>
+    <li>Create a new form. Name: <code>Pre-Session Intake &mdash; Clarity Session</code>.</li>
+    <li>Add the 8 fields exactly as spec&rsquo;d above. Set the field keys for webhook compatibility.</li>
+    <li>Style the form: cream background, deep green text, gold accent on buttons. Same brand as everything else.</li>
+    <li>URL slug: <code>clarity-intake</code>. Full URL: <code>https://tally.so/r/clarity-intake</code>.</li>
+    <li>Add the URL to the booking-email template (replaces <code>{{ intake_form_link }}</code>).</li>
+    <li>Set the form to email submissions to Marina&rsquo;s inbox (Tally Settings &rarr; Notifications).</li>
+    <li>Test by submitting yourself with fake answers.</li>
+  </ol>
+
+</body>
+</html>

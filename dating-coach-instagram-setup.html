@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Setup Pack - MW Consulting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --green:#0F2A23; --ivory:#F6F3EE; --gold:#C2A46D; --charcoal:#2E2E2E; --taupe:#8A7F76; --line:rgba(15,42,35,0.12); --card:#FBFAF6; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; max-width: 880px; margin: 40px auto; padding: 0 24px; color: var(--green); line-height: 1.65; background: var(--ivory); }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500; margin-bottom: 4px; }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-top: 40px; padding: 10px 14px; background: var(--green); color: var(--ivory); border-radius: 6px; font-weight: 500; letter-spacing: 0.5px; }
+    h3 { font-family: 'Cormorant Garamond', serif; font-size: 18px; margin-top: 22px; color: var(--green); font-weight: 600; }
+    p.sub { color: var(--taupe); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--card); border-left: 4px solid var(--gold); padding: 14px 18px; margin: 18px 0; border-radius: 4px; font-size: 14px; }
+    .pick-list { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 16px 22px; margin: 14px 0; }
+    .pick-list h4 { margin: 4px 0 8px 0; font-family: 'Cormorant Garamond', serif; color: var(--green); font-size: 17px; }
+    .pick-list ol { margin: 8px 0; padding-left: 22px; }
+    .pick-list li { padding: 4px 0; font-family: 'Inter', sans-serif; }
+    .pick-list .handle { font-family: monospace; background: var(--card); padding: 2px 8px; border-radius: 3px; color: var(--green); font-weight: 600; }
+    .copy-box { background: #fff; border: 2px solid var(--gold); border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+    .copy-box .label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--gold); margin-bottom: 10px; }
+    .copy-box pre { font-family: 'Inter', sans-serif; white-space: pre-wrap; margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--green); }
+    .copy-box .char-count { font-size: 12px; color: var(--taupe); margin-top: 8px; font-style: italic; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+    th, td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+    th { background: var(--card); font-weight: 600; color: var(--green); }
+    .grid-9 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; max-width: 360px; margin: 18px 0; }
+    .grid-tile { background: var(--card); aspect-ratio: 1; padding: 10px; font-size: 11px; line-height: 1.3; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); border-radius: 4px; }
+    .grid-tile.carousel { background: var(--green); color: var(--ivory); }
+    .grid-tile.carousel .tag { color: var(--gold); }
+    .grid-tile.quote { background: var(--gold); color: var(--green); }
+    .grid-tile.personal { background: var(--ivory); color: var(--green); }
+    .grid-tile .num { font-weight: 700; font-family: 'Cormorant Garamond', serif; font-size: 18px; }
+    .grid-tile .tag { font-weight: 700; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; }
+    .step { display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+    .step:last-child { border-bottom: none; }
+    .step-num { background: var(--green); color: var(--gold); font-size: 13px; font-weight: 700; padding: 4px 0; border-radius: 50%; width: 28px; height: 28px; text-align: center; font-family: 'Inter', sans-serif; }
+    code { background: var(--card); padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>Instagram Setup Pack &mdash; MW Consulting</h1>
+  <p class="sub">Everything Marina needs to launch the Instagram account in 15 minutes. Username options, bio variants, profile setup, story highlights, the first 9 posts in order, and the rules for the first 30 days. Open this on her phone &mdash; copy/paste straight into Instagram.</p>
+
+  <div class="callout">
+    <strong>Marina does this part on her phone</strong> (Instagram requires a real person on a real device to create the account). The whole setup, including grabbing the handle, takes about 15 minutes. Use the bio + name + first-post copy from this document.
+  </div>
+
+  <h2>1. Username &mdash; pick one (in this order of preference)</h2>
+  <div class="pick-list">
+    <h4>Try these in order. Take the first available:</h4>
+    <ol>
+      <li><span class="handle">@mwconsulting</span> &mdash; cleanest. Probably taken; try anyway.</li>
+      <li><span class="handle">@mwconsulting.co</span> &mdash; the consulting variant.</li>
+      <li><span class="handle">@mw.consulting</span> &mdash; with the period separator.</li>
+      <li><span class="handle">@marinamw</span> &mdash; if Marina&rsquo;s last initial is W, this works.</li>
+      <li><span class="handle">@marina.mw</span> &mdash; same with separator.</li>
+      <li><span class="handle">@mwconsultingmiami</span> &mdash; geographic anchor.</li>
+      <li><span class="handle">@mw_consulting</span> &mdash; underscore variant (last resort &mdash; underscores feel dated).</li>
+    </ol>
+  </div>
+
+  <div class="callout">
+    <strong>Avoid:</strong> anything with &ldquo;dating,&rdquo; &ldquo;coach,&rdquo; or &ldquo;love&rdquo; in the handle. Keeps the brand premium and lets MW Consulting expand into other verticals later without a rename.
+  </div>
+
+  <h2>2. Display name (the bold name above the bio)</h2>
+  <p>Different from the @ handle. This is what shows in big text on the profile. Instagram allows up to 30 characters and indexes this for search.</p>
+
+  <div class="copy-box">
+    <div class="label">DISPLAY NAME</div>
+    <pre>Marina | MW Consulting</pre>
+    <div class="char-count">22 characters</div>
+  </div>
+
+  <p>Why both names: &ldquo;Marina&rdquo; is what people will search and remember. &ldquo;MW Consulting&rdquo; positions the brand. The pipe separator (<code>|</code>) is cleaner than a dash.</p>
+
+  <h2>3. Bio &mdash; pick one of three variants (150 char limit)</h2>
+
+  <h3>Variant A &mdash; Direct, lead with the promise</h3>
+  <div class="copy-box">
+    <div class="label">BIO</div>
+    <pre>Dating coach for high-achievers
+The pattern others miss &mdash; named in 60 seconds.
+Strategy &middot; Connection &middot; Transformation
+&darr; Take the 2-min quiz</pre>
+    <div class="char-count">~138 characters</div>
+  </div>
+
+  <h3>Variant B &mdash; Marina-voice, shorter</h3>
+  <div class="copy-box">
+    <div class="label">BIO</div>
+    <pre>You don&rsquo;t need different people.
+You need a different lens.
+&darr; Take the 2-min dating diagnosis</pre>
+    <div class="char-count">~95 characters</div>
+  </div>
+
+  <h3>Variant C &mdash; Personal, intimate</h3>
+  <div class="copy-box">
+    <div class="label">BIO</div>
+    <pre>Marina &middot; Miami
+I help successful people stop repeating the same dating story.
+&darr; Free 2-min quiz, 3 personalized answers</pre>
+    <div class="char-count">~128 characters</div>
+  </div>
+
+  <p><strong>My pick:</strong> Variant A. It positions cleanly, names the offer (the quiz), and uses the brand tagline. Variant B is more on-voice but harder for first-time visitors to parse. Variant C is the warmest. Marina picks &mdash; whichever she&rsquo;d be most comfortable seeing on her own profile.</p>
+
+  <h2>4. Profile photo</h2>
+  <p>For now: use Marina&rsquo;s portrait (the marina-at-sunset photo). Upload from her phone&rsquo;s photo library &mdash; Instagram crops to a circle automatically. The dark background and warm light make her recognizable even at thumbnail size.</p>
+  <p><strong>Later:</strong> once the brand assets are uploaded everywhere, swap to the MW monogram on deep green for consistency with the website. But the human face converts better in early stages, so start with the portrait.</p>
+
+  <h2>5. Link in bio</h2>
+  <p>Instagram allows ONE clickable link. Don&rsquo;t use it for the quiz directly &mdash; use a multi-link page so it can hold the quiz button + the Clarity Session button + future links.</p>
+
+  <table>
+    <tr><th>Tool</th><th>Cost</th><th>Why</th></tr>
+    <tr><td><strong>Stan Store</strong></td><td>$29/mo</td><td><strong>Recommended.</strong> Built for creators, handles Stripe checkout natively, mobile-first design.</td></tr>
+    <tr><td>Beacons</td><td>Free / $10/mo</td><td>Free option, but checkout is clunkier. Fine to start.</td></tr>
+    <tr><td>Linktree</td><td>Free / $5/mo</td><td>Most common but feels like everyone else&rsquo;s. Avoid.</td></tr>
+  </table>
+
+  <p>Set the link to: <code>https://stan.store/marina</code> (or whatever Marina chooses). The Stan Store page itself has two buttons: &ldquo;Take the 2-Minute Quiz&rdquo; (top, primary) and &ldquo;Book the Clarity Session &mdash; $497&rdquo; (secondary).</p>
+
+  <h2>6. Switch to a Business profile</h2>
+  <p>This is critical &mdash; without it, you can&rsquo;t see analytics, run ads, or connect to Facebook for cross-posting.</p>
+
+  <div class="step"><span class="step-num">1</span><div>Open Instagram &rarr; profile (bottom right) &rarr; menu (top right, three lines) &rarr; <strong>Settings and privacy</strong></div></div>
+  <div class="step"><span class="step-num">2</span><div>Tap <strong>Account type and tools</strong> &rarr; <strong>Switch to professional account</strong></div></div>
+  <div class="step"><span class="step-num">3</span><div>Pick category: <strong>Personal Coach</strong> (closest fit). Skip if it tries to make you display the category publicly.</div></div>
+  <div class="step"><span class="step-num">4</span><div>Choose <strong>Business</strong> (NOT Creator). Business gives you Meta Business Suite access for cross-posting to Facebook + analytics + later, ads.</div></div>
+  <div class="step"><span class="step-num">5</span><div>When prompted, <strong>connect to Facebook</strong>. Create a new Facebook Business Page for &ldquo;MW Consulting&rdquo; if Marina doesn&rsquo;t have one. (5 minutes.) This unlocks cross-posting to Facebook from one place.</div></div>
+  <div class="step"><span class="step-num">6</span><div>Add contact info: business email <code>hello@mwconsulting.com</code> (once the domain is set up). Skip phone for privacy.</div></div>
+
+  <h2>7. Story highlights (the circles below the bio)</h2>
+  <p>Highlights are evergreen content that lives forever on the profile. Think of them as the &ldquo;menu&rdquo; of the brand. Set up these 4 to start &mdash; populate over the first 30 days as Marina has content.</p>
+
+  <table>
+    <tr><th>Highlight name</th><th>Cover</th><th>What goes inside</th></tr>
+    <tr><td>START HERE</td><td>Gold &ldquo;01&rdquo; on green</td><td>3 stories: quiz link, what to expect, who Marina is</td></tr>
+    <tr><td>THE 4-P METHOD</td><td>Gold &ldquo;4P&rdquo; on green</td><td>4 stories, one per P (Presence, Picture, Presentation, Progression). Each explains the piece in 2-3 frames.</td></tr>
+    <tr><td>BEHIND THE WORK</td><td>Gold camera icon on green</td><td>Marina&rsquo;s morning Pilates, Miami sunsets, prep notes, behind-the-scenes. Keeps the brand human.</td></tr>
+    <tr><td>CLIENT WINS</td><td>Gold star on green</td><td>Anonymized testimonials and screenshots (with permission). Build over time.</td></tr>
+  </table>
+
+  <p><strong>Highlight covers:</strong> design these in Canva &mdash; 1080x1920 px, deep forest green background, gold icon or letter centered. Once designed, save to phone, then in Instagram add as a story, save to a highlight, edit cover.</p>
+
+  <h2>8. The first 9 posts &mdash; planned grid</h2>
+  <p>The first 9 posts form a 3x3 visible grid on Marina&rsquo;s profile. Each visitor sees them at once. Plan them so the grid looks intentional from minute one.</p>
+
+  <div class="grid-9">
+    <div class="grid-tile personal"><div class="num">1</div><div><strong>Brand intro</strong><br><span class="tag">PERSONAL</span></div></div>
+    <div class="grid-tile carousel"><div class="num">2</div><div><strong>Successful. Single. Stuck.</strong><br><span class="tag">CAROUSEL #1</span></div></div>
+    <div class="grid-tile quote"><div class="num">3</div><div><strong>&ldquo;Calm is what you&rsquo;re looking for.&rdquo;</strong><br><span class="tag">QUOTE</span></div></div>
+    <div class="grid-tile carousel"><div class="num">4</div><div><strong>You don&rsquo;t have a dating problem.</strong><br><span class="tag">CAROUSEL #2</span></div></div>
+    <div class="grid-tile personal"><div class="num">5</div><div><strong>Why I do this</strong><br><span class="tag">PERSONAL</span></div></div>
+    <div class="grid-tile quote"><div class="num">6</div><div><strong>The settling test</strong><br><span class="tag">QUOTE</span></div></div>
+    <div class="grid-tile carousel"><div class="num">7</div><div><strong>3 things killing your love life</strong><br><span class="tag">CAROUSEL #3</span></div></div>
+    <div class="grid-tile personal"><div class="num">8</div><div><strong>Morning at the studio</strong><br><span class="tag">PERSONAL</span></div></div>
+    <div class="grid-tile carousel"><div class="num">9</div><div><strong>Stop dating for 30 days.</strong><br><span class="tag">CAROUSEL #4</span></div></div>
+  </div>
+
+  <h3>Post-by-post copy notes</h3>
+  <p><strong>1. Brand intro (Day 1):</strong> Single image &mdash; Marina&rsquo;s portrait or the MW monogram on green. Caption is the soft-launch copy from <code>dating-coach-soft-launch.html</code>.</p>
+  <p><strong>2. Carousel #1 (Day 3):</strong> All 8 slides from <code>dating-coach-carousel-1.html</code>. Caption from the same file.</p>
+  <p><strong>3. Quote tile (Day 5):</strong> Single image &mdash; gold serif type on deep green:<br>
+  <em>&ldquo;Butterflies are anxiety dressed up as romance. What you&rsquo;re looking for is calm.&rdquo;</em><br>
+  Short caption: &ldquo;Most of dating advice has this backwards. Save this for the next time you mistake nerves for chemistry.&rdquo;</p>
+  <p><strong>4. Carousel #2 (Day 8):</strong> All 8 slides from <code>dating-coach-carousels-2-4.html</code> (the &ldquo;clarity problem&rdquo; carousel).</p>
+  <p><strong>5. Personal (Day 11):</strong> Marina at the Pilates studio, or Miami at sunset. Caption is one short paragraph about her morning ritual and why structure precedes everything else &mdash; including dating.</p>
+  <p><strong>6. Quote tile (Day 14):</strong> The settling test:<br>
+  <em>&ldquo;If they never improved &mdash; same habits, same effort &mdash; would I still want this life? Yes = realistic. No = settling.&rdquo;</em></p>
+  <p><strong>7. Carousel #3 (Day 17):</strong> The &ldquo;3 things killing your love life&rdquo; carousel.</p>
+  <p><strong>8. Personal (Day 21):</strong> A behind-the-scenes story from a session (anonymized) or Marina&rsquo;s notebook open to a quote she wrote down.</p>
+  <p><strong>9. Carousel #4 (Day 25):</strong> The &ldquo;Stop dating for 30 days&rdquo; carousel.</p>
+
+  <h2>9. Posting cadence (after the first 9)</h2>
+  <ul>
+    <li><strong>3 posts per week</strong> &mdash; Mon, Wed, Fri morning (8-10am ET, when the ICP is online)</li>
+    <li><strong>2 stories per day</strong> &mdash; informal, behind-the-scenes, polls, &ldquo;ask me anything&rdquo;</li>
+    <li><strong>1 carousel per week</strong> &mdash; rotate through the 4 carousels we built, then start designing new ones from the knowledge base</li>
+    <li><strong>2 quote tiles per week</strong> &mdash; pull lines from Marina&rsquo;s polished answers in the knowledge base</li>
+    <li><strong>1 personal post per week</strong> &mdash; her face, her life, her reflections</li>
+  </ul>
+
+  <h2>10. Engagement rules for the first 30 days</h2>
+  <ol>
+    <li><strong>Reply to every comment</strong> within 1 hour of posting. The first hour is the algorithm window.</li>
+    <li><strong>Reply to every DM</strong> within 24 hours. Even &ldquo;hi.&rdquo; Especially &ldquo;hi.&rdquo;</li>
+    <li><strong>Spend 15 minutes a day commenting</strong> on the posts of accounts in the same niche or adjacent (relationship therapists, executive coaches, women-in-leadership accounts). Substantive comments only &mdash; no &ldquo;love this!&rdquo;</li>
+    <li><strong>Use the &ldquo;Comment READY&rdquo; CTA on every carousel.</strong> Reply to each one with the quiz link via DM, manually for the first 50. After that, automate via ManyChat.</li>
+    <li><strong>Do NOT buy followers, do NOT use bots, do NOT engagement-pod.</strong> Premium brands die from these.</li>
+  </ol>
+
+  <h2>11. Setup checklist</h2>
+  <ol>
+    <li>Marina downloads Instagram on her phone (if she doesn&rsquo;t already have it).</li>
+    <li>Creates the account using the first available username from section 1.</li>
+    <li>Sets display name (section 2).</li>
+    <li>Pastes the chosen bio variant (section 3).</li>
+    <li>Uploads profile photo (her portrait).</li>
+    <li>Switches to Business profile (section 6).</li>
+    <li>Connects to Facebook (creates Business Page in process).</li>
+    <li>Sets the link in bio to the Stan Store URL once that&rsquo;s built.</li>
+    <li>Designs the 4 highlight covers in Canva, uploads, organizes.</li>
+    <li>Posts post #1 (the brand intro) on day 1.</li>
+    <li>Comments on 5-10 ICP-adjacent accounts to break the &ldquo;new account&rdquo; algorithm freeze.</li>
+    <li>Posts #2-9 over the next 25 days according to the schedule.</li>
+  </ol>
+
+  <p>Total Marina time on day 1: <strong>~20 minutes.</strong> Then 15-30 minutes per posting day after that.</p>
+
+</body>
+</html>

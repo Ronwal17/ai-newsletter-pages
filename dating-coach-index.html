@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dating Coach Project - Dashboard</title>
+  <style>
+    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --accent-dark:#0e7c6a; --bg-soft:#f8fafc; --border:#e2e8f0; --cream:#f5f1ea; --good:#059669; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 980px; margin: 0 auto; padding: 30px 24px; color: var(--ink); line-height: 1.6; background: var(--cream); }
+    .header { background: var(--ink); color: #fff; padding: 30px 32px; border-radius: 14px; margin-bottom: 28px; }
+    .header h1 { margin: 0 0 8px 0; font-size: 30px; }
+    .header p { margin: 4px 0; font-size: 15px; opacity: 0.9; }
+    .header .meta { margin-top: 14px; font-size: 13px; opacity: 0.75; }
+    .header .meta strong { opacity: 1; color: #5eead4; }
+    .top-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .top-links a { background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; }
+    .top-links a:hover { background: var(--accent-dark); }
+    .status-bar { background: #ecfdf5; border: 1px solid var(--good); padding: 14px 18px; border-radius: 10px; margin-bottom: 24px; font-size: 14px; }
+    .status-bar strong { color: #065f46; }
+    .section { background: #fff; border-radius: 12px; padding: 22px 26px; margin-bottom: 18px; border: 1px solid var(--border); }
+    .section h2 { margin-top: 0; font-size: 19px; color: var(--accent-dark); border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+    .section h2 .num { display: inline-block; background: var(--accent); color: #fff; width: 26px; height: 26px; border-radius: 50%; text-align: center; font-size: 14px; line-height: 26px; margin-right: 10px; }
+    .file-list { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+    .file-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-soft); }
+    .file-row:hover { background: #fff; border-color: var(--accent); }
+    .file-info { font-size: 14.5px; }
+    .file-name { font-weight: 700; color: var(--ink); }
+    .file-desc { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    .file-actions { display: flex; gap: 6px; }
+    .file-actions a { font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 6px; text-decoration: none; }
+    .btn-view { background: var(--accent); color: #fff; }
+    .btn-view:hover { background: var(--accent-dark); }
+    .btn-edit { background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border); }
+    .btn-edit:hover { background: var(--border); }
+    .access-card { background: #fff; border-left: 4px solid var(--accent); padding: 18px 22px; border-radius: 10px; margin-bottom: 18px; border: 1px solid var(--border); }
+    .access-card h3 { margin-top: 0; color: var(--accent-dark); }
+    .access-card ul { padding-left: 20px; }
+    .access-card li { margin: 6px 0; font-size: 14px; }
+    code { background: var(--bg-soft); padding: 2px 6px; border-radius: 3px; font-size: 13px; }
+    .footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 24px; padding: 14px; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Dating Coach Project &mdash; Dashboard</h1>
+    <p>Marina (the coach) &middot; Ron (project lead)</p>
+    <p class="meta"><strong>Repo:</strong> Ronwal17/ai-newsletter-pages &middot; <strong>Branch:</strong> claude/dating-coach-app-gseSK &middot; <strong>Status:</strong> Knowledge base 50/50, system prompt LOCKED, ready to build</p>
+    <div class="top-links">
+      <a href="https://github.com/Ronwal17/ai-newsletter-pages/tree/claude/dating-coach-app-gseSK" target="_blank">View branch on GitHub</a>
+      <a href="https://github.com/Ronwal17/ai-newsletter-pages/pull/1" target="_blank">Pull Request (working doc)</a>
+      <a href="https://github.com/Ronwal17/ai-newsletter-pages" target="_blank">Repository home</a>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <strong>How to use this page:</strong> bookmark it. Share with Marina. Click <em>View</em> on any file to read it rendered. Click <em>Edit on GitHub</em> to make changes (you and Marina both have write access).
+  </div>
+
+  <div class="section">
+    <h2><span class="num">1</span>Strategy &amp; positioning</h2>
+    <div class="file-list">
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Master Business Plan</div>
+          <div class="file-desc">Positioning, ICP, the 4-P Method, tier ladder, financials, 180-day roadmap.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-business-plan.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-business-plan.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">2</span>The AI brain (knowledge base + voice)</h2>
+    <div class="file-list">
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Knowledge Base &mdash; 50 Q&amp;As</div>
+          <div class="file-desc">Marina&rsquo;s polished answers. The Claude API reads only from this file. Internal use only.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-knowledge-base.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-knowledge-base.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Voice Guidelines</div>
+          <div class="file-desc">Marina&rsquo;s signature patterns, vocabulary, DO/DON&rsquo;T rules. The character spec for the AI.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-voice-guidelines.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-voice-guidelines.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">50 Questions &mdash; Index</div>
+          <div class="file-desc">List of all 50 questions, organized by category. Status: 50/50 done.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-questions.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-questions.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Voice Tuning &amp; Edge Cases</div>
+          <div class="file-desc">7 tuning knobs + 3 stress tests (off-topic, clinical, hostile users).</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-voice-tuning.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-voice-tuning.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">3</span>Implementation specs</h2>
+    <div class="file-list">
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">7-Day Build Guide</div>
+          <div class="file-desc">Step-by-step playbook from accounts to live funnel. Start here when you&rsquo;re ready to build.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-build-guide.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-build-guide.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Tools + LOCKED System Prompt</div>
+          <div class="file-desc">Tool stack ($60/mo) + the production Claude system prompt &mdash; paste-ready into Make.com.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-stack.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-stack.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Tally Quiz Spec</div>
+          <div class="file-desc">Field-by-field instructions for building the quiz form on Tally.so.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-quiz-spec.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-quiz-spec.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">4</span>Marketing &mdash; the carousels</h2>
+    <div class="file-list">
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Carousel #1 &mdash; &ldquo;Successful. Single. Stuck.&rdquo;</div>
+          <div class="file-desc">8 slides, full copy + visual direction + caption. Ready to rebuild in Canva.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-carousel-1.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-carousel-1.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Carousels #2-4 &mdash; Clarity / Truth / Reset</div>
+          <div class="file-desc">Three more carousels for the weekly rotation. Each with a unique DM keyword.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-carousels-2-4.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-carousels-2-4.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">5</span>Launch &amp; operations</h2>
+    <div class="file-list">
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Soft-launch Script</div>
+          <div class="file-desc">First carousel caption + 3 DM versions (formal/warm/casual) + 20-person target framework + tracking spreadsheet template.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-soft-launch.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-soft-launch.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Nurture Email Sequence (5 emails)</div>
+          <div class="file-desc">14-day drip after the quiz. Day 1, 3, 5, 7, 14. Day 7 + Day 14 pitch the $497 Clarity Session.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-nurture-emails.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-nurture-emails.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Landing Page (About Marina)</div>
+          <div class="file-desc">One-page site: hero, the 4-P Method, who I work with, who I&rsquo;m not for, bio placeholder, testimonial slots, dual CTAs.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-landing.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-landing.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Inbox Reply Templates (5)</div>
+          <div class="file-desc">Customizable responses for: curious, in-pain, ready-to-work, not-ready, off-topic / clinical referral.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-reply-templates.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-reply-templates.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Coaching Agreement (Tier 1)</div>
+          <div class="file-desc">Draft contract for the $497 Clarity Session. Includes &ldquo;not therapy&rdquo; clause, refund policy, IP, liability cap. <strong>Have a lawyer review before using.</strong></div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-agreement.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-agreement.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Booking Confirmation Email</div>
+          <div class="file-desc">Auto-reply when someone pays $497 via Stripe. Sets expectations, links to Calendly + intake form, in Marina&rsquo;s voice.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-booking-email.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-booking-email.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Pre-Session Intake Form</div>
+          <div class="file-desc">7 questions clients fill out before the Clarity Session. Tally form spec ready to build. Saves the call from being wasted on catching Marina up.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-intake-form.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-intake-form.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Partner Blueprint Template</div>
+          <div class="file-desc">The actual deliverable. Marina fills it in for each client; client receives 48h after the call. The artifact the $497 buys. Premium, branded, structured.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-partner-blueprint.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-partner-blueprint.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">6</span>Validation &mdash; persona tests</h2>
+    <div class="file-list">
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Persona #1 &mdash; Jane (test simulation)</div>
+          <div class="file-desc">42 y/o woman, falls for unavailable men. The end-to-end walkthrough showing the full system.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-test-simulation.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-test-simulation.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Persona #2 &mdash; Mike</div>
+          <div class="file-desc">52 y/o divorced executive. &ldquo;Intimidating to women.&rdquo; Tests male voice + post-divorce.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-persona-2.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-persona-2.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <div class="file-info">
+          <div class="file-name">Personas #3-7 &mdash; Sarah, David, Maya, Tom, Rachel</div>
+          <div class="file-desc">Five more validated runs. All 7 personas pass voice check.</div>
+        </div>
+        <div class="file-actions">
+          <a class="btn-view" href="https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-personas-3-7.html" target="_blank">View</a>
+          <a class="btn-edit" href="https://github.com/Ronwal17/ai-newsletter-pages/edit/claude/dating-coach-app-gseSK/dating-coach-personas-3-7.html" target="_blank">Edit</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">7</span>How to access &mdash; from any computer or phone</h2>
+
+    <div class="access-card">
+      <h3>Option A &mdash; The easiest (recommended)</h3>
+      <p><strong>Bookmark this dashboard page itself.</strong> Send Marina the same bookmark. From any browser, anywhere &mdash; this page links to everything else.</p>
+      <p>The URL of <em>this</em> page (after publishing &mdash; see below):<br>
+      <code>https://htmlpreview.github.io/?https://github.com/Ronwal17/ai-newsletter-pages/blob/claude/dating-coach-app-gseSK/dating-coach-index.html</code></p>
+    </div>
+
+    <div class="access-card">
+      <h3>Option B &mdash; Through GitHub directly</h3>
+      <ul>
+        <li>Go to <a href="https://github.com/Ronwal17/ai-newsletter-pages/tree/claude/dating-coach-app-gseSK" target="_blank">the branch on GitHub</a></li>
+        <li>You see all 13 files. Click any one to read.</li>
+        <li>To edit: click the pencil icon (top right of any file).</li>
+        <li>Marina has Write access &mdash; her edits save directly.</li>
+      </ul>
+    </div>
+
+    <div class="access-card">
+      <h3>Option C &mdash; Make a permanent published URL (one click)</h3>
+      <p>If you want a clean, professional URL like <code>ronwal17.github.io/ai-newsletter-pages/dating-coach-index.html</code> &mdash; just merge Pull Request #1. Then everything is permanently live and accessible from any device, no GitHub login needed.</p>
+      <p><strong>Important:</strong> the repo is public, so anything you publish will be visible to anyone with the link. The business plan, voice guidelines, and knowledge base all become public if you do this.</p>
+      <p>If you want to keep the work private: leave the PR unmerged and use Option A or B. Or make the repo private (Settings &rarr; General &rarr; Danger Zone &rarr; Change visibility). I can walk you through that.</p>
+    </div>
+
+    <div class="access-card">
+      <h3>Option D &mdash; Backup to your local computer</h3>
+      <p>To have a copy on your hard drive (so you literally can&rsquo;t lose it):</p>
+      <ol>
+        <li>Install Git on your computer (mac: <code>brew install git</code>; windows: <a href="https://git-scm.com/downloads" target="_blank">download here</a>).</li>
+        <li>Open Terminal / Command Prompt and run:<br>
+          <code>git clone https://github.com/Ronwal17/ai-newsletter-pages.git</code></li>
+        <li>Switch to our branch:<br>
+          <code>cd ai-newsletter-pages</code><br>
+          <code>git checkout claude/dating-coach-app-gseSK</code></li>
+        <li>You now have all 13 files on your computer. Open any in your browser.</li>
+        <li>To stay synced &mdash; <code>git pull</code> any time you want the latest changes.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">8</span>How to keep working with Marina</h2>
+    <div class="access-card">
+      <h3>The collaboration flow</h3>
+      <ol>
+        <li><strong>Discussion:</strong> happens on Pull Request #1 (the GitHub PR). Everyone can comment line-by-line on any file.</li>
+        <li><strong>Edits:</strong> Marina edits any file by clicking the pencil icon. Saves are instant. No version conflicts.</li>
+        <li><strong>New files:</strong> ask Ron or Claude to create them. New files appear on the branch and in this dashboard.</li>
+        <li><strong>If something breaks:</strong> GitHub keeps every version of every file. Nothing is ever truly lost &mdash; we can roll back any change.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="footer">
+    Project owner: Ron &middot; Coach: Marina &middot; All work stored on GitHub branch <code>claude/dating-coach-app-gseSK</code>
+  </div>
+
+</body>
+</html>

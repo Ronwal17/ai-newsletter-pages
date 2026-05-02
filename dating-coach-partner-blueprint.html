@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Blueprint - Template for Marina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --green:#0F2A23; --ivory:#F6F3EE; --gold:#C2A46D; --charcoal:#2E2E2E; --taupe:#8A7F76; --line:rgba(15,42,35,0.12); --card:#FBFAF6; --paper:#fff; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; max-width: 880px; margin: 40px auto; padding: 0 24px; color: var(--green); line-height: 1.65; background: var(--ivory); }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500; margin-bottom: 4px; }
+    h2.howto { font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-top: 36px; padding: 10px 14px; background: var(--green); color: var(--ivory); border-radius: 6px; font-weight: 500; letter-spacing: 0.5px; }
+    p.sub { color: var(--taupe); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--card); border-left: 4px solid var(--gold); padding: 14px 18px; margin: 18px 0; border-radius: 4px; font-size: 14px; }
+    code { background: var(--card); padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+    .marina-fills { color: var(--gold); font-weight: 600; }
+
+    /* The Blueprint document itself - styled like a deliverable PDF */
+    .blueprint-doc {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 60px 70px;
+      margin: 30px 0;
+      box-shadow: 0 8px 32px rgba(15, 42, 35, 0.08);
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--green);
+    }
+    .blueprint-doc .doc-header { border-bottom: 2px solid var(--gold); padding-bottom: 18px; margin-bottom: 32px; text-align: center; }
+    .blueprint-doc .doc-header .brand { font-family: 'Cormorant Garamond', serif; color: var(--gold); letter-spacing: 8px; font-size: 12px; text-transform: uppercase; font-weight: 500; }
+    .blueprint-doc .doc-header .doc-type { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500; color: var(--green); margin: 14px 0 6px; letter-spacing: 1px; }
+    .blueprint-doc .doc-header .doc-meta { font-family: 'Inter', sans-serif; color: var(--taupe); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+    .blueprint-doc h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--green); margin-top: 32px; margin-bottom: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .blueprint-doc h3 .num { color: var(--gold); margin-right: 10px; font-weight: 500; }
+    .blueprint-doc p { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.75; color: var(--charcoal); margin: 12px 0; }
+    .blueprint-doc .placeholder { color: var(--gold); font-style: italic; background: rgba(194, 164, 109, 0.08); padding: 2px 6px; border-radius: 3px; }
+    .blueprint-doc .pullquote { font-style: italic; font-size: 19px; color: var(--green); border-left: 3px solid var(--gold); padding: 8px 16px; margin: 18px 0; background: var(--card); border-radius: 0 4px 4px 0; line-height: 1.5; }
+    .blueprint-doc ol.actions { padding-left: 0; counter-reset: action-counter; list-style: none; }
+    .blueprint-doc ol.actions li { font-family: 'Inter', sans-serif; counter-increment: action-counter; padding: 14px 18px 14px 50px; margin: 10px 0; background: var(--card); border-radius: 6px; position: relative; font-size: 15px; line-height: 1.6; color: var(--charcoal); }
+    .blueprint-doc ol.actions li::before { content: counter(action-counter); position: absolute; left: 16px; top: 14px; width: 24px; height: 24px; background: var(--gold); color: var(--green); border-radius: 50%; font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; }
+    .blueprint-doc ul.warnings { padding-left: 0; list-style: none; font-family: 'Inter', sans-serif; }
+    .blueprint-doc ul.warnings li { padding: 8px 16px; margin: 6px 0; font-size: 14px; color: var(--charcoal); border-left: 2px solid var(--taupe); padding-left: 14px; }
+    .blueprint-doc .signature { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .blueprint-doc .signature .name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 26px; color: var(--gold); }
+    .blueprint-doc .signature .title { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--taupe); letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; }
+    .blueprint-doc .next-step-box { background: var(--green); color: var(--ivory); padding: 24px 30px; border-radius: 6px; margin: 28px 0; }
+    .blueprint-doc .next-step-box h3 { color: var(--gold); margin-top: 0; font-size: 18px; }
+    .blueprint-doc .next-step-box p { color: var(--ivory); font-family: 'Inter', sans-serif; font-size: 14px; margin: 8px 0; }
+    .blueprint-doc .next-step-box .button { display: inline-block; background: var(--gold); color: var(--green); padding: 10px 18px; border-radius: 4px; text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Partner Blueprint &mdash; Template</h1>
+  <p class="sub">The deliverable Marina sends 48 business hours after every Clarity Session. The artifact the client paid $497 for &mdash; the take-home document they return to. Marina fills in the <span class="marina-fills">[GOLD ITALICIZED PLACEHOLDERS]</span> for each client; the structure stays.</p>
+
+  <div class="callout">
+    <strong>How to use this template:</strong> after each Clarity Session, Marina makes a copy of this file (or a Google Doc version of it), fills in the bracketed placeholders with the specific client&rsquo;s situation, exports as PDF, and sends. About 30-45 minutes per Blueprint. The structure is fixed; only the substance changes.
+  </div>
+
+  <h2 class="howto">The Blueprint document &mdash; ready to fill in</h2>
+
+  <div class="blueprint-doc">
+
+    <div class="doc-header">
+      <div class="brand">M &middot; W &nbsp; CONSULTING</div>
+      <div class="doc-type">Partner Blueprint</div>
+      <div class="doc-meta"><span class="placeholder">[CLIENT NAME]</span> &middot; <span class="placeholder">[SESSION DATE]</span></div>
+    </div>
+
+    <h3><span class="num">01</span>What I saw</h3>
+    <p><span class="placeholder">[2-3 sentence summary of the pattern Marina noticed during the call. Use the client&rsquo;s own words where possible. Open with what they came in saying, name the deeper thing underneath. Example: &ldquo;You came in describing a string of charming-but-distant men. What I saw underneath: a body that has learned to read uncertainty as love. The men aren&rsquo;t the variable. The wiring is.&rdquo;]</span></p>
+
+    <h3><span class="num">02</span>What it&rsquo;s costing you</h3>
+    <p><span class="placeholder">[1-2 sentences naming the specific cost &mdash; in time, in self-worth, in years. Be direct, not dramatic. Example: &ldquo;Eighteen-month cycles since the divorce. Three different faces, one repeating story. The cost isn&rsquo;t the relationships ending. It&rsquo;s that each ending leaves the wiring stronger.&rdquo;]</span></p>
+
+    <h3><span class="num">03</span>The 4-P diagnosis</h3>
+    <p>Of the four pieces, here&rsquo;s where you are right now:</p>
+    <p><strong>Presence:</strong> <span class="placeholder">[1 sentence on inner state. Steady? Anxious? Where&rsquo;s the leak?]</span></p>
+    <p><strong>Picture:</strong> <span class="placeholder">[1 sentence on clarity of what they want. Clear? Vague? Defensive?]</span></p>
+    <p><strong>Presentation:</strong> <span class="placeholder">[1 sentence on how they show up. Aligned with what they want? Not yet?]</span></p>
+    <p><strong>Progression:</strong> <span class="placeholder">[1 sentence on how they handle the move from connection to relationship. Hold? Pull? Escape?]</span></p>
+    <p style="font-style: italic; color: var(--gold); font-size: 17px; margin-top: 18px;"><strong>The one to fix first:</strong> <span class="placeholder">[Name which P. Almost always one of them is the bottleneck. Don&rsquo;t try to fix all four at once.]</span></p>
+
+    <h3><span class="num">04</span>The settling test, applied to you</h3>
+    <p>You&rsquo;re going to date someone in the next 90 days. Maybe sooner. Use this question to know whether to keep going or move on:</p>
+    <div class="pullquote">If this person never improved &mdash; same habits, same effort, same level &mdash; would I still <em>want</em> this life with them? Not tolerate. Want.</div>
+    <p>If the answer is no, you&rsquo;re settling. If the answer is yes, you&rsquo;re being realistic. <span class="placeholder">[Optional: one sentence applying this directly to the client&rsquo;s situation if relevant. Example: &ldquo;Apply this to the next time he comes back charming. The answer will be obvious.&rdquo;]</span></p>
+
+    <h3><span class="num">05</span>The next 30 days</h3>
+    <p>Five actions, in order. Don&rsquo;t skip ahead. The order is the work.</p>
+    <ol class="actions">
+      <li><span class="placeholder">[Action 1 &mdash; usually inner-state work. Example: &ldquo;For 30 days, no apps, no DMs after 9pm. Use the time to rebuild your nervous system before introducing new data.&rdquo;]</span></li>
+      <li><span class="placeholder">[Action 2 &mdash; usually clarity work. Example: &ldquo;Write down what you actually want. Not what you should want. Use a notebook, not your phone. Take a full week.&rdquo;]</span></li>
+      <li><span class="placeholder">[Action 3 &mdash; usually about pattern recognition. Example: &ldquo;Make a list of the last 3 men. For each, write the moment you knew it wasn&rsquo;t right. That&rsquo;s your radar &mdash; you&rsquo;ve been ignoring it.&rdquo;]</span></li>
+      <li><span class="placeholder">[Action 4 &mdash; usually about how they show up. Example: &ldquo;If you&rsquo;re going back to the apps in week 4, redo your photos and rewrite the bio with what you wrote in step 2. Honest, not optimized.&rdquo;]</span></li>
+      <li><span class="placeholder">[Action 5 &mdash; usually a progression rule. Example: &ldquo;On every date in week 4, ask yourself the settling-test question by the end. If the answer is no, end it cleanly within 7 days.&rdquo;]</span></li>
+    </ol>
+
+    <h3><span class="num">06</span>What to watch for</h3>
+    <p>The old pattern doesn&rsquo;t leave on its own. Here&rsquo;s how to know it&rsquo;s pulling you back:</p>
+    <ul class="warnings">
+      <li><span class="placeholder">[Warning sign 1 &mdash; specific to the client&rsquo;s pattern. Example: &ldquo;You start telling yourself &lsquo;he&rsquo;s just stressed&rsquo; or &lsquo;she&rsquo;s just busy&rsquo; when the effort drops.&rdquo;]</span></li>
+      <li><span class="placeholder">[Warning sign 2. Example: &ldquo;You&rsquo;re excited by butterflies again. Remember: butterflies are anxiety dressed up as romance. Calm is what you&rsquo;re looking for.&rdquo;]</span></li>
+      <li><span class="placeholder">[Warning sign 3. Example: &ldquo;You skip step 1 because &lsquo;you&rsquo;re fine.&rsquo; You&rsquo;re not. The skipping is the symptom.&rdquo;]</span></li>
+    </ul>
+
+    <h3><span class="num">07</span>One question to sit with</h3>
+    <div class="pullquote"><span class="placeholder">[A single, sharp question for the client to carry into the next 30 days. Should be uncomfortable but answerable. Examples: &ldquo;What would have to be true for you to believe you deserve a calm love?&rdquo; / &ldquo;If you trusted yourself completely, what would you do this week?&rdquo; / &ldquo;What part of you is afraid the right person will actually show up?&rdquo;]</span></div>
+    <p style="font-style: italic; color: var(--taupe); font-size: 14px;">Don&rsquo;t answer it now. Sit with it. The answer will come on its own &mdash; usually somewhere unexpected.</p>
+
+    <div class="next-step-box">
+      <h3>If you want to keep going</h3>
+      <p>Most people use the Clarity Session as a one-time conversation and they&rsquo;re done. Some want longer-term work. If that&rsquo;s you:</p>
+      <p>The 30-Day Reset is the natural next step &mdash; four weekly sessions, async support between calls, the same direct work but with the time to actually move.</p>
+      <p>$2,500 one-time. Your $497 today is credited toward it if you book within 14 days.</p>
+      <a href="[STRIPE_LINK_TIER_2]" class="button">Book the 30-Day Reset &rarr;</a>
+    </div>
+
+    <div class="signature">
+      <div class="name">&mdash; Marina</div>
+      <div class="title">MW Consulting &middot; Strategy &middot; Connection &middot; Transformation</div>
+    </div>
+
+  </div>
+
+  <h2 class="howto">How to fill this out for each client</h2>
+  <ol>
+    <li><strong>Make a copy.</strong> File &rarr; Make a copy (in Google Docs version), or duplicate the HTML file with a new name like <code>blueprint-2026-05-15-jane.html</code>.</li>
+    <li><strong>Update the header.</strong> Replace <span class="marina-fills">[CLIENT NAME]</span> and <span class="marina-fills">[SESSION DATE]</span>.</li>
+    <li><strong>Replace each placeholder</strong> in order. Sections 1-7. Don&rsquo;t skip; don&rsquo;t reorder.</li>
+    <li><strong>Read it out loud once.</strong> If anything feels generic or could apply to anyone, rewrite it. The whole point is that it sounds like it was written for THIS person.</li>
+    <li><strong>Export to PDF.</strong> File &rarr; Print &rarr; Save as PDF. Filename: <code>Partner-Blueprint-[ClientName]-[Date].pdf</code>.</li>
+    <li><strong>Email the PDF</strong> to the client with a 2-line note: &ldquo;Here&rsquo;s your Blueprint. Read it once today, once in a week. Reply if anything doesn&rsquo;t land. &mdash; Marina&rdquo;</li>
+  </ol>
+
+  <h2 class="howto">Time budget per Blueprint</h2>
+  <ul>
+    <li>Reading the intake form again + reviewing call notes: <strong>10 min</strong></li>
+    <li>Filling in sections 1-3 (what you saw, cost, 4-P): <strong>15 min</strong></li>
+    <li>Filling in sections 4-7 (settling test, action plan, watchouts, sit-with question): <strong>15 min</strong></li>
+    <li>Read aloud, polish, export: <strong>10 min</strong></li>
+    <li><strong>Total per client:</strong> ~50 minutes within 48 business hours of the call.</li>
+  </ul>
+
+  <h2 class="howto">Voice rules for filling in placeholders</h2>
+  <ul>
+    <li>Use the client&rsquo;s actual words from the intake or the call wherever possible &mdash; never paste generic coaching language.</li>
+    <li>Be specific. Generic = &ldquo;you have an avoidance pattern.&rdquo; Specific = &ldquo;by week 6 you start finding reasons.&rdquo;</li>
+    <li>Marina&rsquo;s voice rules apply: dismiss self-blame, explain mechanism, no therapy-speak, no hype, no woo.</li>
+    <li>End every section with a shift &mdash; never just a description.</li>
+    <li>If something is hard, lead it with &ldquo;honey&rdquo; once. Only once.</li>
+  </ul>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tally Quiz Spec - Build This Form</title>
+  <style>
+    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --bg-soft:#f8fafc; --border:#e2e8f0; --good:#059669; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 880px; margin: 40px auto; padding: 0 24px; color: var(--ink); line-height: 1.65; }
+    h1 { font-size: 30px; margin-bottom: 4px; }
+    h2 { font-size: 20px; margin-top: 36px; padding: 8px 12px; background: var(--ink); color: #fff; border-radius: 6px; }
+    h3 { font-size: 16px; margin-top: 22px; color: #0e7c6a; }
+    p.sub { color: var(--muted); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 18px 0; border-radius: 4px; }
+    .field { border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin: 14px 0; background: #fff; }
+    .field-num { display: inline-block; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; }
+    .field h4 { font-size: 17px; margin: 0 0 8px 0; }
+    .field-meta { font-size: 13px; color: var(--muted); margin: 4px 0; }
+    .field-meta strong { color: var(--ink); }
+    .options { background: var(--bg-soft); padding: 10px 14px; border-radius: 6px; font-size: 14px; margin: 8px 0; }
+    .options ul { margin: 4px 0; padding-left: 20px; }
+    pre { background: #0f172a; color: #e2e8f0; padding: 14px; border-radius: 6px; overflow-x: auto; font-size: 13px; line-height: 1.55; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+    th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+    th { background: var(--bg-soft); }
+    code { background: var(--bg-soft); padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>Tally Quiz Spec &mdash; Build This Form</h1>
+  <p class="sub">6 questions, ~2 minutes to complete. Designed to give the AI exactly what it needs to pick 3 relevant answers from Marina&rsquo;s knowledge base. Build at <a href="https://tally.so" target="_blank">tally.so</a> &mdash; free tier covers it.</p>
+
+  <div class="callout">
+    <strong>Form name:</strong> &ldquo;The 2-Minute Dating Diagnosis&rdquo;<br>
+    <strong>Form URL slug:</strong> <code>dating-diagnosis</code><br>
+    <strong>Estimated completion:</strong> 90&ndash;120 seconds<br>
+    <strong>Total fields:</strong> 6 (5 + email)
+  </div>
+
+  <h2>Form intro page (what they see first)</h2>
+  <div class="field">
+    <h4>Headline</h4>
+    <p>Get a personalized dating diagnosis &mdash; in 60 seconds.</p>
+    <h4>Subhead</h4>
+    <p>Answer 6 quick questions and I&rsquo;ll send you 3 personalized answers in your inbox &mdash; written in my voice, pulled from the playbook I use with my private clients.<br><br>It&rsquo;s free. No call. No pitch. Just real answers.</p>
+    <h4>CTA button</h4>
+    <p><strong>Start the quiz &rarr;</strong></p>
+  </div>
+
+  <h2>Field-by-field spec</h2>
+
+  <div class="field">
+    <span class="field-num">FIELD 1</span>
+    <h4>How old are you?</h4>
+    <p class="field-meta"><strong>Tally type:</strong> Multiple choice (single select)</p>
+    <p class="field-meta"><strong>Required:</strong> Yes</p>
+    <p class="field-meta"><strong>Field key (for webhook):</strong> <code>age_range</code></p>
+    <div class="options">
+      <strong>Options:</strong>
+      <ul>
+        <li>Under 30</li>
+        <li>30&ndash;39</li>
+        <li>40&ndash;49</li>
+        <li>50&ndash;59</li>
+        <li>60+</li>
+      </ul>
+    </div>
+    <p class="field-meta"><em>Why a range, not a number: faster to answer, doesn&rsquo;t feel invasive, gives the AI enough context to calibrate tone.</em></p>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 2</span>
+    <h4>How do you identify?</h4>
+    <p class="field-meta"><strong>Tally type:</strong> Multiple choice (single select)</p>
+    <p class="field-meta"><strong>Required:</strong> Yes</p>
+    <p class="field-meta"><strong>Field key:</strong> <code>gender</code></p>
+    <div class="options">
+      <strong>Options:</strong>
+      <ul>
+        <li>Woman</li>
+        <li>Man</li>
+        <li>Non-binary</li>
+        <li>Prefer not to say</li>
+      </ul>
+    </div>
+    <p class="field-meta"><em>Used by AI to choose pronouns and avoid gendered missteps. Marina&rsquo;s voice rules forbid gendered generalizations regardless.</em></p>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 3</span>
+    <h4>What are you actually looking for right now?</h4>
+    <p class="field-meta"><strong>Tally type:</strong> Multiple choice (single select)</p>
+    <p class="field-meta"><strong>Required:</strong> Yes</p>
+    <p class="field-meta"><strong>Field key:</strong> <code>goal</code></p>
+    <div class="options">
+      <strong>Options:</strong>
+      <ul>
+        <li>A long-term partner / marriage</li>
+        <li>Something serious, not sure how serious yet</li>
+        <li>I&rsquo;m getting back into dating after a long pause</li>
+        <li>I&rsquo;m not sure what I want</li>
+      </ul>
+    </div>
+    <p class="field-meta"><em>If they pick &ldquo;not sure&rdquo; or &ldquo;getting back into dating,&rdquo; the AI prioritizes mindset / readiness questions. If &ldquo;long-term partner,&rdquo; it prioritizes selection / progression.</em></p>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 4</span>
+    <h4>What&rsquo;s the biggest thing getting in your way right now?</h4>
+    <p class="field-meta"><strong>Tally type:</strong> Long text (textarea)</p>
+    <p class="field-meta"><strong>Required:</strong> Yes</p>
+    <p class="field-meta"><strong>Min length:</strong> 30 characters</p>
+    <p class="field-meta"><strong>Placeholder:</strong> &ldquo;Be honest. The more specific, the better the answers I send back. (e.g. I keep falling for the same wrong type, I freeze on dates, I don&rsquo;t know where to meet people&hellip;)&rdquo;</p>
+    <p class="field-meta"><strong>Field key:</strong> <code>blocker</code></p>
+    <p class="field-meta"><em>This is the most important field. The AI uses this free-text answer to match the 3 most relevant questions from the knowledge base. The 30-char minimum forces a real answer instead of &ldquo;idk.&rdquo;</em></p>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 5</span>
+    <h4>What feels heaviest about dating right now?</h4>
+    <p class="field-meta"><strong>Tally type:</strong> Long text (textarea)</p>
+    <p class="field-meta"><strong>Required:</strong> Yes</p>
+    <p class="field-meta"><strong>Min length:</strong> 20 characters</p>
+    <p class="field-meta"><strong>Placeholder:</strong> &ldquo;The fear, the frustration, the loneliness, the time pressure &mdash; whichever is loudest right now.&rdquo;</p>
+    <p class="field-meta"><strong>Field key:</strong> <code>frustration</code></p>
+    <p class="field-meta"><em>Captures emotional state for the AI to address tone. A user feeling &ldquo;running out of time&rdquo; gets a different response than one feeling &ldquo;pure exhaustion.&rdquo;</em></p>
+  </div>
+
+  <div class="field">
+    <span class="field-num">FIELD 6</span>
+    <h4>Where should I send your answers?</h4>
+    <p class="field-meta"><strong>Tally type:</strong> Email</p>
+    <p class="field-meta"><strong>Required:</strong> Yes</p>
+    <p class="field-meta"><strong>Field key:</strong> <code>email</code></p>
+    <p class="field-meta"><strong>Subtext below the field:</strong> &ldquo;Just your email &mdash; no spam, no list-bombing. You&rsquo;ll get the personalized answers + occasional emails from me when I have something worth saying.&rdquo;</p>
+  </div>
+
+  <h2>Confirmation page (after submit)</h2>
+  <div class="field">
+    <h4>Headline</h4>
+    <p>Got it. Check your inbox in 60 seconds.</p>
+    <h4>Body</h4>
+    <p>I&rsquo;m reading what you sent and pulling the 3 answers most relevant to where you are right now. They&rsquo;ll land in your inbox shortly &mdash; from <strong>hello@datingwithmarina.com</strong>.</p>
+    <p>If they don&rsquo;t arrive in 5 minutes, check your promotions or spam folder &mdash; and please mark me as &ldquo;not spam&rdquo; so the rest of my notes reach you.</p>
+    <p>&mdash; Marina</p>
+  </div>
+
+  <h2>Webhook integration</h2>
+  <p>In Tally: <strong>Settings &rarr; Integrations &rarr; Webhooks</strong>. Add this URL (you&rsquo;ll create it in Make.com):</p>
+  <pre>https://hook.us2.make.com/your-unique-webhook-id-here</pre>
+  <p>The payload Tally sends to Make.com looks like this:</p>
+  <pre>{
+  "eventId": "evt_abc123",
+  "eventType": "FORM_RESPONSE",
+  "createdAt": "2026-04-30T18:42:11.000Z",
+  "data": {
+    "responseId": "resp_xyz789",
+    "submissionId": "sub_xyz789",
+    "respondentId": "anon_user_id",
+    "formId": "your-form-id",
+    "formName": "The 2-Minute Dating Diagnosis",
+    "createdAt": "2026-04-30T18:42:11.000Z",
+    "fields": [
+      { "key": "age_range",   "label": "How old are you?",
+        "type": "MULTIPLE_CHOICE", "value": "40-49" },
+      { "key": "gender",      "label": "How do you identify?",
+        "type": "MULTIPLE_CHOICE", "value": "Woman" },
+      { "key": "goal",        "label": "What are you looking for?",
+        "type": "MULTIPLE_CHOICE",
+        "value": "A long-term partner / marriage" },
+      { "key": "blocker",     "label": "Biggest thing in your way?",
+        "type": "TEXTAREA",
+        "value": "I keep falling for emotionally unavailable men..." },
+      { "key": "frustration", "label": "What feels heaviest?",
+        "type": "TEXTAREA",
+        "value": "I feel like I'm running out of time and starting to settle." },
+      { "key": "email",       "label": "Where to send your answers?",
+        "type": "INPUT_EMAIL", "value": "jane@example.com" }
+    ]
+  }
+}</pre>
+
+  <h2>Make.com scenario (the connecting glue)</h2>
+  <p>One scenario, four steps. Build once, runs forever.</p>
+  <table>
+    <tr><th>#</th><th>Module</th><th>What it does</th></tr>
+    <tr><td>1</td><td>Tally &rarr; Watch Form Submissions</td><td>Triggers on every quiz submit. Receives the JSON above.</td></tr>
+    <tr><td>2</td><td>Anthropic &rarr; Make a Message</td><td>Sends the system prompt + the user&rsquo;s answers + the knowledge base. Receives 3 personalized answers back from Claude.</td></tr>
+    <tr><td>3</td><td>ConvertKit &rarr; Add Subscriber + Send Email</td><td>Tags the user (segment, blocker, goal). Inserts Claude&rsquo;s output into the email template. Sends from <code>hello@datingwithmarina.com</code>.</td></tr>
+    <tr><td>4</td><td>ConvertKit &rarr; Apply Tag &ldquo;quiz-day-0&rdquo;</td><td>Triggers the 5-email nurture sequence (sent over the next 7 days).</td></tr>
+  </table>
+
+  <h2>Build checklist</h2>
+  <ol>
+    <li>Sign up for Tally.so (free).</li>
+    <li>Create the form using the spec above. Copy each field exactly.</li>
+    <li>Set the form URL slug to <code>dating-diagnosis</code>.</li>
+    <li>Style the form with brand colors: cream background, navy text, teal accent.</li>
+    <li>Don&rsquo;t add the webhook yet &mdash; first build the Make.com scenario, then paste the webhook URL into Tally.</li>
+    <li>Test the form yourself. Submit it 3 times with different fake answers. Confirm it triggers the AI and sends a real email.</li>
+    <li>Once it works end-to-end, add the form link to Stan Store / Beacons / link-in-bio.</li>
+  </ol>
+
+  <p>Time to build: <strong>30 minutes for the form, ~3 hours for the Make.com scenario, ~30 minutes for testing.</strong> One afternoon, total.</p>
+
+</body>
+</html>

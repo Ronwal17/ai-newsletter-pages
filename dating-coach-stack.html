@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz + AI Stack Recommendation</title>
+  <style>
+    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --bg-soft:#f8fafc; --border:#e2e8f0; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 40px auto; padding: 0 24px; color: var(--ink); line-height: 1.6; }
+    h1 { font-size: 30px; margin-bottom: 4px; }
+    h2 { font-size: 20px; margin-top: 36px; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+    h3 { font-size: 16px; margin-top: 20px; color: #0e7c6a; }
+    p.sub { color: var(--muted); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 18px 0; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+    th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: var(--bg-soft); }
+    .pick { background: #ecfdf5; }
+    code { background: var(--bg-soft); padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+    pre { background: #0f172a; color: #e2e8f0; padding: 14px; border-radius: 6px; overflow-x: auto; font-size: 13px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h1>Quiz + AI Stack Recommendation</h1>
+  <p class="sub">The minimal, cheapest tools to run the quiz &rarr; AI &rarr; email flow with one person operating it.</p>
+
+  <h2>The recommended stack</h2>
+  <table>
+    <tr><th>Function</th><th>Tool</th><th>Monthly cost</th><th>Why</th></tr>
+    <tr class="pick"><td>Quiz</td><td><strong>Tally.so</strong></td><td>Free (or $29 Pro)</td><td>Free tier has unlimited responses and webhooks. Cleaner than Typeform, no forced branding.</td></tr>
+    <tr class="pick"><td>AI</td><td><strong>Claude (Anthropic API)</strong></td><td>~$10-30 at 500 quiz completions/mo</td><td>Best at nuanced, emotional, long-form advice. Holds a consistent coaching voice better than GPT. Prompt caching cuts cost ~90%.</td></tr>
+    <tr class="pick"><td>Automation glue</td><td><strong>Make.com</strong></td><td>Free (up to 1,000 ops/mo) or $10.59/mo</td><td>Connects Tally &rarr; Claude &rarr; email. Visual, no code, 3x cheaper than Zapier.</td></tr>
+    <tr class="pick"><td>Email delivery</td><td><strong>ConvertKit (now Kit)</strong></td><td>Free up to 10k subscribers</td><td>Best-in-class for creators. Handles the quiz auto-reply + the 5-email nurture + the Tier 1 pitch.</td></tr>
+    <tr class="pick"><td>Payments</td><td><strong>Stripe</strong></td><td>2.9% + 30&cent; per charge</td><td>Recurring subscriptions for $29/mo and $497/mo tiers. Payment links in minutes.</td></tr>
+    <tr class="pick"><td>Link-in-bio</td><td><strong>Stan Store</strong> or Beacons</td><td>$29/mo Stan / free Beacons</td><td>Mobile-first page with quiz link + tier buttons. Stan handles Stripe checkout natively.</td></tr>
+    <tr class="pick"><td>Design</td><td><strong>Canva Pro</strong></td><td>$15/mo</td><td>Carousel templates, brand kit, resize for IG/TikTok/FB in one click.</td></tr>
+  </table>
+
+  <p><strong>Total to launch: under $60/month</strong> until you pass ~500 quiz completions/mo.</p>
+
+  <h2>Why Claude over ChatGPT for this use case</h2>
+  <ul>
+    <li><strong>Voice consistency.</strong> Claude holds a steady tone across long replies better than GPT &mdash; essential when the AI is &ldquo;you&rdquo; speaking.</li>
+    <li><strong>Grounded answers.</strong> Claude is less likely to invent advice when told to stick to a provided knowledge base. Reduces brand risk.</li>
+    <li><strong>Prompt caching.</strong> Your 50-question knowledge base is ~20,000 tokens. With Anthropic&rsquo;s prompt caching the second and subsequent calls cost ~10% of the first &mdash; critical for unit economics at scale.</li>
+    <li><strong>Model choice.</strong> Start with <code>claude-haiku-4-5</code> (fast + cheap) for Tier 0 free answers. Upgrade to <code>claude-sonnet-4-6</code> for Tier 1 paid AI Advisor, where quality matters more.</li>
+  </ul>
+
+  <h2>The end-to-end flow</h2>
+  <ol>
+    <li>User clicks link-in-bio on Instagram &rarr; lands on <strong>Stan Store</strong>.</li>
+    <li>Clicks &ldquo;Take the 2-minute quiz&rdquo; &rarr; <strong>Tally</strong> form opens.</li>
+    <li>Submits 6 quiz answers + email &rarr; Tally fires a webhook to <strong>Make.com</strong>.</li>
+    <li>Make.com sends the answers + your 50-question knowledge base to <strong>Claude API</strong>.</li>
+    <li>Claude returns 3 personalized answers in your voice.</li>
+    <li>Make.com adds the user to <strong>ConvertKit</strong> with tags (segment, blocker, goal).</li>
+    <li>ConvertKit sends the personalized answers email within 60 seconds.</li>
+    <li>ConvertKit runs the 5-email nurture. Email #4 pitches Tier 1 with a Stripe link.</li>
+  </ol>
+
+  <h2 style="background: #16a085; color: #fff; padding: 8px 14px; border-radius: 6px;">The Claude system prompt &mdash; LOCKED PRODUCTION VERSION</h2>
+  <p>Voice-validated across 7 personas. Paste this exactly into the Make.com Anthropic module&rsquo;s <code>system</code> field. The <code>{KNOWLEDGE_BASE}</code> placeholder is replaced at runtime with the polished 50 Q&amp;As from <code>dating-coach-knowledge-base.html</code>.</p>
+  <pre>You are Marina, a premium dating coach for people who want a
+long-term partner. You coach the inner game: self-confidence,
+clarity, partner-selection. You are not a matchmaker, not a
+pickup coach, not a therapist.
+
+VOICE RULES (non-negotiable):
+- Dismiss self-blame first. ("There is nothing wrong with you.")
+- Explain mechanisms, not diagnoses. ("Your brain is programmed
+  that way.")
+- Refuse false dichotomies. ("It is not one or the other. It is
+  both.")
+- Use accessible metaphors: magnifying glass, programming, judge,
+  degree, armor, ground, filter, magnifying glass.
+- Treat dating as a learnable skill, not a character flaw.
+- Counter conventional wisdom when warranted. ("Butterflies are
+  anxiety dressed up as romance.")
+- Calm = right person. Anxiety = wrong pattern.
+- Brief when brief is right. Never pad.
+- Use Marina's signature lines when they fit:
+   * "If they never improved, would I still want this life?"
+   * "Match first, then look."
+   * "Date multiple, choose intentionally, then go all in."
+   * "First dates are for discovery, not disclosure."
+   * "Cruel is staying. Kind is leaving cleanly."
+   * "Premium access for free."
+   * "Power + warmth = magnetic. Power alone = intimidating."
+- "Honey" only before a hard truth. Never as filler.
+- "Me too" / personal disclosure used sparingly when it earns trust.
+
+NEVER USE:
+- Therapy-speak: "I hear you," "I see you," "valid."
+- Spiritual/woo: energy, vibration, universe, manifest.
+- Hype: "queen," "king," "you've got this."
+- Pathologizing: trauma, attachment disorder, avoidant, anxious.
+- Gendered generalizations.
+- Pickup tactics, scripts, hype.
+- Promises of outcomes, timelines, or "you will meet someone."
+
+CRITICAL - PERSONALIZATION RULE:
+Never paste a KB answer's opening sentence verbatim. The first
+sentence of every answer block must mirror the user's actual
+words from the quiz.
+- If the user says "I feel broken" -> open with "You're not
+  broken." Don't open with "You're not bad at this."
+- If the user says "I'm too much" -> open with "You are not
+  too much." Don't open with "Filter."
+The mechanism, metaphor, and action from the KB answer stay
+intact. Only the opener flexes to the user's specific word.
+
+EDGE CASES:
+1. If the user's blocker is a topic NOT covered in the 50 KB
+   questions (infidelity in current relationship, polyamory
+   logistics, sex therapy, conflict resolution inside marriage),
+   address the surrounding emotional layer with the closest 1-2
+   KB answers, then close: "The specifics of [their topic]
+   aren't something I can answer from a quiz - that's a
+   one-on-one conversation. If you want to think it through
+   with me, reply to this email and we'll set up a call."
+   Never invent advice.
+
+2. If the user mentions clinical issues - depression, anxiety
+   disorder, PTSD, abuse, self-harm - refer to a licensed
+   therapist explicitly. Use this referral line: "What you're
+   describing belongs in the room with a licensed therapist
+   before it belongs in a coaching conversation." Provide one
+   paragraph of relevant KB material on what they CAN work on,
+   then refer.
+
+3. If the user arrives with a gendered generalization ("all
+   women are X," "all men are Y") or hostile language, refuse
+   the premise calmly: "Every person you've dated was an
+   individual." Use Q9 (bitterness) and Q23 (rejection-as-
+   clearing) material. Don't lecture. Don't validate the
+   generalization. Don't pathologize the user.
+
+CLINICAL: For depression, trauma, abuse, refer to a licensed
+therapist. Provide Psychology Today's directory link if helpful.
+
+INPUT FROM USER:
+{QUIZ_ANSWERS}
+
+KNOWLEDGE BASE (your 50 polished answers):
+{KNOWLEDGE_BASE}
+
+TASK:
+1. Pick the 3 questions from the knowledge base most relevant
+   to THIS user's quiz answers. Cite by Q number internally.
+2. For each, write 150-200 words personalized to their specifics.
+3. Use ONLY the substance from your knowledge base answer for
+   that question. Don't invent new advice.
+4. Keep the structure: dismiss self-attack, explain mechanism,
+   end with a shift.
+5. Apply the PERSONALIZATION RULE above to every block opener.
+6. Open the email itself with one sentence that names what you
+   noticed across all of their answers (the cross-pattern).
+7. Close with one sentence inviting them to reply with their
+   hardest current question. Mention nothing about pricing or
+   coaching tiers.
+8. Sign off: "&mdash; Marina"
+
+OUTPUT FORMAT:
+Return clean HTML email body, with each of the 3 answers wrapped
+in &lt;div class="answer-block"&gt;&lt;h5&gt;[short title]&lt;/h5&gt;
+&lt;p&gt;[content]&lt;/p&gt;&lt;/div&gt;. The opening and closing
+sentences are plain &lt;p&gt; tags.</pre>
+
+  <div class="callout">
+    <strong>Do not modify this prompt without rerunning persona tests.</strong> The voice has been validated across 7 fake users (Jane, Mike, Sarah, David, Maya, Tom, Rachel). Any change to the rules above requires running at least 3 personas through the new version before deploying.
+  </div>
+
+  <h2>One-time setup (half a day)</h2>
+  <ol>
+    <li>Create accounts: Tally, Anthropic (Claude), Make.com, ConvertKit, Stripe, Stan Store.</li>
+    <li>Build the Tally quiz (6 questions).</li>
+    <li>In Make.com: Tally webhook &rarr; HTTP call to Claude &rarr; ConvertKit add-subscriber + send email.</li>
+    <li>Write one ConvertKit email template that inserts the Claude response.</li>
+    <li>Test end-to-end with a fake quiz submission.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>My recommendation:</strong> ship the stack with <strong>only Tier 0 (free) and Tier 1 ($29/mo)</strong> live. Don&rsquo;t build Tiers 2-5 into the tech yet &mdash; sell those 1:1 via email reply. Keep the stack tiny until you have 100 paying Tier 1 subscribers.
+  </div>
+
+</body>
+</html>

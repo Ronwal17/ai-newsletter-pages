@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marina's Bio + Photo - Brief for the Landing Page</title>
+  <style>
+    :root { --ink:#0f172a; --muted:#475569; --accent:#16a085; --bg-soft:#f8fafc; --border:#e2e8f0; --good:#059669; --warn:#dc2626; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 880px; margin: 40px auto; padding: 0 24px; color: var(--ink); line-height: 1.65; }
+    h1 { font-size: 30px; margin-bottom: 4px; }
+    h2 { font-size: 20px; margin-top: 36px; padding: 8px 12px; background: var(--ink); color: #fff; border-radius: 6px; }
+    h3 { font-size: 17px; margin-top: 22px; color: #0e7c6a; }
+    p.sub { color: var(--muted); margin-top: 0; font-size: 15px; }
+    .callout { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 18px 0; border-radius: 4px; }
+    .sample-bio { background: #fff; border: 2px solid var(--border); border-radius: 12px; padding: 22px 26px; margin: 18px 0; }
+    .sample-bio.preferred { border-color: var(--accent); background: #f0fdfa; }
+    .sample-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--accent); color: #fff; margin-bottom: 8px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .sample-bio h4 { margin: 6px 0 4px 0; font-size: 18px; }
+    .sample-bio .angle { color: var(--muted); font-size: 14px; font-style: italic; margin: 4px 0 14px 0; }
+    .sample-bio .text { font-family: 'Georgia', serif; font-size: 16px; line-height: 1.7; color: var(--ink); }
+    .question { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin: 12px 0; }
+    .question .q-num { display: inline-block; background: var(--ink); color: #fff; width: 26px; height: 26px; line-height: 26px; text-align: center; border-radius: 50%; font-size: 13px; font-weight: 700; margin-right: 8px; }
+    .question h5 { display: inline; font-size: 15px; font-weight: 700; }
+    .question p { font-size: 14px; color: var(--muted); margin: 8px 0 0 34px; }
+    .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+    .photo-card { padding: 16px 18px; border-radius: 8px; }
+    .photo-do { background: #ecfdf5; border-left: 3px solid var(--good); }
+    .photo-dont { background: #fef2f2; border-left: 3px solid var(--warn); }
+    .photo-card h4 { margin: 0 0 8px 0; font-size: 14px; }
+    .photo-card.photo-do h4 { color: #065f46; }
+    .photo-card.photo-dont h4 { color: #991b1b; }
+    .photo-card ul { padding-left: 18px; margin: 4px 0; }
+    .photo-card li { font-size: 14px; margin: 4px 0; }
+    @media (max-width: 600px) { .photo-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <h1>Marina&rsquo;s Bio + Photo &mdash; for the Landing Page</h1>
+  <p class="sub">The landing page (<code>dating-coach-landing.html</code>) has two placeholders left: Marina&rsquo;s bio and her photo. This page is everything she needs to fill them in. 5 minutes of her time on the questions below, plus one photo, and we&rsquo;re done.</p>
+
+  <div class="callout">
+    <strong>How this works:</strong> Marina reads the 3 sample bios below. Picks the one closest to how she&rsquo;d talk about herself. Answers the 6 questions. Sends a photo. Ron forwards it all to me. I rewrite the chosen sample using her real answers, drop it into the landing page, and the page is finished.
+  </div>
+
+  <h2>Part 1 &mdash; 3 sample bios to react to</h2>
+  <p>Most people freeze at &ldquo;write your bio.&rdquo; It&rsquo;s easier to react to something. Here are 3 different angles. Marina picks the one closest to her, and we customize from there. None of these are committed &mdash; they&rsquo;re prompts for her own voice.</p>
+
+  <div class="sample-bio">
+    <span class="sample-tag">Sample A &mdash; The transformation arc</span>
+    <h4>&ldquo;I was where you are now&rdquo;</h4>
+    <p class="angle">For Marina, if her own dating story is part of why she does this work and she&rsquo;s comfortable being slightly personal.</p>
+    <p class="text">For most of my adult life, I was the friend everyone called for relationship advice &mdash; while quietly making the same mistakes in my own dating life. I dated emotionally unavailable men. I overstayed in relationships that didn&rsquo;t fit. I called it patience.</p>
+    <p class="text">It took years to learn what I now teach in 90 days: that the work isn&rsquo;t about meeting different people, it&rsquo;s about changing what your body trusts. Once that shifts, the right people don&rsquo;t feel boring &mdash; they feel like ground.</p>
+    <p class="text">Now I work with people who are successful in every other area of their life and stuck in this one. I help them see the pattern that&rsquo;s costing them, get clear on what they actually want, and become the person the right partner will recognize.</p>
+  </div>
+
+  <div class="sample-bio">
+    <span class="sample-tag">Sample B &mdash; The professional path</span>
+    <h4>&ldquo;Years of doing this work, now formalized&rdquo;</h4>
+    <p class="angle">For Marina, if she has a background (psychology, coaching certification, social work, or simply &ldquo;decades of being the one people came to&rdquo;) and wants to lead with credibility.</p>
+    <p class="text">I&rsquo;ve spent [years/most of my career] working with people on the parts of their lives that don&rsquo;t respond to a checklist. Dating, in particular, is where high-functioning people get most stuck &mdash; because it&rsquo;s the one place their usual tools (planning, optimization, sheer effort) stop working.</p>
+    <p class="text">I built the 4-P Method &mdash; Presence, Picture, Presentation, Progression &mdash; out of years of watching the same patterns repeat across hundreds of conversations. It&rsquo;s the framework I use with every client.</p>
+    <p class="text">My work is direct, calm, and grounded in what actually changes outcomes &mdash; not what sounds good in a feed. I don&rsquo;t do scripts, I don&rsquo;t do hype, and I don&rsquo;t do therapy. I help you see clearly so you can choose well.</p>
+  </div>
+
+  <div class="sample-bio">
+    <span class="sample-tag">Sample C &mdash; The observer / direct voice</span>
+    <h4>&ldquo;Here&rsquo;s what I do, plainly&rdquo;</h4>
+    <p class="angle">For Marina, if she&rsquo;d rather skip the personal narrative and lead with what the work actually is. Cleanest option for clients who don&rsquo;t care about her story.</p>
+    <p class="text">I coach the inner game of dating &mdash; for people who&rsquo;ve already done the outer work. Career. Money. Health. Friendships. The dating part is what&rsquo;s left.</p>
+    <p class="text">My clients are usually 32 to 55, single or divorced, looking for a long-term partner. They&rsquo;ve tried the apps, the setups, the optimization. None of it worked because none of it was the actual problem.</p>
+    <p class="text">The actual problem is almost always one of four things: the inner state you bring, the clarity you don&rsquo;t have on what you want, the way you show up, or how you let things move forward. I help you see which of the four is yours, and what to do about it.</p>
+    <p class="text">I&rsquo;m direct. I don&rsquo;t over-explain. The work either lands or it doesn&rsquo;t &mdash; and you&rsquo;ll know which by the end of the first session.</p>
+  </div>
+
+  <div class="callout"><strong>Marina:</strong> if none of these feel quite right but the closest is Sample A, tell me &ldquo;A, but warmer&rdquo; or &ldquo;A, less personal.&rdquo; If you want to combine two (e.g. &ldquo;the credibility of B with the directness of C&rdquo;), tell me. I&rsquo;ll write the final version once I know your direction.</div>
+
+  <h2>Part 2 &mdash; 6 questions to answer (5 minutes)</h2>
+  <p>Whichever sample Marina picks, the final bio uses her real specifics. These 6 questions extract them.</p>
+
+  <div class="question">
+    <span class="q-num">1</span><h5>Where do you live?</h5>
+    <p>City, region, or simply &ldquo;the East Coast.&rdquo; Adds geographic grounding. Optional &mdash; skip if she&rsquo;d rather not say.</p>
+  </div>
+
+  <div class="question">
+    <span class="q-num">2</span><h5>One specific personal detail you&rsquo;re comfortable sharing.</h5>
+    <p>A hobby, a daily ritual, a place you go every weekend, a thing you make. One sentence. Humanizes you without giving up privacy. Examples: &ldquo;I run before sunrise most mornings.&rdquo; / &ldquo;I&rsquo;m always within reach of a good cup of coffee and a notebook.&rdquo; / &ldquo;I cook the same Sunday dinner I&rsquo;ve been making for 20 years.&rdquo;</p>
+  </div>
+
+  <div class="question">
+    <span class="q-num">3</span><h5>Why this work?</h5>
+    <p>1-2 sentences. Why dating coaching specifically &mdash; not therapy, not life coaching, not matchmaking. What pulled you into this niche?</p>
+  </div>
+
+  <div class="question">
+    <span class="q-num">4</span><h5>Any formal training, certifications, or background that&rsquo;s relevant?</h5>
+    <p>Honest answer. If yes, list. If no, that&rsquo;s also fine &mdash; we&rsquo;ll lean on Sample A or C. Examples: &ldquo;ICF coaching certification, 2022.&rdquo; / &ldquo;15 years working in [field] before this.&rdquo; / &ldquo;I&rsquo;m self-taught from a decade of being the person everyone came to.&rdquo;</p>
+  </div>
+
+  <div class="question">
+    <span class="q-num">5</span><h5>Your own dating story in one sentence (only if you&rsquo;re willing).</h5>
+    <p>This is optional but powerful. People trust coaches who&rsquo;ve done the work themselves. One line. Examples: &ldquo;I&rsquo;ve been divorced once and I know what it&rsquo;s like to start over in your forties.&rdquo; / &ldquo;I dated emotionally unavailable men for ten years before I learned the pattern was mine to break.&rdquo; / Skip entirely if uncomfortable.</p>
+  </div>
+
+  <div class="question">
+    <span class="q-num">6</span><h5>One specific kind of client you&rsquo;re NOT a good fit for.</h5>
+    <p>Counter-intuitive but powerful. Filtering out the wrong people makes the right ones lean in harder. Examples: &ldquo;I don&rsquo;t work with people who want pickup tactics or scripts.&rdquo; / &ldquo;I&rsquo;m not for people looking for someone to blame their last relationship on.&rdquo; / &ldquo;I&rsquo;m not for people who want a guarantee of an outcome.&rdquo;</p>
+  </div>
+
+  <h2>Part 3 &mdash; The photo</h2>
+  <p>One photo. Square or 3:4 portrait. At least 600&times;600 pixels. Doesn&rsquo;t need to be expensive &mdash; a recent phone photo from a friend in good natural light is often better than a corporate headshot.</p>
+
+  <div class="photo-grid">
+    <div class="photo-card photo-do">
+      <h4>DO</h4>
+      <ul>
+        <li>Recent (within 1-2 years)</li>
+        <li>Just Marina &mdash; not a group shot</li>
+        <li>Natural light, neutral or warm background</li>
+        <li>Warm but grounded expression &mdash; not over-polished</li>
+        <li>Clothes Marina would actually wear to coach in</li>
+        <li>Eye contact with the camera</li>
+      </ul>
+    </div>
+    <div class="photo-card photo-dont">
+      <h4>DON&rsquo;T</h4>
+      <ul>
+        <li>Heavy filters or beauty apps</li>
+        <li>Old photos that don&rsquo;t look like Marina now</li>
+        <li>Hyper-stylized fashion shoots</li>
+        <li>Pets or kids in the frame</li>
+        <li>Sunglasses</li>
+        <li>Group photos cropped down</li>
+      </ul>
+    </div>
+  </div>
+
+  <p><strong>Cheap and effective:</strong> ask a friend with a recent iPhone. Stand near a window with soft natural light. Take 30 photos. Pick the one where Marina looks like she&rsquo;s about to say something true. Done.</p>
+
+  <p><strong>If you want to invest:</strong> a $200&ndash;400 headshot session with a local portrait photographer (search &ldquo;personal-brand photographer [city]&rdquo;) gets professional results and you&rsquo;ll have 5&ndash;10 photos to use across the website, social, and future content for a year.</p>
+
+  <h2>How to send everything to Ron</h2>
+  <ol>
+    <li>Marina picks A, B, or C (or tells me which way to lean).</li>
+    <li>Marina answers the 6 questions &mdash; rough is fine, voice memos are fine, full sentences are fine.</li>
+    <li>Marina sends the photo file (or 3 to choose from).</li>
+    <li>Ron sends all of it to me &mdash; paste into our next conversation, attach the photo if needed.</li>
+    <li>I write the final bio in Marina&rsquo;s voice (using the polished-from-rough method we used for the 50 questions). I drop it into the landing page along with the photo. Push to GitHub. Done.</li>
+  </ol>
+
+  <p>Total Marina time required: <strong>~10 minutes.</strong> Total turnaround once she sends: <strong>~24 hours.</strong></p>
+
+</body>
+</html>
